@@ -1,0 +1,826 @@
+﻿<%@ Register Src="~/WebUserControl1.ascx" TagPrefix="uc1" TagName="WebUserControl1" %>
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Yêu cầu báo giá</title>
+    <meta name="keywords" content="Yêu cầu báo giá" />
+    <meta name="dcterms.subject" content="Yêu cầu báo giá" />
+    <meta property="og:title" content="Yêu cầu báo giá" />
+    <meta name="description" content="Nội dung đang cập nhật ..." />
+    <meta property="og:description" content="Nội dung đang cập nhật ..." />
+    <meta http-equiv="Access-Control-Allow-Origin" content="https://vitinhnguyenkim.vn/yeu-cau-bao-gia" />
+    <meta name="dcterms.type" content="Service">
+    <meta name="dcterms.language" content="vi">
+    <meta name="viewport" content="width=device-width, user-scalable=0, maximum-scale=1.0, minimum-scale=1.0, initial-scale=1.0" />
+    <meta name="robots" content="index,follow" />
+    <meta property="fb:app_id" content="" />
+    <meta name="google-site-verification" content="https://vitinhnguyenkim.vn" />
+
+    <style>
+        .primary-menu > li > a {
+            line-height: 34px !important;
+        }
+
+        .fancybox-skin {
+            background: none !important;
+        }
+    </style>
+    <meta property="og:locale" content="vi_VN" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Yêu cầu báo giá" />
+    <meta property="og:description" content="Nội dung đang cập nhật ..." />
+    <meta property="og:url" content="https://vitinhnguyenkim.vn/yeu-cau-bao-gia" />
+    <meta property="og:site_name" content="Công Ty TNHH Vi Tính Nguyên Kim" />
+    <meta property="og:image" content="https://vitinhnguyenkim.vn/uploads/" />
+    <meta property="article:publisher" content="https://www.facebook.com/vitinhnguyenkim/" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Yêu cầu báo giá" />
+    <meta name="twitter:description" content="Nội dung đang cập nhật ..." />
+    <link href="https://vitinhnguyenkim.vn/yeu-cau-bao-gia" rel="canonical" type="" />
+    <link href="https://vitinhnguyenkim.vn/uploads/File/logo_NguyenKim_ao.png" rel="icon" type="image/png" />
+    <link href="https://vitinhnguyenkim.vn/yeu-cau-bao-gia" rel="canonical" />
+    <link href="https://vitinhnguyenkim.vn/yeu-cau-bao-gia" rel="alternate" media="handheld" /> 
+    <link href="fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="js/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/style.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="js/jquery.min.js"></script>
+    <script src="js/script.js"></script>
+    <script type="text/javascript">
+        var lang = 'vi';
+        var mod = 'page';
+        var root = 'https://vitinhnguyenkim.vn/';
+        var ref = '';
+        var currentUrl = 'https://vitinhnguyenkim.vn/yeu-cau-bao-gia';
+        var ajaxurl = 'https://vitinhnguyenkim.vn/ajax';
+        var fb_api = '';
+        var jLang = { "pagination_first_link": "&lsaquo; First", "pagination_next_link": "&gt;", "pagination_prev_link": "&lt;", "pagination_last_link": "Last &rsaquo;", "sitename": "C\u00f4ng Ty TNHH Vi T\u00ednh Nguy\u00ean Kim", "anounce": "Th\u00f4ng b\u00e1o", "error": "B\u00e1o l\u1ed7i!", "home": "Trang ch\u1ee7", "btn_search": "T\u00ecm ki\u1ebfm", "place_search": "T\u00ecm ki\u1ebfm s\u1ea3n ph\u1ea9m theo t\u00ean, m\u00e3, gi\u00e1 ...", "btn_menu": "Danh m\u1ee5c s\u1ea3n ph\u1ea9m", "btn_cart": "<b>Gi\u1ecf h\u00e0ng<\/b>", "sunday": "Ch\u1ee7 nh\u1eadt", "monday": "Th\u1ee9 hai", "tuesday": "Th\u1ee9 ba", "wednesday": "Th\u1ee9 t\u01b0", "thursday": "Th\u1ee9 n\u0103m", "friday": "Th\u1ee9 s\u00e1u", "saturday": "Th\u1ee9 b\u1ea3y", "hotline": "Hotline", "address": "\u0110\u1ecba ch\u1ec9", "email": "Email", "no_price": "Gi\u00e1: li\u00ean h\u1ec7", "support_online_label": "Li\u00ean h\u1ec7 t\u01b0 v\u1ea5n", "social": "K\u1ebft n\u1ed1i v\u1edbi ch\u00fang t\u00f4i", "bank": "Ch\u1ea5p nh\u1eadn thanh to\u00e1n", "btn_deal": "Deal gi\u1edd v\u00e0ng", "timkiemnhieu": "T\u00ecm ki\u1ebfm nhi\u1ec1u", "nhabanle": "Nh\u00e0 ph\u00e2n ph\u1ed1i uy t\u00edn ch\u1ea5t l\u01b0\u1ee3ng h\u00e0ng \u0111\u1ea7u", "partner": "Ch\u1ee9ng nh\u1eadn \u0111\u1ed1i t\u00e1c", "email_exist": "Email: <b>%s<\/b> \u0111\u00e3 \u0111\u01b0\u1ee3c \u0111\u0103ng k\u00fd.", "newsletter_subject": "\u0110\u0103ng k\u00fd mail", "newsletter_place": "\u0110\u1ecba ch\u1ec9 email c\u1ee7a b\u1ea1n", "newsletter_note": "Nh\u1eadn tin khuy\u1ebfn m\u00e3i, hot deal, gi\u1ea3m gi\u00e1...", "newsletter_success": "\u0110\u0103ng k\u00fd nh\u1eadn mail th\u00e0nh c\u00f4ng", "support_note": "Th\u1eddi gian l\u00e0m vi\u1ec7c: T\u1ea5t c\u1ea3 c\u00e1c ng\u00e0y trong tu\u1ea7n t\u1eeb th\u1ee9 2 \u0111\u1ebfn th\u1ee9 7, T\u1eeb 8h30 - 17h30", "online": "Online", "vistited": "T\u1ed5ng l\u01b0\u1ee3t truy c\u1eadp", "copyright": "\u00a9 Since 2018 <strong>%s<\/strong>", "page": "Trang t\u0129nh", "name": "H\u1ecd t\u00ean", "phone": "S\u1ed1 \u0111i\u1ec7n tho\u1ea1i", "company": "T\u00ean c\u00f4ng ty \/ Kh\u00e1ch l\u1ebb", "content": "N\u1ed9i dung", "attach_file": "\u0110\u00ednh k\u00e8m t\u1ec7p", "attach_file_note": "Ghi ch\u00fa: Kh\u00f4ng qu\u00e1 50MB. Ch\u1ec9 ch\u1ea5p nh\u1eadn file c\u00f3 \u0111u\u00f4i .doc, .docx, .pdf, .zip", "attach_file_err": "L\u1ed7i file upload.", "security_code": "M\u00e3 b\u1ea3o v\u1ec7", "error_security": "M\u00e3 b\u1ea3o v\u1ec7 kh\u00f4ng \u0111\u00fang.", "qoute_subject": "Y\u00eau c\u1ea7u b\u00e1o gi\u00e1 t\u1ea1i %s", "qoute_success": "G\u1eedi y\u00eau c\u1ea7u th\u00e0nh c\u00f4ng m\u00e3 code c\u1ee7a Qu\u00fd Kh\u00e1ch l\u00e0 :<br>                            LXDX-%s", "btn_send": "G\u1eedi", "btn_reset": "Nh\u1eadp l\u1ea1i", "empty_buildpc": "B\u1ea1n ch\u01b0a ch\u1ecdn s\u1ea3n ph\u1ea9m n\u00e0o.", "mess_login": "Vui l\u00f2ng <b>{link_login}<\/b> ho\u1eb7c \u0111\u0103ng k\u00fd t\u00e0i kho\u1ea3n <b>{link_regis}<\/b>.", "savePC": "L\u01b0u c\u1ea5u h\u00ecnh", "exportExcel": "T\u1ea3i file Excel c\u1ea5u h\u00ecnh", "exportImage": "T\u1ea3i \u1ea3nh c\u1ea5u h\u00ecnh", "sharePC": "Chia s\u1ebb c\u1ea5u h\u00ecnh", "addCart": "Th\u00eam v\u00e0o gi\u1ecf h\u00e0ng", "btnChoose": "Ch\u1ecdn %s", "refresh": "L\u00e0m m\u1edbi", "subtotal": "Chi ph\u00ed d\u1ef1 t\u00ednh", "sort_lbl": "S\u1eafp x\u1ebfp theo", "choose_pc": "Ch\u1ecdn %s", "filter_pc": "L\u1ecdc s\u1ea3n ph\u1ea9m theo", "search_pc": "T\u00ecm ki\u1ebfm...", "save_success": "L\u01b0u c\u1ea5u h\u00ecnh th\u00e0nh c\u00f4ng.", "empty_search": "Kh\u00f4ng t\u00ecm th\u1ea5y s\u1ea3n ph\u1ea9m n\u00e0o.", "sort_new": "M\u1edbi nh\u1ea5t", "sort_price_asc": "Gi\u00e1 t\u0103ng d\u1ea7n", "sort_price_desc": "Gi\u00e1 gi\u1ea3m d\u1ea7n", "sort_title_asc": "T\u00ean (A-> Z)", "sort_title_desc": "T\u00ean (Z-> A)", "addPC": "Th\u00eam v\u00e0o c\u1ea5u h\u00ecnh", "savedPC": "C\u1ea5u h\u00ecnh \u0111\u00e3 \u0111\u01b0\u1ee3c l\u01b0u l\u1ea1i." };
+    </script>
+
+
+    <style>
+        body {
+            background-color: #fff;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        .div1 a.current {
+            color: #ccc;
+        }
+
+        .div1 a, .div2 a {
+            color: #34739c;
+        }
+
+        .div2 p {
+            padding: 20px 0;
+        }
+
+        .box-mini-cart {
+            width: 143px;
+            padding-top: 1px;
+            padding-left: 20px;
+            position: relative;
+        }
+    </style>
+
+    <link href="https://vitinhnguyenkim.vn/app/modules/page/assets/css/page.css" rel="stylesheet" type="text/css" />
+    <script src="https://vitinhnguyenkim.vn/app/modules/page/assets/js/page.js" language="javascript" type="text/javascript"></script>
+    <div id="fb-root"></div>
+
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+            'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-TKJS8Q6');</script>
+    <!-- End Google Tag Manager -->
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TKJS8Q6"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+</head>
+<body itemscope itemtype="https://schema.org/WebPage">
+
+    <div id="pvt-header" class="outer">
+        <div id="topbar" class="topbar">
+            <div class="wrapper">
+                <div class="topbar col-md-12">
+                    <!--?= form_label(trans('support_online_label')); ?-->
+                    <!--?= menu('support', 'support'); ?-->
+                    <!--div class="menu-main columns" >
+                                        <ul class="main-menu">
+                        <li class="menu-item khuyen-mai" data-name="promotion">
+                        <a href="https://vitinhnguyenkim.vn/khuyen-mai" target="_self" title="Khuyến mãi">
+                            Khuyến mãi		</a>
+                            </li>
+                        <li class="menu-item xd-cau-hinh" data-name="xay-dung-cau-hinh">
+                        <a href="https://vitinhnguyenkim.vn/xay-dung-cau-hinh" target="_self" title="XD cấu hình">
+                            XD cấu hình		</a>
+                            </li>
+                        <li class="menu-item tuyen-dung last" data-name="tuyen-dung">
+                        <a href="https://vitinhnguyenkim.vn/tuyen-dung" target="_self" title="Tuyển dụng">
+                            Tuyển dụng		</a>
+                            </li>
+                    </ul>					</div-->
+                    <div class="box-hotline columns" style="min-height: 34px;">
+                        <a href="tel:1900 6739" area-label="Hotline 1900 6739" title="Hotline 1900 6739">
+                            <span class="last">Hotline:1900 6739</span>
+                        </a>
+                    </div>
+                    <uc1:WebUserControl1 runat="server" id="WebUserControl1" />
+                   <%-- <ul class="member-menu">
+                        <li class="menu-item register" data-name="register">
+                            <a href="https://vitinhnguyenkim.vn/member/register" target="_self" title="Đăng ký">
+                                Đăng ký
+                            </a>
+                        </li>
+                    </ul>--%>
+                </div>
+            </div>
+        </div>	<div class="container-fluid">
+            <div class="wrapper">
+                <div class="col-md-12">
+                    <div id="header" class="tbl">
+                        <div class="box-logo columns">
+                            <div class="logo">
+                                <a href="https://vitinhnguyenkim.vn/" class="effect marginlogo"><img class='lazyload' src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==' data-src="https://vitinhnguyenkim.vn/uploads/File/logo_NguyenKim_ao.png" alt="Công Ty TNHH Vi Tính Nguyên Kim" /></a>
+                            </div>
+                        </div>
+                        <div class="box-search columns">
+                            <form action="https://vitinhnguyenkim.vn/san-pham" method="POST" class="formsearch" accept-charset="utf-8">
+                                <input type="text" name="keyword" value="" class="text-search form-control" placeholder="Tìm kiếm sản phẩm theo tên, mã, giá ..." minlength="3" />
+                                <button type="submit" class="btn-search effect fa-search" area-label="Tìm kiếm" title="Tìm kiếm"></button>
+
+                                <input type="hidden" name="do_search" value="1" />
+                                <div id="result" class="result"></div>
+                            </form>
+                        </div>
+                        <!--div class="box-header columns">
+                            <a href="https://vitinhnguyenkim.vn/khuyen-mai" class="khuyen-mai">
+                                <span class="last effect">Khuyến Mãi</span>
+
+                            </a>
+                        </div>
+                        <div class="box-header columns">
+                            <a href="https://vitinhnguyenkim.vn/xay-dung-cau-hinh" class="fas fa-cogs">
+                                <span class="xdch last effect">Xây Dựng<br> Cấu Hình</span>
+
+                            </a>
+                        </div-->
+
+                        <div class="menu-main columns">
+                            <ul class="main-menu">
+                                <li class="menu-item khuyen-mai" data-name="promotion">
+                                    <a href="https://vitinhnguyenkim.vn/khuyen-mai" target="_self" title="Khuyến mãi">
+                                        Khuyến mãi
+                                    </a>
+                                </li>
+                                <li class="menu-item xd-cau-hinh" data-name="xay-dung-cau-hinh">
+                                    <a href="https://vitinhnguyenkim.vn/xay-dung-cau-hinh" target="_self" title="XD cấu hình">
+                                        XD cấu hình
+                                    </a>
+                                </li>
+                                <li class="menu-item tuyen-dung last" data-name="tuyen-dung">
+                                    <a href="https://vitinhnguyenkim.vn/tuyen-dung" target="_self" title="Tuyển dụng">
+                                        Tuyển dụng
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="menu-product columns">
+                <button class="btn-toggle fa-bars">Danh mục sản phẩm</button>
+            </div>
+
+        </div>
+    </div>
+    <!--End div#pvt-header--><div id="pvt-main" class="outer">
+     <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+    </div><div id="pvt-footer" class="outer">
+        <div id="footer-banks" class="outer">
+            <div class="wrapper">
+                <div class="col-md-12">
+                    <div class="box-bank">
+                        <label>Chấp nhận thanh toán</label>					<div class="adv-bank">
+                            <div class="adv-item">
+                                <a href="./" target="_self" class="effect">
+                                    <img class='lazyload' src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==' data-src="https://vitinhnguyenkim.vn/uploads/weblink/_100x40___bank-7.jpg" alt="Bank 7" width='100' height='40' />
+                                </a>
+                            </div>
+                            <div class="adv-item">
+                                <a href="./" target="_self" class="effect">
+                                    <img class='lazyload' src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==' data-src="https://vitinhnguyenkim.vn/uploads/weblink/_100x40___bank-6.jpg" alt="Bank 6" width='100' height='40' />
+                                </a>
+                            </div>
+                            <div class="adv-item">
+                                <a href="./" target="_self" class="effect">
+                                    <img class='lazyload' src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==' data-src="https://vitinhnguyenkim.vn/uploads/weblink/_100x40___bank-5.jpg" alt="Bank 5" width='100' height='40' />
+                                </a>
+                            </div>
+                            <div class="adv-item last">
+                                <a href="./" target="_self" class="effect">
+                                    <img class='lazyload' src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==' data-src="https://vitinhnguyenkim.vn/uploads/weblink/_100x40___bank-2.jpg" alt="Bank 2" width='100' height='40' />
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="box-chungnhan" class="outer">
+            <div class="wrapper">
+                <div class="col-md-12">
+                    <div class="adv-chungnhan">
+
+                        <div class="adv-item">
+                            <div class="adv-item-img">
+                                <div class="icon">
+                                    <img src="https://vitinhnguyenkim.vn/uploads/weblink/ho-tro.svg" alt="Hỗ trợ" width='45' height='45'>
+                                </div>
+                            </div>
+                            <div class="adv-item-text">
+                                <div class="adv-item-title">
+                                    Hỗ trợ
+                                </div>
+                                <div class="adv-item-desc">
+                                    24h/7 ngày
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="adv-item">
+                            <div class="adv-item-img">
+                                <div class="icon">
+                                    <img src="https://vitinhnguyenkim.vn/uploads/weblink/thanh-toan.svg" alt="Thanh toán" width='45' height='45'>
+                                </div>
+                            </div>
+                            <div class="adv-item-text">
+                                <div class="adv-item-title">
+                                    Thanh toán
+                                </div>
+                                <div class="adv-item-desc">
+                                    tiện lợi, an toàn
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="adv-item">
+                            <div class="adv-item-img">
+                                <div class="icon">
+                                    <img src="https://vitinhnguyenkim.vn/uploads/weblink/doi-tra.svg" alt="Đổi trả" width='45' height='45'>
+                                </div>
+                            </div>
+                            <div class="adv-item-text">
+                                <div class="adv-item-title">
+                                    Đổi trả
+                                </div>
+                                <div class="adv-item-desc">
+                                    miễn phí
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="adv-item">
+                            <div class="adv-item-img">
+                                <div class="icon">
+                                    <img src="https://vitinhnguyenkim.vn/uploads/weblink/gia-ca.svg" alt="Giá cả" width='45' height='45'>
+                                </div>
+                            </div>
+                            <div class="adv-item-text">
+                                <div class="adv-item-title">
+                                    Giá cả
+                                </div>
+                                <div class="adv-item-desc">
+                                    cạnh tranh
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="adv-item last">
+                            <div class="adv-item-img">
+                                <div class="icon">
+                                    <img src="https://vitinhnguyenkim.vn/uploads/weblink/cam-ket.svg" alt="Cam kết" width='45' height='45'>
+                                </div>
+                            </div>
+                            <div class="adv-item-text">
+                                <div class="adv-item-title">
+                                    Cam kết
+                                </div>
+                                <div class="adv-item-desc">
+                                    hàng chính hãng
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End div.chungnhan-->
+        <div id="footer" class="outer">
+            <div class="wrapper">
+                <div class="col-md-9">
+                    <div class="footer-menu">
+                        <div class="footer-widget footer-widget-1">
+                            <font color="#ffd618" size="4px">
+                            </font>
+                            <ul class='sub-menu' data-parent='11'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/gioi-thieu-ve-cong-ty" target="_self">Giới thiệu công ty</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/dich-vu" target="_self">Dịch vụ</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/tu-van" target="_self">Tư vấn hỏi đáp</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/yeu-cau-bao-gia" target="_self">Yêu cầu báo giá</a></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/tuyen-dung" target="_blank">Tuyển dụng</a></li></ul>
+                        </div>
+                        <div class="footer-widget footer-widget-2">
+                            <font color="#ffd618" size="4px">
+                            </font>
+                            <ul class='sub-menu' data-parent='16'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/quy-dinh-thanh-toan" target="_self">Quy định thanh toán</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/chinh-sach-bao-hanh" target="_self">Chính sách bảo hành</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/giao-hang-va-lap-dat" target="_self">Chính sách giao hàng</a></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/chinh-sach-bao-mat-tt-ca-nhan" target="_self">Chính sách bảo mật TT cá nhân</a></li></ul>
+                        </div>
+
+                        <div class="footer-widget last">
+                            <font color="#ffd618" size="4px">
+                                Tổng đài gọi hỗ trợ
+                            </font>
+                            <ul>
+                                <li>Bán hàng: <span style="font-size:18px;">1900 6739</span></li>
+                                <li>Bảo hành: <span style="font-size:18px;">1900 6739</span></li>
+                            </ul>
+                            <div class="social-icon">
+                                <ul>
+                                    <li><a href="https://www.facebook.com/vitinhnguyenkim" class="fa-facebook" target="_blank" area-label=Facebook title=Facebook><span class="hide">Facebook</span></a></li>
+                                    <li><a href="https://www.youtube.com/channel/UCMfJ5KUgFjKKR91moUT_noQ" class="fa-youtube" target="_blank" area-label=Youtube title=Youtube><span class="hide">Youtube</span></a></li>
+                                    <li><a href="https://twitter.com" class="fa-twitter" target="_blank" area-label=Twitter title=Twitter><span class="hide">Twitter</span></a></li>
+                                </ul>
+                            </div>
+                            <div class="youtube-chinhnhan">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-fanpage col-md-3 pd0">
+                    <div class="fb-page" data-href="https://www.facebook.com/vitinhnguyenkim/" data-width="300" data-height="150" data-small-header="true" data-adapt-container-width="false" data-hide-cover="false" data-show-facepile="false">
+                        <blockquote cite="https://www.facebook.com/vitinhnguyenkim/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/vitinhnguyenkim/">Công Ty TNHH Vi Tính Nguyên Kim</a></blockquote>
+
+                        <!--<iframe title="Địa điểm chính nhân" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15677.044578267169!2d106.68859!3d10.7913!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x5c0e147dd287bbba!2zU2hvd3Jvb20gQ2jDrW5oIE5ow6JuIC0gTGFwdG9wIHbEg24gcGjDsm5nIC8gUEMgZ2nDoSBy4bq7IC8gU2VydmVyIC8gTcOheSBpbiBN4buxYyBpbiBjaMOtbmggaMOjbmcgSENN!5e0!3m2!1svi!2s!4v1620698468342!5m2!1svi!2s" width="300" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>-->
+                    </div>				<br />
+                </div>
+            </div>
+        </div>
+
+
+        <div id="footer-newsletter" class="outer">
+            <div class="wrapper clear">
+                <div class="col-md-6">
+                    <div class="box-address fa-map-marker">
+                        <div>
+                            <b>Địa chỉ :</b>
+                            245B Trần Quang Khải, Phường Tân Định, Quận 1, TP. Hồ Chí Minh
+                        </div>
+                        <div>
+                            <b>Email :</b>
+                            nhannth@nguyenkimvn.vn
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="newsletter fa-envelope">
+                                <div class="lbl">Đăng ký mail</div>
+                                <div class="note">Nhận tin khuyến mãi, hot deal, giảm giá...</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="newsletter-frm">
+                                <input type="text" name="femail" value="" class="form-control" placeholder="Địa chỉ email của bạn" />
+                                <button type="button" class="fa-paper-plane" onclick="APP.newsletter();" area-label="Đăng ký nhận tin"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer-search" class="outer">
+        <div class="wrapper">
+            <div class="col-md-12">
+                <label>Tìm kiếm nhiều</label>			<ul class="search-menu">
+                    <li class="menu-item" data-name="">
+                        <a href="https://vitinhnguyenkim.vn/./" target="_self" title="Laptop Dell">
+                            Laptop Dell
+                        </a>
+                    </li>
+                    <li class="menu-item" data-name="">
+                        <a href="https://vitinhnguyenkim.vn/./" target="_self" title="Máy PC chơi game">
+                            Máy PC chơi game
+                        </a>
+                    </li>
+                    <li class="menu-item" data-name="">
+                        <a href="https://vitinhnguyenkim.vn/./" target="_self" title="Laptop HP">
+                            Laptop HP
+                        </a>
+                    </li>
+                    <li class="menu-item" data-name="">
+                        <a href="https://vitinhnguyenkim.vn/./" target="_self" title="Macbook Pro">
+                            Macbook Pro
+                        </a>
+                    </li>
+                    <li class="menu-item" data-name="Laptop giá rẻ">
+                        <a href="https://vitinhnguyenkim.vn/laptop" target="_blank" title="Laptop giá rẻ">
+                            Laptop giá rẻ
+                        </a>
+                    </li>
+                    <li class="menu-item" data-name="Máy chủ server">
+                        <a href="https://vitinhnguyenkim.vn/may-chu" target="_blank" title="Máy chủ server">
+                            Máy chủ server
+                        </a>
+                    </li>
+                    <li class="menu-item last" data-name="máy tính văn phòng">
+                        <a href="https://vitinhnguyenkim.vn/may-tinh-van-phong" target="_blank" title="máy tính văn phòng">
+                            máy tính văn phòng
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="footer-bottom" class="outer">
+        <div class="wrapper">
+            <div class="col-md-3">
+                <div class="adv-footer">
+                    <div class="adv-item last">
+                        <div class="adv-item-img">
+                            <a href="https://vitinhnguyenkim.vn/" title="Footer logo" target="_self">
+                                <img class='lazyload' src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==' data-src="https://vitinhnguyenkim.vn/uploads/File/logo_NguyenKim_ao.png" alt='Footer logo' width='217' height='45' />
+                            </a>
+                        </div>
+                        <div class="adv-item-text">
+                            <div class="adv-item-desc">
+                                Phân phối các sản phẩm công nghệ thông tin toàn diện.
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div id="box-nhabanle" class="col-md-4">
+                <div class="lbl">Nhà phân phối uy tín chất lượng hàng đầu</div>			<div class="adv-nhabanle">
+                    <div class="adv-item">
+                        <a href="./" target="_self" class="effect">
+                            <img class='lazyload' src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==' data-src="https://vitinhnguyenkim.vn/uploads/weblink/_80x80___nhabanle-4.png" alt="Nhà bán lẻ 4" width='80' height='80' />
+                        </a>
+                    </div>
+                    <div class="adv-item">
+                        <a href="./" target="_self" class="effect">
+                            <img class='lazyload' src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==' data-src="https://vitinhnguyenkim.vn/uploads/weblink/_80x80___nhabanle-1.png" alt="Nhà bán lẻ 3" width='80' height='80' />
+                        </a>
+                    </div>
+                    <div class="adv-item">
+                        <a href="./" target="_self" class="effect">
+                            <img class='lazyload' src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==' data-src="https://vitinhnguyenkim.vn/uploads/weblink/_80x80___nhabanle-2.png" alt="Nhà bán lẻ 2" width='80' height='80' />
+                        </a>
+                    </div>
+                    <div class="adv-item last">
+                        <a href="./" target="_self" class="effect">
+                            <img class='lazyload' src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==' data-src="https://vitinhnguyenkim.vn/uploads/weblink/_80x80___nhabanle-3.png" alt="Nhà bán lẻ 1" width='80' height='80' />
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+            <div id="box-partner" class="col-md-5">
+                <div class="lbl">Chứng nhận đối tác</div>			<div class="adv-partner">
+                    <div class="adv-item">
+                        <a href="https://chinhnhan.vn/chung-nhan-doi-tac" target="_self" class="effect">
+                            <img class='lazyload' src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==' data-src="https://vitinhnguyenkim.vn/uploads/weblink/logo-ms-soft.png" alt="Chứng nhận đối tác" width='' height='' />
+                        </a>
+                    </div>
+                    <div class="adv-item">
+                        <a href="https://vitinhnguyenkim.vn/chung-nhan-doi-tac" target="_self" class="effect">
+                            <img class='lazyload' src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==' data-src="https://vitinhnguyenkim.vn/uploads/weblink/logo-hp.png" alt="HP" width='' height='' />
+                        </a>
+                    </div>
+                    <div class="adv-item">
+                        <a href="https://vitinhnguyenkim.vn/chung-nhan-doi-tac" target="_self" class="effect">
+                            <img class='lazyload' src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==' data-src="https://vitinhnguyenkim.vn/uploads/weblink/logo-fujitsu.png" alt="Đối tác" width='' height='' />
+                        </a>
+                    </div>
+                    <div class="adv-item">
+                        <a href="https://vitinhnguyenkim.vn/chung-nhan-doi-tac" target="_self" class="effect">
+                            <img class='lazyload' src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==' data-src="https://vitinhnguyenkim.vn/uploads/weblink/logo-lenovo.png" alt="Chứng nhận đối tác" width='' height='' />
+                        </a>
+                    </div>
+                    <div class="adv-item last">
+                        <a href="https://vitinhnguyenkim.vn/chung-nhan-doi-tac" target="_self" class="effect">
+                            <img class='lazyload' src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==' data-src="https://vitinhnguyenkim.vn/uploads/weblink/logo-dell.png" alt="Chứng nhận đối tác" width='' height='' />
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--END div#pvt-footer-->
+
+    <div id="pvt-copyright" class="outer">
+        <div class="wrapper">
+            <div class="col-md-8 col-sm-8 col-xs-8">
+                <div class="copyright">
+                    <ul>
+                        <li>© Since 2018 <strong>Công Ty TNHH Vi Tính Nguyên Kim</strong></li>
+                        <li><a href="http://online.gov.vn/CustomWebsiteDisplay.aspx?DocId=17003" target="_blank" rel="noffolow"><img src="https://vitinhnguyenkim.vn/uploads/product/brand/dathongbao.png" alt="Bộ Công Thương" style="width: 120px;height: auto;padding-left: 3px;" /></a></li>
+                        <li><a href="//www.dmca.com/Protection/Status.aspx?ID=bff550d9-558d-4aa2-871e-342cee2b18b9" title="DMCA.com Protection Status" class="dmca-badge"> <img src="https://images.dmca.com/Badges/dmca-badge-w100-5x1-08.png?ID=bff550d9-558d-4aa2-871e-342cee2b18b9" alt="DMCA.com Protection Status" /></a> </li>
+                    </ul>
+                    <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4 col-sm-4">
+            </div>
+        </div>
+    </div>
+    <!--END div#pvt-copyright s-->
+
+    <div class="box-support-scroll">
+        <div class="wrapper">
+            <div class="box-support-scroll-inner">
+                <div class="support-note">
+                    Thời gian làm việc: Tất cả các ngày trong tuần từ thứ 2 đến thứ 7, Từ 8h30 - 17h30
+                </div>
+                <div class="support-content">
+                    <div class="support-columns support-Ms.Phương">
+                        <div class="support-group-name">
+                            <strong>Call center</strong>
+                        </div>
+                        <div class="support-list">
+                            <div class="support-item">
+                                <div class="row0">
+                                    <a href="skype:cattuong134?call">
+                                        <i class="fa fa-skype"></i>
+                                        <span>Ms.Phương</span>
+                                    </a>
+                                </div>
+                                <div class="row1">
+                                    <ul>
+                                        <li class="fa-phone first">
+                                            <a href="tel:0933808837">0933808837</a>
+                                        </li>
+                                        <li class="fa-envelope last">
+                                            <a href="mailto:cskh@nguyenkimvn.vn">cskh@nguyenkimvn.vn</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div><div class="support-item">
+                                <div class="row0">
+                                    <a href="skype:.?chat">
+                                        <i class="fa fa-skype"></i>
+                                        <span>Ms. Thu</span>
+                                    </a>
+                                </div>
+                                <div class="row1">
+                                    <ul>
+                                        <li class="fa-phone first">
+                                            <a href="tel:19006739">19006739</a>
+                                        </li>
+                                        <li class="fa-envelope last">
+                                            <a href="mailto:thuntd@nguyenkimvn.vn">thuntd@nguyenkimvn.vn</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div><div class="support-columns support-PTKH">
+                        <div class="support-group-name">
+                            <strong>Phát Triển kinh doanh phân phối Online</strong>
+                        </div>
+                        <div class="support-list">
+                            <div class="support-item">
+                                <div class="row0">
+                                    <a href="skype:sale.thanhthe0379?chat">
+                                        <i class="fa fa-skype"></i>
+                                        <span>Mr. Thế</span>
+                                    </a>
+                                </div>
+                                <div class="row1">
+                                    <ul>
+                                        <li class="fa-phone first">
+                                            <a href="tel:0933880711">0933880711</a>
+                                        </li>
+                                        <li class="fa-envelope last">
+                                            <a href="mailto:thepdt@nguyenkimvn.vn">thepdt@nguyenkimvn.vn</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div><div class="support-item">
+                                <div class="row0">
+                                    <a href="skype:.?chat">
+                                        <i class="fa fa-skype"></i>
+                                        <span>Ms. Chi</span>
+                                    </a>
+                                </div>
+                                <div class="row1">
+                                    <ul>
+                                        <li class="fa-phone first">
+                                            <a href="tel:0901344056">0901344056</a>
+                                        </li>
+                                        <li class="fa-envelope last">
+                                            <a href="mailto:chidtd@nguyenkimvn.vn">chidtd@nguyenkimvn.vn</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div><div class="support-item">
+                                <div class="row0">
+                                    <a href="skype:.?chat">
+                                        <i class="fa fa-skype"></i>
+                                        <span>Online 3</span>
+                                    </a>
+                                </div>
+                                <div class="row1">
+                                    <ul>
+                                        <li class="fa-phone first">
+                                            <a href="tel:0901322565 ">0901322565 </a>
+                                        </li>
+                                        <li class="fa-envelope last">
+                                            <a href="mailto:thepdt@nguyenkimvn.vn">thepdt@nguyenkimvn.vn</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div><div class="support-item">
+                                <div class="row0">
+                                    <a href="skype:.?chat">
+                                        <i class="fa fa-skype"></i>
+                                        <span>Mr. Hải</span>
+                                    </a>
+                                </div>
+                                <div class="row1">
+                                    <ul>
+                                        <li class="fa-phone first">
+                                            <a href="tel:0938767990">0938767990</a>
+                                        </li>
+                                        <li class="fa-envelope last">
+                                            <a href="mailto:haitn@nguyenkimvn.vn">haitn@nguyenkimvn.vn</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><div class="menu-list columns hide">
+        <div class="slim-scroll-div">
+            <ul class="primary-menu">
+                <li class="menu-item" data-menu="26">
+                    <a href="https://vitinhnguyenkim.vn/laptop" target="_self">
+                        <span class="icon"><img class='lazyload' src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==' data-src="https://vitinhnguyenkim.vn/uploads/weblink/laptop.svg" alt="Laptop" /></span>
+                        <div class="text h2category">Laptop</div>
+                    </a>
+                    <ul class='sub-menu' data-parent='26'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/laptop" target="_self">Thương hiệu</a><ul class='sub-menu' data-parent='121'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/laptop/hp" target="_self">HP</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/laptop/dell" target="_self">Dell</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/laptop/asus" target="_self">Asus</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/laptop/acer" target="_self">Acer</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/laptop/lenovo" target="_self">Lenovo</a></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/laptop/intel" target="_self">Intel</a></li></ul></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/#" target="_self">Laptop theo CPU</a><ul class='sub-menu' data-parent='461'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/laptop?cpu=celeron" target="_self">Celeron</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/laptop?cpu=pentium" target="_self">Pentium</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/laptop?cpu=core-i3" target="_self">Core i3</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/laptop?cpu=core-i5" target="_self">Core i5</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/laptop?cpu=core-i7" target="_self">Core i7</a></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/laptop?cpu=amd-ryzen" target="_self">ADM Ryzen</a></li></ul></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/linh-phu-kien-laptop" target="_self">Linh phụ kiện laptop</a><ul class='sub-menu' data-parent='468'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/ram-laptop" target="_self">Ram</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/o-cung-ssd-hdd" target="_self">HDD/ SSD</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/pin-laptop" target="_self">Pin laptop</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/balo-tui-xach" target="_self">Balo/ Túi chống sốc</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/#" target="_self">Đế tản nhiệt</a></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/sac-laptop" target="_self">Cốc sạc</a></li></ul></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/laptop/dell" target="_self">Laptop Dell</a><ul class='sub-menu' data-parent='477'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/inspiron-series" target="_self">Inspiron Series</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/vostro-serial " target="_self">Vostro Serial </a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/latitude-serial " target="_self">Latitude Serial </a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/xps-serial" target="_self">XPS Serial </a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/alienware-serial " target="_self">Alienware Serial </a></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/precision-serial " target="_self">Precision Serial </a></li></ul></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/laptop/hp" target="_self">Laptop HP</a><ul class='sub-menu' data-parent='484'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/probook-series" target="_self">Probook Series</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/envy-series" target="_self">Envy Series</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/pavilion-series" target="_self">Pavilion Series</a></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/elitebook-series" target="_self">EliteBook Series</a></li></ul></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/laptop/hp" target="_self">Laptop HP </a><ul class='sub-menu' data-parent='511'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/hp-15s" target="_self">15S</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/hp-240-340s" target="_self">240/340S</a></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/hp-victus" target="_self">Victus</a></li></ul></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/laptop/lenovo" target="_self">Laptop Lenovo</a><ul class='sub-menu' data-parent='489'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/lenovo-thinkpad" target="_self">Thinkpad</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/lenovo-thinkbook" target="_self">Thinkbook</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/thinkpad-e" target="_self">Thinkpad E</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/thinkpad-t" target="_self">Thinkpad T</a></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/lenovo-thinkpad-x" target="_self">ThinkPad X</a></li></ul></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/laptop/intel" target="_self">Laptop Intel</a><ul class='sub-menu' data-parent='492'><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/nuc-serial" target="_self">Nuc Serial</a></li></ul></li></ul>
+                </li>
+                <li class="menu-item" data-menu="32">
+                    <a href="https://vitinhnguyenkim.vn/linh-kien" target="_self">
+                        <span class="icon"><img class='lazyload' src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==' data-src="https://vitinhnguyenkim.vn/uploads/weblink/linh_kien.svg" alt="Linh kiện PC" /></span>
+                        <div class="text h2category">Linh kiện PC</div>
+                    </a>
+                    <ul class='sub-menu' data-parent='32'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/hard-ware" target="_self">Ổ Cứng</a><ul class='sub-menu' data-parent='615'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/hard-ware?linh-kien-o-cung=o-cung-gan-trong" target="_self">Gắn trong</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/hard-ware?linh-kien-o-cung=o-cung-gan-ngoai" target="_self">Gắn ngoài/ Di động</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/hard-ware?linh-kien-o-cung=linh-kien-o-cung-hdd" target="_self">HDD</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/disk-ssd-sata" target="_self">SSD SATA</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/disk-ssd-m2-sata" target="_self">SSD M2 SATA</a></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/disk-ssd-m2-pcie" target="_self">SSD M2 PCIE</a></li></ul></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/ram-pc" target="_self">Ram PC</a><ul class='sub-menu' data-parent='207'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/ram-pc?op_id=284" target="_self">Ram DDR3 </a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/ram-pc?op_id=285" target="_self">Ram DDR4</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/ram-pc?op_id=286" target="_self">Ram DDR5</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/ram-pc?dung-luong-ram=8gb" target="_self">8G</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/ram-pc?dung-luong-ram=16gb" target="_self">16G</a></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/ram-pc?dung-luong-ram=32gb" target="_self">32G</a></li></ul></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/mainboard" target="_self">Mainboard</a><ul class='sub-menu' data-parent='208'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/mainboard?brand_id=2" target="_self">Mainboard Asus</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/mainboard?brand_id=15" target="_self">Mainboard Giagabyte</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/mainboard/msi" target="_self">Mainboard MSI</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/mainboard/asrock" target="_self">Mainboard Asrock</a></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/mainboard?brand_id=9" target="_self">Mainboard Intel</a></li></ul></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/nguon-pc" target="_self">Bộ nguồn máy tính</a><ul class='sub-menu' data-parent='240'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/nguon-pc?nguon-psu-cap=bo-nguon-300w-650w" target="_self">300 - 650W</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/nguon-pc?nguon-psu-cap=bo-nguon-700w-850w" target="_self">700 - 850W</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/nguon-pc/corsair" target="_self">Corsair</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/nguon-pc/gigabyte" target="_self">Gigabyte</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/nguon-pc?brand_id=34" target="_self">Cooler master</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/nguon-pc?brand_id=37" target="_self">Arrow</a></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/nguon-pc?brand_id=35" target="_self">Acebel</a></li></ul></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/ban-phim-chuot" target="_self">Bàn phím/ Chuột</a><ul class='sub-menu' data-parent='637'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/chuot-co-day" target="_self">Chuột có dây</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/chuot-khong-day" target="_self">Chuột không dây</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/keyboard-co-day" target="_self">Bàn phím có dây</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/keyboard-khong-day" target="_self">Bàn phím không dây</a></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/combo-chuot-va-ban-phim" target="_self">Combo bàn phím & chuột</a></li></ul></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/thung-may-tinh-case" target="_self">Thùng máy tính/ Case</a><ul class='sub-menu' data-parent='289'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/case-mini" target="_self">Case mini</a></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/case-thuong" target="_self">Case thường</a></li></ul></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/card-do-hoa-vga" target="_self">Card màn hình</a><ul class='sub-menu' data-parent='270'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/card-do-hoa-vga?brand_id=15" target="_self">Gigabyte</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/card-do-hoa-vga?brand_id=2" target="_self">Asus</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/card-do-hoa-vga/msi" target="_self">MSI</a></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/card-do-hoa-vga/nvidia" target="_self">NVIDIA</a></li></ul></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/cpu" target="_self">CPU theo loại</a><ul class='sub-menu' data-parent='359'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/cpu?bo-xu-ly=celeron" target="_self">Celeron</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/cpu?bo-xu-ly=Pentium" target="_self">Pentium</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/cpu?bo-xu-ly=core-i3" target="_self">Core i3</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/cpu?bo-xu-ly=core-i5" target="_self">Core i5</a></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/cpu?bo-xu-ly=core-i7" target="_self">Core i7</a></li></ul></li></ul>
+                </li>
+                <li class="menu-item" data-menu="33">
+                    <a href="https://vitinhnguyenkim.vn/phu-kien" target="_self">
+                        <span class="icon"><img class='lazyload' src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==' data-src="https://vitinhnguyenkim.vn/uploads/weblink/phu_kien.svg" alt="Phụ kiện" /></span>
+                        <div class="text h2category">Phụ kiện</div>
+                    </a>
+                    <ul class='sub-menu' data-parent='33'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/phu-kien" target="_self">Loa/ Tai nghe</a><ul class='sub-menu' data-parent='297'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/loa-co-day" target="_self">Loa máy tính có dây</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/loa-khong-day" target="_self">Loa di động không dây</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/headphone-khong-day" target="_self">Headphone không dây</a></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/headphone-co-day" target="_self">Headphone có dây</a></li></ul></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/usb" target="_self">USB</a><ul class='sub-menu' data-parent='304'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/usb/silicon" target="_self">Silicon</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/usb?bo-nho-usb=usb-16g" target="_self">16G</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/usb?bo-nho-usb=usb-32g" target="_self">32G</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/usb?bo-nho-usb=usb-64g" target="_self">64G</a></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/usb?bo-nho-usb=usb-128g" target="_self">128G</a></li></ul></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/webcam" target="_self">Webcam</a><ul class='sub-menu' data-parent='305'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/webcam/xiaomi" target="_self">Xiaomi</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/webcam/rapoo" target="_self">Rapoo</a></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/webcam/logitech-html" target="_self">Logitech</a></li></ul></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/khac" target="_self">Phụ kiện khác</a></li></ul>
+                </li>
+                <li class="menu-item" data-menu="30">
+                    <a href="https://vitinhnguyenkim.vn/may-chu" target="_self">
+                        <span class="icon"><img class='lazyload' src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==' data-src="https://vitinhnguyenkim.vn/uploads/weblink/may_chu.svg" alt="Máy chủ" /></span>
+                        <div class="text h2category">Máy chủ</div>
+                    </a>
+                    <ul class='sub-menu' data-parent='30'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/may-chu" target="_self">Thương hiệu</a><ul class='sub-menu' data-parent='191'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/may-chu/hpe" target="_self">HPe</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/may-chu/dell" target="_self">Dell</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/may-chu/intel" target="_self">Intel</a></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/#" target="_self">Lenovo</a></li></ul></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/#" target="_self">Chọn Chassis</a><ul class='sub-menu' data-parent='507'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/may-chu?form-factor-rack=1-u" target="_self">1U</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/may-chu?form-factor-rack=2-u" target="_self">2U</a></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/may-chu?form-factor-rack=4-u-" target="_self">4U - 10U</a></li></ul></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/#" target="_self">Chọn socket</a><ul class='sub-menu' data-parent='515'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/may-chu?server-socket=server-1socket" target="_self">1 socket</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/may-chu?server-socket=server-2socket" target="_self">2 socket</a></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/may-chu?server-socket=server-4socket" target="_self">4 socket</a></li></ul></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/linh-kien-server" target="_self">Linh phụ kiện server</a><ul class='sub-menu' data-parent='221'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/ram-cho-server" target="_self">Ram Server</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/hard-ware-hdd-ssd" target="_self">HDD</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/power" target="_self">Power (nguồn)</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/cpu-server" target="_self">CPU</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/card-raid" target="_self">Card RAID</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/dvd" target="_self">DVD</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/tu-crack" target="_self">Tủ crack</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/khay-o-cung" target="_self">Khay ổ cứng</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/ray-may-chu" target="_self">Ray máy chủ </a></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/linh-phu-kien-server-khac" target="_self">Linh phụ kiện khác</a></li></ul></li></ul>
+                </li>
+                <li class="menu-item" data-menu="36">
+                    <a href="https://vitinhnguyenkim.vn/thiet-bi-mang" target="_self">
+                        <span class="icon"><img class='lazyload' src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==' data-src="https://vitinhnguyenkim.vn/uploads/weblink/thiet_bi_mang.svg" alt="Thiết bị mạng" /></span>
+                        <div class="text h2category">Thiết bị mạng</div>
+                    </a>
+                    <ul class='sub-menu' data-parent='36'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/thiet-bi-mang" target="_self">Thương hiệu</a><ul class='sub-menu' data-parent='279'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/thiet-bi-mang/d-link" target="_self">D-link</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/thiet-bi-mang/tp-link" target="_self">TP-Link</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/thiet-bi-mang/cisco" target="_self">Cisco</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/dau-bam-mang/amp" target="_self">AMP</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/thiet-bi-mang/linksys" target="_self">Linksys</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/dau-bam-mang/ftp" target="_self">FTP</a></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/thiet-bi-mang/draytek" target="_self">DrayTek</a></li></ul></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/thiet-bi-mang" target="_self">Thiết bị mạng</a><ul class='sub-menu' data-parent='273'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/router" target="_self">Router</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/hub-switch" target="_self">Hub-switch</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/card-mang" target="_self">card mạng</a></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/bo-thu-phat-wireless" target="_self">Bộ thu phát Wireless USB</a></li></ul></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/vat-tu-mang" target="_self">Vật tư mạng</a><ul class='sub-menu' data-parent='274'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/cap-mang-cab-i-o" target="_self">Cáp mạng</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/dau-bam-mang" target="_self">Đầu bấm mạng UTP</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/module-quang-sfp" target="_self">Module quang SFP</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/dau-chup-day-mang" target="_self">Đầu chụp dây mạng</a></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/vat-tu-khac" target="_self">Vật tư khác</a></li></ul></li></ul>
+                </li>
+                <li class="menu-item" data-menu="37">
+                    <a href="https://vitinhnguyenkim.vn/thiet-bi-van-phong" target="_self">
+                        <span class="icon"><img class='lazyload' src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==' data-src="https://vitinhnguyenkim.vn/uploads/weblink/thiet_bi_van_phong.svg" alt="Thiết bị văn phòng" /></span>
+                        <div class="text h2category">Thiết bị văn phòng</div>
+                    </a>
+                    <ul class='sub-menu' data-parent='37'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/camera-quan-sat" target="_self">Camera quan sát</a><ul class='sub-menu' data-parent='324'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/camera-quan-sat/hikvision" target="_self">Camera HIKVISION</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/camera-quan-sat/kbvision" target="_self">Camera KBVISION</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/camera-quan-sat/ezviz" target="_self">Camera EZVIZ</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/camera-blurams" target="_self">Camera Blurams</a></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/phu-kien-camera" target="_self">Phụ kiện camera</a></li></ul></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/#" target="_self">Hủy giấy/ Đếm tiền</a><ul class='sub-menu' data-parent='729'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/may-huy-giay" target="_self">Máy hủy giấy</a></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/may-dem-tien" target="_self">Máy đếm tiền</a></li></ul></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/#" target="_self">Máy chiếu </a><ul class='sub-menu' data-parent='732'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/thiet-bi-trinh-chieu/wanbo" target="_self">Wanbo</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/thiet-bi-trinh-chieu/sony" target="_self">Sony</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/thiet-bi-trinh-chieu/epson" target="_self">Epson</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/may-chieu-mini" target="_self">Máy chiếu mini</a></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/thiet-bi-trinh-chieu" target="_self">Thiết bị trình chiếu </a></li></ul></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/dau-ghi-hinh" target="_self">Đầu ghi hình</a><ul class='sub-menu' data-parent='737'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/dau-ghi-hinh/hikvision" target="_self">Đầu ghi hình HIKVISION</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/dau-ghi-hinh/kbvision" target="_self">Đầu ghi hình KBVISION</a></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/dau-ghi-hinh/ezviz" target="_self">Đầu ghi hình EZVIZ</a></li></ul></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/ups" target="_self">Bộ lưu điện - UPS</a><ul class='sub-menu' data-parent='331'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/ups/thiet-bi-luu-dien-santak" target="_self">Santak</a></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/ups/apc" target="_self">APC</a></li></ul></li></ul>
+                </li>
+                <li class="menu-item" data-menu="741">
+                    <a href="https://vitinhnguyenkim.vn/thiet-bi-dieu-khien-thong-minh" target="_self">
+                        <span class="icon"><img class='lazyload' src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==' data-src="https://vitinhnguyenkim.vn/uploads/weblink/logo-ai.png" alt="Thiết bị thông minh" /></span>
+                        <div class="text h2category">Thiết bị thông minh</div>
+                    </a>
+                    <ul class='sub-menu' data-parent='741'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/robot-thong-minh" target="_self">Robot hút bụi lau sàn </a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/tram-sac-di-dong" target="_self">Trạm sạc di động </a></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/phu-kien-thong-minh-dien-thoai" target="_self">Phụ kiện điện thoại</a></li></ul>
+                </li>
+                <li class="menu-item" data-menu="27">
+                    <a href="https://vitinhnguyenkim.vn/may-tinh-van-phong" target="_self">
+                        <span class="icon"><img class='lazyload' src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==' data-src="https://vitinhnguyenkim.vn/uploads/weblink/may_tinh_ban.svg" alt="Máy tính để bàn" /></span>
+                        <div class="text h2category">Máy tính để bàn</div>
+                    </a>
+                    <ul class='sub-menu' data-parent='27'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/may-tinh-van-phong" target="_self">Thương hiệu</a><ul class='sub-menu' data-parent='86'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/may-tinh-van-phong/hp" target="_self">HP</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/may-tinh-van-phong/dell" target="_self">Dell</a></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/may-tinh-van-phong/lenovo" target="_self">Lenovo</a></li></ul></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/#" target="_self">PC theo CPU</a><ul class='sub-menu' data-parent='494'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/may-tinh-choi-game?bo-xu-ly-cpu-=celeron" target="_self">Celeron</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/may-tinh-choi-game?bo-xu-ly-cpu-=pentium" target="_self">Pentium</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/may-tinh-choi-game?bo-xu-ly-cpu-=intel-core-i3" target="_self">Core i3</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/may-tinh-choi-game?bo-xu-ly-cpu-=intel-core-i5" target="_self">Core i5</a></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/may-tinh-choi-game?bo-xu-ly-cpu-=intel-core-i7" target="_self">Core i7</a></li></ul></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/may-tinh-mini-nuc" target="_self">Intel Nuc</a><ul class='sub-menu' data-parent='501'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/nuc-intel?bo-xu-ly-cpu-=celeron" target="_self">Celeron</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/nuc-intel?bo-xu-ly-cpu-=pentium" target="_self">Pentium</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/nuc-intel?bo-xu-ly-cpu-=intel-core-i3" target="_self">Core i3</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/nuc-intel?bo-xu-ly-cpu-=intel-core-i5" target="_self">Core i5</a></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/nuc-intel?bo-xu-ly-cpu-=intel-core-i7" target="_self">Core i7</a></li></ul></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/#" target="_self">PC HP</a><ul class='sub-menu' data-parent='743'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/pc-hp-pavilion" target="_self">Pavilion</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/pc-hp-prodesk" target="_self">Prodesk</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/pc-hp-proone" target="_self">Proone</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/pc-hp-elitedesk" target="_self">Elitedesk</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/pc-hp-eliteone" target="_self">Eliteone</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/pc-hp-g-s" target="_self">G2/ G3/ G4/ G5/ S</a></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/pc-hp-aio" target="_self">AIO</a></li></ul></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/#" target="_self">PC Lenovo</a><ul class='sub-menu' data-parent='744'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/pc-lenovo-thinkcentre" target="_self">ThinkCentre</a></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/pc-lenovo-khac" target="_self">Khác</a></li></ul></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/#" target="_self">PC Dell</a><ul class='sub-menu' data-parent='745'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/pc-dell-xps" target="_self">XPS</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/pc-dell-optiplex" target="_self">Optiplex</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/pc-dell-inspiron" target="_self">Inspiron</a></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/pc-dell-vostro" target="_self">Vostro</a></li></ul></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/#" target="_self">PC Mac</a><ul class='sub-menu' data-parent='800'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/mac-mini" target="_self">Mac mini</a></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/imac" target="_self">iMac</a></li></ul></li></ul>
+                </li>
+                <li class="menu-item" data-menu="308">
+                    <a href="https://vitinhnguyenkim.vn/man-hinh" target="_self">
+                        <span class="icon"><img class='lazyload' src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==' data-src="https://vitinhnguyenkim.vn/uploads/weblink/computer-screen-svgrepo-com.svg" alt="Màn hình" /></span>
+                        <div class="text h2category">Màn hình</div>
+                    </a>
+                    <ul class='sub-menu' data-parent='308'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/#" target="_self">Thương hiệu</a><ul class='sub-menu' data-parent='574'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/man-hinh/hp" target="_self">HP</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/man-hinh/dell" target="_self">Dell</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/man-hinh/lg" target="_self">LG</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/man-hinh/lenovo" target="_self">Lenovo</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/man-hinh/samsung" target="_self">SamSung</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/man-hinh/viewsonic" target="_self">Viewsonic</a></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/man-hinh/asus" target="_self">Asus</a></li></ul></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/#" target="_self">Tần Số Quét</a><ul class='sub-menu' data-parent='575'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/man-hinh?=man-hinh-60hz" target="_self">60 Hz</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/man-hinh?=man-hinh-75hz" target="_self">75 Hz</a></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/man-hinh?=man-hinh-100hz" target="_self">100 Hz</a></li></ul></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/#" target="_self">Kích Thước Màn Hình</a><ul class='sub-menu' data-parent='576'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/man-hinh?man-hinh=17-20-inch" target="_self">17-20 inch</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/man-hinh?man-hinh=21-5-inch" target="_self">21.5 inch</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/man-hinh?man-hinh=22-inch" target="_self">22 inch</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/man-hinh?man-hinh=23-inch" target="_self">23 inch</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/man-hinh?man-hinh=24-inch" target="_self">24 inch</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/man-hinh?man-hinh=25-inch" target="_self">25 inch</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/man-hinh?man-hinh=27-inch" target="_self">27 inch</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/man-hinh?man-hinh=28-inch" target="_self">28 inch</a></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/man-hinh?man-hinh=29-inch-tro-len" target="_self">29 inch trở lên</a></li></ul></li></ul>
+                </li>
+                <li class="menu-item" data-menu="29">
+                    <a href="https://vitinhnguyenkim.vn/workstation" target="_self">
+                        <span class="icon"><img class='lazyload' src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==' data-src="https://vitinhnguyenkim.vn/uploads/weblink/workstation.svg" alt="Workstation" /></span>
+                        <div class="text h2category">Workstation</div>
+                    </a>
+                    <ul class='sub-menu' data-parent='29'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/workstation" target="_self">Thương hiệu</a><ul class='sub-menu' data-parent='174'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/may-tram-workstation-dell" target="_self">Dell</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/may-tram-workstation-hp" target="_self">HP</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/-may-tram-workstation-lenovo-html" target="_self">Lenovo</a></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/may-tram-workstation-nuc" target="_self">Intel NUC</a></li></ul></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/workstation" target="_self">Phân theo CPU</a><ul class='sub-menu' data-parent='185'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/workstation?bo-xu-ly-cpu-=intel-core-i3" target="_self">CPU Core i3</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/workstation?bo-xu-ly-cpu-=intel-core-i5" target="_self">CPU Core i5</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/workstation?op_id=131" target="_self">CPU Core i7</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/workstation?op_id=127" target="_self">CPU Xeon</a></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/workstation?op_id=113" target="_self">CPU AMD</a></li></ul></li></ul>
+                </li>
+                <li class="menu-item" data-menu="31">
+                    <a href="https://vitinhnguyenkim.vn/may-in-may-scan" target="_self">
+                        <span class="icon"><img class='lazyload' src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==' data-src="https://vitinhnguyenkim.vn/uploads/weblink/may_in.svg" alt="Máy in/ Máy Scan" /></span>
+                        <div class="text h2category">Máy in/ Máy Scan</div>
+                    </a>
+                    <ul class='sub-menu' data-parent='31'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/may-in" target="_self">Thương hiệu máy in</a><ul class='sub-menu' data-parent='254'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/may-in/hp" target="_self">Máy in HP</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/may-in/canon" target="_self">Máy in Canon</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/may-in/epson" target="_self">Máy in Epson</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/may-in/brother" target="_self">Máy in Brother</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/may-in/fuji-xerox-html" target="_self">Máy in Fuji Xerox</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/may-in/plustek" target="_self">Máy in Plustek</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/may-in/kodak" target="_self">Máy in Kodak</a></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/may-in/olivetti" target="_self">Máy in Ovetti</a></li></ul></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/may-in" target="_self">Tính năng máy in</a><ul class='sub-menu' data-parent='199'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/may-in-phun-don-nang" target="_self">Máy in phun đơn năng</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/may-in-phun-da-nang" target="_self">Máy in phun đa năng</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/may-in-laser-da-nang" target="_self">Máy in laser đa năng</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/may-in-laser-don-nang" target="_self">Máy in laser đơn năng</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/may-in-laser-trang-den" target="_self">Máy in Laser trắng đen</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/may-in-laser-mau" target="_self">Máy in Laser màu </a></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/may-in-kim" target="_self">Máy in Kim</a></li></ul></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/may-scan" target="_self">Thương hiệu máy Scan</a><ul class='sub-menu' data-parent='414'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/may-scan/epson" target="_self">Máy scan Epson</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/may-scan/fujitsu" target="_self">Máy scan Fujitsu</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/may-scan/plustek" target="_self">Máy scan Plustek</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/may-scan/hp" target="_self">Máy scan HP</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/may-scan/canon" target="_self">Máy scan Canon</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/may-scan/brother" target="_self">Máy scan Brother</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/may-scan/kodak" target="_self">Máy Scan Kodak</a></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/may-scan/olivetti" target="_self">Máy scan Olivetti</a></li></ul></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/muc-in-chinh-hang" target="_self">Mực in </a><ul class='sub-menu' data-parent='244'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/muc-in-laser-mau" target="_self">Mực in laser màu</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/muc-in-laser-trang-den" target="_self">Mực in laser trắng đen</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/muc-photo-laser-trang-den" target="_self">Mực photo laser trắng đen</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/muc-in-phun" target="_self">Mực in phun</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/bang-muc-epson" target="_self">Băng mực Epson</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/muc-fuserkit-transferkit" target="_self">Fuserkit - Transferkit</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/drum-dau-muc-may-in" target="_self">Drum - Đầu mực máy in</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/giay-in-nhan-in" target="_self">Giấy in - Nhãn in</a></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/hop-chua-muc-thai" target="_self">Hộp chứa mực thải</a></li></ul></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/#" target="_self">Tính năng máy scan</a><ul class='sub-menu' data-parent='687'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/may-scan?so-mat-in-scan=1-mat" target="_self">Máy scan 1 mặt</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/may-scan?dang-scan=dang-phang&so-mat-in-scan=2-mat" target="_self">Máy scan 2 mặt dạng phẳng</a></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/may-scan?dang-scan=dang-hop&so-mat-in-scan=2-mat" target="_self">Máy scan 2 mặt dạng hộp</a></li></ul></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/may-fax" target="_self">Máy Fax</a></li></ul>
+                </li>
+                <li class="menu-item last" data-menu="34">
+                    <a href="https://vitinhnguyenkim.vn/phan-mem" target="_self">
+                        <span class="icon"><img class='lazyload' src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==' data-src="https://vitinhnguyenkim.vn/uploads/weblink/phan_mem.svg" alt="Phần mềm" /></span>
+                        <div class="text h2category">Phần mềm</div>
+                    </a>
+                    <ul class='sub-menu' data-parent='34'><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/./" target="_self">Loại phần mềm</a><ul class='sub-menu' data-parent='319'><li class="menu-item"><a href="https://vitinhnguyenkim.vn/microsoft-windows" target="_self">Microsoft Windows</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/microsoft-office" target="_self">Microsoft Office</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/microsoft-windows-server" target="_self">Microsoft Windows Server</a></li><li class="menu-item"><a href="https://vitinhnguyenkim.vn/anti-security-virus" target="_self">Anti/Security virus</a></li><li class="menu-item last"><a href="https://vitinhnguyenkim.vn/phan-mem-khac" target="_self">Phần mềm khác</a></li></ul></li></ul>
+                </li>
+            </ul>
+            <style>
+                .primary-menu > li.has-sub-menu > a::after {
+                    top: 0;
+                }
+            </style>
+        </div>
+    </div>
+    <script src="https://vitinhnguyenkim.vn/public/js/lazysizes.min.js" language="javascript" type="text/javascript"></script>
+    <!--?= menu('primary', ); ?-->
+    <div class="scroll-right-wrap">
+        <ul>
+            <li>
+                <a href="https://www.facebook.com/vitinhnguyenkim" target="_blank" class="effect" title="Facebook">
+                    <img class='lazyload' src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==' data-src="https://vitinhnguyenkim.vn/uploads/weblink/fb-icon.png" alt="Facebook" />
+                </a>
+            </li>
+            <li>
+                <a href="https://www.youtube.com/channel/UC43j-3e6wZYOX-LRkyVKjog" target="_blank" class="effect" title="Youtube">
+                    <img class='lazyload' src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==' data-src="https://vitinhnguyenkim.vn/uploads/weblink/youtube-icon.png" alt="Youtube" />
+                </a>
+            </li>
+            <li>
+                <a href="mailto:cskh@nguyenkimvn.vn" target="_self" class="effect" title="Email">
+                    <img class='lazyload' src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==' data-src="https://vitinhnguyenkim.vn/uploads/weblink/email-icon.png" alt="Email" />
+                </a>
+            </li>
+            <li>
+                <a href="tel:19006739" target="_blank" class="effect" title="Hotline">
+                    <img class='lazyload' src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==' data-src="https://vitinhnguyenkim.vn/uploads/weblink/phone-icon.png" alt="Hotline" />
+                </a>
+            </li>
+            <li id="scroll-top" class="last">
+                <a href="javascript:;" class="effect" area-label="Back to top" title="Back to top">
+                    <i class="fa fa-chevron-up"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.1&appId=' + fb_api;
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+  <script src="https://vitinhnguyenkim.vn/public/js/jquery.migrate.min.js" language="javascript" type="text/javascript"></script>
+<script src="https://vitinhnguyenkim.vn/public/js/bootstrap/js/bootstrap.min.js" language="javascript" type="text/javascript"></script>
+<script src="https://vitinhnguyenkim.vn/public/js/fancybox/fancybox.pack.js" language="javascript" type="text/javascript"></script>
+<script src="https://vitinhnguyenkim.vn/public/js/fancybox/fancybox.js" language="javascript" type="text/javascript"></script>
+<script src="https://vitinhnguyenkim.vn/public/js/owl.carousel/js/owl.carousel.min.js" language="javascript" type="text/javascript"></script>
+<script src="https://vitinhnguyenkim.vn/public/js/slimscroll/jquery.slimscroll.min.js" language="javascript" type="text/javascript"></script>
+<script src="https://vitinhnguyenkim.vn/public/js/js-image-slider.js" language="javascript" type="text/javascript"></script>
+
+</body>
+</html>

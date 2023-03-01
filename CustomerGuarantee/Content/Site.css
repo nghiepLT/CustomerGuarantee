@@ -1,0 +1,230 @@
+﻿.imgbox {
+    display: inline-block;
+    position: relative;
+}
+
+    .imgbox a {
+        position: absolute;
+        font-size: 19px;
+        right: 0px;
+        top: 0px;
+        background-color: black;
+        color: white;
+        padding: 3px 7px;
+    }
+
+.capcha_box {
+    position: relative;
+}
+
+.capcha_image {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.btn-submit {
+    border: 1px solid #1c449c;
+    border-radius: 5px;
+    width: 130px;
+    height: 30px;
+    background: #FFF;
+    color: #1c449c;
+    transition: all .1s ease-in-out;
+    -moz-transition: all .1s ease-in-out;
+    -webkit-transition: all .1s ease-in-out;
+    -webkit-box-shadow: 1px 2px 3px 0px rgb(0 0 0 / 20%);
+    -moz-box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.2);
+    box-shadow: 1px 2px 3px 0px rgb(0 0 0 / 20%);
+}
+
+.btn_gui {
+    position: relative;
+}
+
+    .btn_gui i {
+        position: absolute;
+        left: 29px;
+        top: 7px;
+        color: #1c449c;
+    }
+
+    .btn_gui:hover .btn-submit {
+        background-color: #1c449c;
+        color: white;
+    }
+
+    .btn_gui:hover i {
+        color: white !important;
+    }
+
+.btn_searchCode {
+    padding: 10px 15px;
+}
+
+    .btn_searchCode i {
+    }
+
+.tb_thongtinphieu {
+    max-width: 630px;
+    margin: auto;
+    box-shadow: 0 0.25rem 0.5rem rgb(0 0 0 / 50%);
+    padding: 10px 10px;
+}
+
+.tabThongTin {
+    margin-top: 15px;
+}
+
+    .tabThongTin ul {
+        margin: 0px;
+        padding: 0px;
+        display: inline-block;
+    }
+
+        .tabThongTin ul li {
+            display: inline-block;
+        }
+
+            .tabThongTin ul li a {
+                display: block;
+                padding: 6px 12px;
+                box-shadow: 0 0.25rem 0.5rem rgb(0 0 0 / 34%);
+                font-size: 12px;
+            }
+
+.tabThongTin_active {
+    background-color: red;
+    color: white;
+}
+
+.tabThongTin ul li a:hover {
+    color: black;
+}
+
+.tabThongTin_active:hover {
+    color: white !important;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 8px;
+    top: 12px;
+}
+
+.login-form-wrap {
+    width: auto;
+    margin: auto;
+}
+
+.box-info {
+    width: 100%;
+}
+
+.danhgiamodal {
+}
+
+    .danhgiamodal ul {
+    }
+
+        .danhgiamodal ul li {
+        }
+
+    .danhgiamodal textarea {
+        margin: 10px 0px;
+        padding: 10px 10px;
+    }
+
+.tabDangNhap {
+    width: 416px;
+    margin: 0px auto;
+    text-align: center;
+}
+
+    .tabDangNhap ul {
+    }
+
+        .tabDangNhap ul li {
+            display: inline-block;
+        }
+
+            .tabDangNhap ul li a {
+                display: block;
+                width: 200px;
+                padding: 5px 20px;
+            }
+
+.tabDangNhapActive {
+    background-color: #1a73e8;
+    color: white;
+    margin-bottom: 10px;
+    box-shadow: 0 0.25rem 0.5rem rgb(0 0 0 / 34%);
+    width: 173px;
+}
+
+    .tabDangNhapActive:hover {
+        color: white;
+    }
+
+.dangnhapkhachhang_box {
+    display: inline-block;
+    float: right;
+}
+
+    .dangnhapkhachhang_box span {
+        position: relative;
+        top: -15px;
+        background-color: #1a73e8;
+        color: white;
+        padding: 2px 12px;
+        box-shadow: 0 0.25rem 0.5rem rgb(0 0 0 / 34%);
+        font-size: 11px;
+        display: block;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+
+    .dangnhapkhachhang_box i {
+        position: relative;
+        top: 7px;
+        left: -18px;
+    }
+
+.logincus_title {
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: red;
+    font-size: 16px;
+}
+
+.ttdn_box {
+    position: relative;
+}
+
+    .ttdn_box ul {
+        position: absolute;
+        left: 0px;
+        top: 100%;
+        margin: 0px;
+        display: none;
+        padding: 0px;
+        box-shadow: 0 0.25rem 0.5rem rgb(0 0 0 / 34%);
+        width: 100%;
+        z-index: 999999999;
+    }
+
+        .ttdn_box ul li {
+            display: block;
+            border-bottom: 1px solid #eee;
+            width: 100%;
+        }
+
+            .ttdn_box ul li a {
+                width: 100%;
+                box-shadow: none;
+            }
+            /*.ttdn_box:hover ul{
+                display:block;
+            }*/
