@@ -187,11 +187,10 @@ Công Ty TNHH Vi Tính Nguyên Kim. ĐC: 245B Trần Quang Khải,P Tân Địn
                                     </div>
                                 </div>
                                 <div class="form-field">
-                                    <div class="form-label">
-                                        SĐT nhà xe
+                                    <div class="form-label"><label for="company">   SĐT nhà xe</label>
                                     </div>
                                     <div class="form-input">
-                                        <input runat="server" type="text" name="CarPhoneNumber" value="" id="CarPhoneNumber" class="form-control" />
+                                        <input runat="server" type="text" name="CarPhoneNumber" value="" id="CarPhoneNumber" class="form-control" required />
                                     </div>
                                 </div>
                                 <div class="form-field">

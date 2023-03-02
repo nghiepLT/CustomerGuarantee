@@ -36,6 +36,7 @@
           <Property Name="USerSoDTNhaXe" Type="nvarchar" MaxLength="200" />
           <Property Name="UserGuiType" Type="int" />
           <Property Name="USerGuiTra" Type="nvarchar" MaxLength="200" />
+          <Property Name="UserSDTGiaoHang" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="tCustomerUser">
           <Key>
@@ -104,6 +105,7 @@
           <Property Name="USerSoDTNhaXe" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="UserGuiType" Type="Int32" />
           <Property Name="USerGuiTra" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="UserSDTGiaoHang" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="tUSer">
           <Key>
@@ -136,6 +138,7 @@
           <EntitySetMapping Name="CustomerCaseInfors">
             <EntityTypeMapping TypeName="CustomerCaseModel.CustomerCaseInfor">
               <MappingFragment StoreEntitySet="CustomerCaseInfor">
+                <ScalarProperty Name="UserSDTGiaoHang" ColumnName="UserSDTGiaoHang" />
                 <ScalarProperty Name="USerGuiTra" ColumnName="USerGuiTra" />
                 <ScalarProperty Name="UserGuiType" ColumnName="UserGuiType" />
                 <ScalarProperty Name="USerSoDTNhaXe" ColumnName="USerSoDTNhaXe" />

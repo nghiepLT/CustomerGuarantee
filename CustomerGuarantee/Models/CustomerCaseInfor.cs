@@ -41,5 +41,6 @@ namespace CustomerGuarantee.Models
         public string USerSoDTNhaXe { get; set; }
         public Nullable<int> UserGuiType { get; set; }
         public string USerGuiTra { get; set; }
+        public string UserSDTGiaoHang { get; set; }
     }
 }

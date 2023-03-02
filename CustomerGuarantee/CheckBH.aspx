@@ -66,7 +66,7 @@
 
                                 <input type="hidden" name="do_submit" value="1" />
                             </form>
-                            <div class="tb_thongtinphieu" style="display:none">
+                            <div class="tb_thongtinphieu" style="display: none">
                                 <table class="table table-bordered">
                                     <tr>
                                         <td style="width: 170px;"><strong>Mã đơn</strong>
@@ -139,6 +139,59 @@
                                         <td><span id="Description"></span></td>
                                     </tr>
                                 </table>
+                                <div class="thongtinkhachgui_title">
+                                    Thông tin trả hàng
+                                </div>
+                                 <table class="table table-bordered">
+                        <tr>
+                            <td>
+                               Thời gian trả
+                            </td>
+                            <td>
+                               <span  id="txtUserNgayGui"></span>
+                           </td>
+                        </tr>
+                         <tr>
+                            <td>
+                               Nhân viên thực hiện
+                            </td>
+                            <td>
+                               <span  id="txtUSerGuiTra"></span>
+                           </td>
+                        </tr>
+                         <tr>
+                            <td>
+                              Hình thức trả
+                            </td>
+                            <td>
+                               <span  id="txtUserGuiType"></span>
+                           </td>
+                        </tr>
+                         <tr class="trtxtUserTenNhaXe">
+                            <td>
+                             Tên nhà xe
+                            </td>
+                            <td>
+                               <span  id="txtUserTenNhaXe"></span>
+                           </td>
+                        </tr>
+                         <tr class="trUserAddress">
+                            <td>
+                             Địa chỉ nhà xe
+                            </td>
+                            <td>
+                               <span  id="txtUserAddress"></span>
+                           </td>
+                        </tr>
+                         <tr class="trUserAddress">
+                            <td>
+                             Số điện thoại
+                            </td>
+                            <td>
+                               <span  id="txtUSerSoDTNhaXe"></span>
+                           </td>
+                        </tr>
+                    </table>
                             </div>
                         </div>
                     </div>
@@ -184,7 +237,7 @@
                     if (obj.Status == 1) {
                        
                         if (obj.ThoiGianXuLy != null) {
-                            $("#Status").html('Đã nhận | ' + 'Thời gian: ' + obj.ThoiGianXuLy);
+                            $("#Status").html('Đã nhận | ' + 'Thời gian nhận: ' + obj.ThoiGianXuLy);
                         }
                         else {
                             $("#Status").html('Đã nhận');
@@ -192,7 +245,7 @@
                     }
                     if (obj.Status == 2) {
                         if (obj.ThoiGianXuLy != null) {
-                            $("#Status").html('Đang xử lý | ' + 'Thời gian: ' + obj.ThoiGianXuLy);
+                            $("#Status").html('Đang xử lý | ' + 'Thời gian nhận: ' + obj.ThoiGianXuLy);
                         }
                         else {
                             $("#Status").html('Đang xử lý');
@@ -200,7 +253,9 @@
                     }
                     if (obj.Status == 3) {
                         if (obj.ThoiGianXuLy != null) {
-                            $("#Status").html('Đã xử lý | ' + 'Thời gian: ' + obj.ThoiGianXuLy);
+                            var date = new Date(parseInt(obj.UserNgayGui.substr(6)));
+                            var getdate = GetFormattedDate(date);
+                            $("#Status").html('Đã xử lý | ' + 'Thời gian trả: ' + getdate);
                         }
                         else {
                             $("#Status").html('Đã xử lý');
@@ -219,6 +274,22 @@
                     $("#InforFromCustomer").html(obj.InforFromCustomer);
                     $("#BillNumber").html(obj.BillNumber);
                     $("#Description").html(obj.Description);
+                    //
+                    $("#txtUSerGuiTra").html(obj.USerGuiTra);
+
+                    var date = new Date(parseInt(obj.UserNgayGui.substr(6)));
+                    var getdate = GetFormattedDate(date);
+                    $("#txtUserNgayGui").html("<strong>" + getdate + "</strong>");
+                    if (obj.UserGuiType == 1) {
+                        $("#txtUserGuiType").html("Nhà xe trả");
+                    }
+                    else {
+                        $("#txtUserGuiType").html("Giao nhận");
+                    }
+
+                    $("#txtUserTenNhaXe").html(obj.UserTenNhaXe);
+                    $("#txtUserAddress").html(obj.UserAddress);
+                    $("#txtUSerSoDTNhaXe").html(obj.USerSoDTNhaXe);
                 },
                 error: function (result) {
                     alert("Failed");
@@ -226,5 +297,15 @@
             });
         }
         document.title = "Kiểm tra bảo hành";
+        function GetFormattedDate(date) {
+            var todayTime = new Date(date);
+            var month = todayTime.getMonth() + 1;
+            var day = todayTime.getDate();
+            var year = todayTime.getFullYear();
+            var hour = todayTime.getHours();
+            var minus = todayTime.getMinutes();
+            var seconds = todayTime.getSeconds();
+            return month + "/" + day + "/" + year;
+        }
     </script>
 </asp:Content>
