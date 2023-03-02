@@ -1,7 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Yeucaukhachgui.aspx.cs" Inherits="CustomerGuarantee.Yeucaukhachgui" %>
+﻿<%@ Page Title="Yêu cầu khách gửi" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Yeucaukhachgui.aspx.cs" Inherits="CustomerGuarantee.Yeucaukhachgui" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-
+    
     <link href="Content/Site.css" rel="stylesheet" />
     <input id="userlogin" runat="server" style="display:none;" />
     <div id="breadrumb" class="outer hidden-xs">
@@ -13,7 +13,7 @@
                         <meta itemprop="position" content="1" />
                     </li>
                     <li class="last">
-                        <span class="item-list">Yêu cầu báo giá</span>
+                        <span class="item-list">Yêu cầu khách gửi</span>
                     </li>
                 </ul>
             </div>
@@ -24,7 +24,7 @@
 
             <div id="box-middle" class="inner">
                 <div class="box-title">
-                    <h1 class="post-title anton">Kiểm tra thông tin bảo hành</h1>
+                    <h1 class="post-title anton">Yêu cầu khách gửi</h1>
                 </div>
                 <div class="shortcode box-content clear">
                     <div class="box-qoute">
@@ -39,6 +39,9 @@
                                             <td>
                                                 Mã đơn
                                             </td>
+                                              <td>
+                                                Thời gian dự kiến gửi
+                                            </td>
                                             <td style="width:15%;">Tên khách hàng	
                                             </td>
                                             <td style="width:15%;">Địa chỉ
@@ -47,9 +50,7 @@
                                             </td>
                                             <td>Sản phẩm gửi BH
                                             </td>
-                                            <td>
-                                                Thời gian dự kiến gửi
-                                            </td>
+                                          
                                             <td>
                                                 Trạng thái
                                             </td>
@@ -66,7 +67,7 @@
             </div>
         </div>
     </div>
-    <div class="modal fade danhgiamodal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+    <div class="modal fade danhgiamodal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"  data-backdrop="static" >
         <div class="modal-dialog" role="document" style="width:400px;">
             <div class="modal-content">
 
@@ -76,24 +77,96 @@
                     </div>
                     <ul>
                         <li> 
-                            <input type="radio" name="radChange" id="rad1" />
+                            <input type="radio" name="radChange" id="rad1" onchange="radChange(1)" />
                             <span>Chưa nhận</span>
                         </li>
                         <li>
-                            <input type="radio" name="radChange" id="rad2"  />
-                            <span>Đã nhận</span>
+                            <input type="radio" name="radChange" id="rad2"  onchange="radChange(2)" />
+                            <span>Đã nhận và đang xử lý</span>
                         </li>
                         <li>
-                            <input type="radio" name="radChange" id="rad3" />
-                            <span>Đang xử lý</span>
-                        </li>
-                        <li>
-                            <input type="radio" name="radChange" id="rad4" />
+                            <input type="radio" name="radChange" id="rad4" onchange="radChange(4)" />
                             <span>Đã xử lý xong</span>
                         </li>
                     </ul>
-                    <div>
-                        <textarea id="GhiChuXuLy" placeholder="Ghi chú" style="width: 100%" rows="3"></textarea>
+                    <div class="thongtintrakhach_box">
+                         <div class="mg-10">
+                            <div class="row ">
+                                <div class="col-sm-12">
+                                    Nhân viên trả
+                                </div>
+                                <div class="col-sm-12">
+                                    <input id="USerGuiTra" type="text" class="form-control" placeholder="Nhân viên trả" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mg-10">
+                            <div class="row ">
+                                <div class="col-sm-12">
+                                    Thời gian trả khách
+                                </div>
+                                <div class="col-sm-12">
+                                    <input id="UserNgayGui" type="datetime-local" class="form-control" placeholder="Thời gian trả" />
+                                </div>
+                            </div>
+                        </div>
+                         <div class="mg-10">
+                            <div class="row ">
+                                <div class="col-sm-12">
+                                   Hình thức trả
+                                </div>
+                                <div class="col-sm-12">
+                                    <select id="slHinhthuc" class="form-control" onchange="slTra()">
+                                        <option value="1">Nhà xe trả
+                                        </option>
+                                        <option value="2">Giao nhận
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ttnx">
+                            <div class="mg-10">
+                                <div class="row ">
+                                    <div class="col-sm-12">
+                                        Tên nhà xe
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <input id="UserTenNhaXe" type="text" class="form-control" placeholder="Tên nhà xe" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mg-10">
+                                <div class="row ">
+                                    <div class="col-sm-12">
+                                        Địa chỉ nhà xe
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <input id="UserAddress" type="text" class="form-control" placeholder="Địa chỉ nhà xe" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mg-10">
+                                <div class="row ">
+                                    <div class="col-sm-12">
+                                        Số điện thoại nhà xe
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <input id="USerSoDTNhaXe" type="text" class="form-control" placeholder="Số điện thoại nhà xe" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mg-10">
+                            <div class="row ">
+                                <div class="col-sm-12">
+                                   Nội dung xử lý
+                                </div>
+                                <div class="col-sm-12">
+                                    <textarea id="GhiChuXuLy" placeholder="Nội dung xử lý" style="width: 100%" rows="3"></textarea>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -107,6 +180,9 @@
             <div class="modal-content">
 
                 <div class="modal-body">
+                    <div class="thongtinkhachgui_title">
+                        Thông tin khách gửi
+                    </div>
                    <table class="table table-bordered">
                        <tr>
                            <td>
@@ -194,6 +270,61 @@
                            </td>
                        </tr>
                    </table>
+
+                     <div class="thongtinkhachgui_title">
+                        Thông tin trả hàng
+                    </div>
+
+                    <table class="table table-bordered">
+                        <tr>
+                            <td>
+                               Thời gian trả
+                            </td>
+                            <td>
+                               <span  id="txtUserNgayGui"></span>
+                           </td>
+                        </tr>
+                         <tr>
+                            <td>
+                               Nhân viên thực hiện
+                            </td>
+                            <td>
+                               <span  id="txtUSerGuiTra"></span>
+                           </td>
+                        </tr>
+                         <tr>
+                            <td>
+                              Hình thức trả
+                            </td>
+                            <td>
+                               <span  id="txtUserGuiType"></span>
+                           </td>
+                        </tr>
+                         <tr class="trtxtUserTenNhaXe">
+                            <td>
+                             Tên nhà xe
+                            </td>
+                            <td>
+                               <span  id="txtUserTenNhaXe"></span>
+                           </td>
+                        </tr>
+                         <tr class="trUserAddress">
+                            <td>
+                             Địa chỉ nhà xe
+                            </td>
+                            <td>
+                               <span  id="txtUserAddress"></span>
+                           </td>
+                        </tr>
+                         <tr class="trUserAddress">
+                            <td>
+                             Số điện thoại
+                            </td>
+                            <td>
+                               <span  id="txtUSerSoDTNhaXe"></span>
+                           </td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>
@@ -217,6 +348,11 @@
                         htmlContents += "<strong style=\"color:red\">"+obj[i].CodeGenerate+"</strong>";
                         htmlContents += "</td>";
                         htmlContents += "<td>";
+                        if (obj[i].NgayGui != null) {
+                            htmlContents += obj[i].NgayGui;
+                        }
+                        htmlContents += "</td>";
+                        htmlContents += "<td>";
                         htmlContents +="<strong>"+obj[i].CustomerName+"</strong>";
                         htmlContents += "</td>";
                         htmlContents += "<td>";
@@ -232,34 +368,30 @@
                         }
                       
                         htmlContents += "</td>";
-                        htmlContents += "<td>";
-                        if (obj[i].NgayGui != null) {
-                            htmlContents += obj[i].NgayGui;
-                        }
-                        htmlContents += "</td>";
+                       
                         if (obj[i].Status == 0)
                         {
                             htmlContents += "<td>";
-                            htmlContents += "<a class=\"btn btn-xs btn-primary\" onclick=\"tgStatus("+obj[i].CustomerCaseID+")\" >Chưa nhận</a>";
+                            htmlContents += "<a class=\"btn btn-xs btn-danger\" onclick=\"tgStatus("+obj[i].CustomerCaseID+")\" >Chưa nhận</a>";
                             htmlContents += "</td>";
                         }
                         if (obj[i].Status == 1) {
                             htmlContents += "<td>";
-                            htmlContents += "<a class=\"btn btn-xs btn-primary\" onclick=\"tgStatus(" + obj[i].CustomerCaseID + ")\" >Đã nhận</a>";
+                            htmlContents += "<a class=\"btn btn-xs btn-primary\" onclick=\"tgStatus(" + obj[i].CustomerCaseID + ")\" >Đã nhận và đang xử lý</a>";
                             htmlContents += "</td>";
                         }
-                        if (obj[i].Status == 2) {
-                            htmlContents += "<td>";
-                            htmlContents += "<a class=\"btn btn-xs btn-primary\" onclick=\"tgStatus(" + obj[i].CustomerCaseID + ")\" >Đang xử lý</a>";
-                            htmlContents += "</td>";
-                        }
+                      
                         if (obj[i].Status == 3) {
                             htmlContents += "<td>";
-                            htmlContents += "<a class=\"btn btn-xs btn-primary\" onclick=\"tgStatus(" + obj[i].CustomerCaseID + ")\" >Đã xử lý xong</a>";
+                            htmlContents += "<a style=\"pointer-events: none;\" class=\"btn btn-xs btn-success\" onclick=\"tgStatus(" + obj[i].CustomerCaseID + ")\" >Đã xử lý xong</a>";
+                            htmlContents += "<div>Ngày trả: ";
+                            var date = new Date(parseInt(obj[i].UserNgayGui.substr(6)));
+                            htmlContents += GetFormattedDate(date)
+                            htmlContents += "</div>";
                             htmlContents += "</td>";
                         }
                         htmlContents += "<td>";
-                        htmlContents += "<a class=\"btn btn-xs btn-default\" onclick=\"xemchitiet("+obj[i].CustomerCaseID+")\" >Xem chi tiết</a>";
+                        htmlContents += "<a  class=\"btn btn-xs btn-primary\" onclick=\"xemchitiet(" + obj[i].CustomerCaseID + ")\" >Xem chi tiết</a>";
                         htmlContents += "</td>";
                         htmlContents += "</tr>";
                     }
@@ -272,6 +404,7 @@
         }
         var CustomerCaseID = 0;
         function tgStatus(id) {
+            $(".thongtintrakhach_box").hide();
             $("#exampleModal").modal("toggle");
 
             $.ajax({
@@ -318,11 +451,31 @@
             if ($("#rad4").prop("checked") == true) {
                 status = 3;
             }
+            var userstatus = 0;
+            if ($("#slHinhthuc").val() == 1) {
+                userstatus = 1;
+            }
+            else {
+                userstatus = 2;
+            }
+            //
+            if (userstatus == 1) {
+                if ($("#USerGuiTra").val() == '') {
+                    alert("Vui lòng nhập thông tin"); 
+                    return false;
+                }
+            }
             var param = {
                 CustomerCaseID: CustomerCaseID,
                 Status: status,
                 GhiChuXuLy: $('#GhiChuXuLy').val(),
-                UserEdit: $("#MainContent_userlogin").val()
+                UserEdit: $("#MainContent_userlogin").val(),
+                UserNgayGui: $("#UserNgayGui").val(),
+                UserTenNhaXe:$("#UserTenNhaXe").val(),
+                UserAddress: $("#UserAddress").val(),
+                USerSoDTNhaXe: $("#USerSoDTNhaXe").val(),
+                USerGuiTra: $("#USerGuiTra").val(),
+                UserGuiType: userstatus
             }
             $.ajax({
                 url: 'Yeucaukhachgui.aspx/UpdateData',
@@ -364,12 +517,64 @@
                     $("#txtInforFromCustomer").html(obj.InforFromCustomer);
                     $("#txtBillNumber").html(obj.BillNumber);
                     $("#txtDescription").html(obj.Description);
+                    //
+                    $("#txtUSerGuiTra").html(obj.USerGuiTra);
+                  
+                    var date = new Date(parseInt(obj.UserNgayGui.substr(6)));
+                    var getdate = GetFormattedDate(date);
+                    $("#txtUserNgayGui").html("<strong>" + getdate+"</strong>");
+                    if (obj.UserGuiType == 1) {
+                        $("#txtUserGuiType").html("Nhà xe trả");
+                    }
+                    else {
+                        $("#txtUserGuiType").html("Giao nhận");
+                    }
+
+                    $("#txtUserTenNhaXe").html(obj.UserTenNhaXe);
+                    $("#txtUserAddress").html(obj.UserAddress);
+                    $("#txtUSerSoDTNhaXe").html(obj.USerSoDTNhaXe);
                 },
                 error: function (result) {
                     alert("Failed");
                 }
             });
         }
+        function GetFormattedDate(date) {
+            var todayTime = new Date(date);
+            var month = todayTime.getMonth() + 1;
+            var day = todayTime.getDate();
+            var year = todayTime.getFullYear();
+            var hour=todayTime.getHours();
+            var minus=todayTime.getMinutes();
+            var seconds=todayTime.getSeconds();
+            return month + "/" + day + "/" + year +" "+ hour + ":" + minus;
+        }
+        function thongtintrakhach_box() {
+
+        }
+        $(document).ready(function () {
+            $(".thongtintrakhach_box").hide();
+        });
+
+        function radChange(id) {
+            if (id == 4) {
+                $(".thongtintrakhach_box").show();
+            }
+            else {
+                $(".thongtintrakhach_box").hide();
+            }
+        }
+
+        function slTra() {
+            var sltra = $("#slHinhthuc").val();
+            if (sltra == 1) {
+                $(".ttnx").show();
+            }
+            else {
+                $(".ttnx").hide();
+            }
+        }
+        document.title = "Yêu cầu khách hàng";
     </script>
 
 </asp:Content>

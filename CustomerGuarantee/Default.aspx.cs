@@ -127,20 +127,28 @@ namespace CustomerGuarantee
                 bool isTaoTK = false;
                 var chkCustomerUser = db.tCustomerUsers.Where(m => m.CustomerEmail == data.Email).FirstOrDefault();
                 tCustomerUser tcus = new tCustomerUser();
+                Random rd = new Random();
+                const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+                var test = new string(Enumerable.Repeat(chars, 8)
+                    .Select(s => s[rd.Next(s.Length)]).ToArray());
                 if (chkCustomerUser == null)
                 { 
                     tcus.CustomerEmail = data.Email;
                     tcus.CustomerName = data.CustomerName;
                     tcus.CustomerPhone = data.PhoneCustomer;
                     tcus.CustomerUser = data.Email;
-                    tcus.CustomerPassword = Encrypt("1");
+                    tcus.CustomerAddress = data.Address;
+                    tcus.CustomerPassword = Encrypt(test);
                     db.tCustomerUsers.Add(tcus);
                     db.SaveChanges();
                     isTaoTK = true;
                 }
 
                 string htmlContents = "";
-                htmlContents += "<div>Xin chào Anh/Chị" + " " + data.CustomerName + "</div>"; ;
+                htmlContents += "<div style=\"color:red;font-weight:bold\">Khi gửi Sản phẩm bảo hành quý khách vui lòng ghi thông tin người nhận :</div>";
+                htmlContents += "<div style=\"color:red;font-weight:bold\">Công Ty TNHH Vi Tính Nguyên Kim. ĐC: 245B Trần Quang Khải,P Tân Định ,Q.1,TPHCM .:</div>";
+                htmlContents += "<div style=\"color:red;font-weight:bold;margin-bottom:10px\">SĐT: 028 22 246 246 – Lầu 1 : Phòng Bảo Hành - 873</div>";
+                htmlContents += "<div>Xin chào Anh/Chị" + " " + data.CustomerName + "</div>"; 
                 htmlContents += "<div>Cảm ơn Anh/Chị đã gửi thông tin bảo hành cho chúng tôi." + "</div>";
 
                 htmlContents += "<table style=\"width:100%;margin:10px 0px\">";
@@ -182,7 +190,8 @@ namespace CustomerGuarantee
 
                 if (isTaoTK)
                 {
-                    htmlContents += "<div>Chúng tôi đã tạo tài khoản cho bạn với User name: <strong>" + tcus.CustomerUser+ "</strong> Password mặc định là <strong>1</strong><div>";
+                   
+                    htmlContents += "<div>Chúng tôi đã tạo tài khoản cho bạn với User name: <strong>" + tcus.CustomerUser+ "</strong> Password mặc định là <strong>"+ test + "</strong><div>";
                 }
                 sendEmail(data.Email, "Title",htmlContents);
                 db.SaveChanges();

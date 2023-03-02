@@ -35,5 +35,11 @@ namespace CustomerGuarantee.Models
         public Nullable<System.DateTime> DateUpdate { get; set; }
         public string GhiChuXuLy { get; set; }
         public string NgayGui { get; set; }
+        public Nullable<System.DateTime> UserNgayGui { get; set; }
+        public string UserTenNhaXe { get; set; }
+        public string UserAddress { get; set; }
+        public string USerSoDTNhaXe { get; set; }
+        public Nullable<int> UserGuiType { get; set; }
+        public string USerGuiTra { get; set; }
     }
 }

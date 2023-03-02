@@ -94,6 +94,9 @@
             <div class="modal-content">
 
                 <div class="modal-body">
+                     <div class="thongtinkhachgui_title">
+                        Thông tin khách gửi
+                    </div>
                    <table class="table table-bordered">
                        <tr>
                            <td>
@@ -181,6 +184,60 @@
                            </td>
                        </tr>
                    </table>
+                     <div class="thongtinkhachgui_title">
+                        Thông tin trả hàng
+                    </div>
+
+                    <table class="table table-bordered">
+                        <tr>
+                            <td>
+                               Thời gian trả
+                            </td>
+                            <td>
+                               <span  id="txtUserNgayGui"></span>
+                           </td>
+                        </tr>
+                         <tr style="display:none;">
+                            <td>
+                               Nhân viên thực hiện
+                            </td>
+                            <td>
+                               <span  id="txtUSerGuiTra"></span>
+                           </td>
+                        </tr>
+                         <tr>
+                            <td>
+                              Hình thức trả
+                            </td>
+                            <td>
+                               <span  id="txtUserGuiType"></span>
+                           </td>
+                        </tr>
+                         <tr class="trtxtUserTenNhaXe">
+                            <td>
+                             Tên nhà xe
+                            </td>
+                            <td>
+                               <span  id="txtUserTenNhaXe"></span>
+                           </td>
+                        </tr>
+                         <tr class="trUserAddress">
+                            <td>
+                             Địa chỉ nhà xe
+                            </td>
+                            <td>
+                               <span  id="txtUserAddress"></span>
+                           </td>
+                        </tr>
+                         <tr class="trUserAddress">
+                            <td>
+                             Số điện thoại
+                            </td>
+                            <td>
+                               <span  id="txtUSerSoDTNhaXe"></span>
+                           </td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>
@@ -242,7 +299,11 @@
                         }
                         if (obj[i].Status == 3) {
                             htmlContents += "<td>";
-                            htmlContents += "<a class=\" text-primary\" >Đã xử lý xong</a>";
+                            htmlContents += "<strong><a class=\" text-success\" >Đã hoàn tất </a></strong>";
+                            htmlContents += "<div>Ngày trả: ";
+                            var date = new Date(parseInt(obj[i].UserNgayGui.substr(6)));
+                            htmlContents += GetFormattedDate(date)
+                            htmlContents += "</div>";
                             htmlContents += "</td>";
                         }
                         htmlContents += "<td>";
@@ -327,8 +388,31 @@
                 }
             });
         }
+        function cleardata() {
+            $("#txtCustomerName").html('');
+            $("#txtAddress").html('');
+            $("#txtPhoneCustomer").html('');
+            $("#txtEmail").html('');
+            $("#txtProductName").html('');
+            $("#txtProductImage").html('');
+            $("#txtCarName").html('');
+            $("#txtCarAddress").html('');
+            $("#txtCarPhoneNumber").html('');
+            $("#txtInforFromCustomer").html('');
+            $("#txtBillNumber").html('');
+            $("#txtDescription").html('');
+            //
+            $("#txtUSerGuiTra").html('');
+             
+            $("#txtUserNgayGui").html('');
+            $("#txtUserGuiType").html('');
 
+            $("#txtUserTenNhaXe").html('');
+            $("#txtUserAddress").html('');
+            $("#txtUSerSoDTNhaXe").html('');
+        }
         function xemchitiet(id) {
+            cleardata();
             $("#exampleModal2").modal("toggle"); 
             $.ajax({
                 url: 'Yeucaukhachgui.aspx/GetData',
@@ -351,11 +435,39 @@
                     $("#txtInforFromCustomer").html(obj.InforFromCustomer);
                     $("#txtBillNumber").html(obj.BillNumber);
                     $("#txtDescription").html(obj.Description);
+                    //
+                    $("#txtUSerGuiTra").html(obj.USerGuiTra);
+
+                    var date = new Date(parseInt(obj.UserNgayGui.substr(6)));
+                    var getdate = GetFormattedDate(date);
+                    $("#txtUserNgayGui").html("<strong>" + getdate + "</strong>");
+                    if (obj.UserGuiType == 1) {
+                        $("#txtUserGuiType").html("Nhà xe trả");
+                    }
+                    else {
+                        $("#txtUserGuiType").html("Giao nhận");
+                    }
+
+                    $("#txtUserTenNhaXe").html(obj.UserTenNhaXe);
+                    $("#txtUserAddress").html(obj.UserAddress);
+                    $("#txtUSerSoDTNhaXe").html(obj.USerSoDTNhaXe);
                 },
                 error: function (result) {
                     alert("Failed");
                 }
             });
         }
+
+        function GetFormattedDate(date) {
+            var todayTime = new Date(date);
+            var month = todayTime.getMonth() + 1;
+            var day = todayTime.getDate();
+            var year = todayTime.getFullYear();
+            var hour = todayTime.getHours();
+            var minus = todayTime.getMinutes();
+            var seconds = todayTime.getSeconds();
+            return month + "/" + day + "/" + year;
+        }
+        document.title = "Lịch sử bảo hành";
     </script>
 </asp:Content>

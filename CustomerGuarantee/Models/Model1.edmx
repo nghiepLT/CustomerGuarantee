@@ -30,6 +30,12 @@
           <Property Name="DateUpdate" Type="datetime" />
           <Property Name="GhiChuXuLy" Type="nvarchar" MaxLength="500" />
           <Property Name="NgayGui" Type="nvarchar" MaxLength="500" />
+          <Property Name="UserNgayGui" Type="datetime" />
+          <Property Name="UserTenNhaXe" Type="nvarchar" MaxLength="500" />
+          <Property Name="UserAddress" Type="nvarchar" MaxLength="500" />
+          <Property Name="USerSoDTNhaXe" Type="nvarchar" MaxLength="200" />
+          <Property Name="UserGuiType" Type="int" />
+          <Property Name="USerGuiTra" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="tCustomerUser">
           <Key>
@@ -92,6 +98,12 @@
           <Property Name="DateUpdate" Type="DateTime" Precision="3" />
           <Property Name="GhiChuXuLy" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="NgayGui" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="UserNgayGui" Type="DateTime" Precision="3" />
+          <Property Name="UserTenNhaXe" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="UserAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="USerSoDTNhaXe" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="UserGuiType" Type="Int32" />
+          <Property Name="USerGuiTra" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="tUSer">
           <Key>
@@ -124,6 +136,12 @@
           <EntitySetMapping Name="CustomerCaseInfors">
             <EntityTypeMapping TypeName="CustomerCaseModel.CustomerCaseInfor">
               <MappingFragment StoreEntitySet="CustomerCaseInfor">
+                <ScalarProperty Name="USerGuiTra" ColumnName="USerGuiTra" />
+                <ScalarProperty Name="UserGuiType" ColumnName="UserGuiType" />
+                <ScalarProperty Name="USerSoDTNhaXe" ColumnName="USerSoDTNhaXe" />
+                <ScalarProperty Name="UserAddress" ColumnName="UserAddress" />
+                <ScalarProperty Name="UserTenNhaXe" ColumnName="UserTenNhaXe" />
+                <ScalarProperty Name="UserNgayGui" ColumnName="UserNgayGui" />
                 <ScalarProperty Name="NgayGui" ColumnName="NgayGui" />
                 <ScalarProperty Name="GhiChuXuLy" ColumnName="GhiChuXuLy" />
                 <ScalarProperty Name="DateUpdate" ColumnName="DateUpdate" />

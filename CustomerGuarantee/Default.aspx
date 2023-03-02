@@ -76,6 +76,11 @@
                     <h1 class="post-title anton">Gửi bảo hành</h1>
                 </div>
                 <div class="shortcode box-content clear">
+                    <div class="khiguiyc_box">
+                        Khi gửi Sản phẩm bảo hành quý khách vui lòng ghi thông tin người nhận :
+Công Ty TNHH Vi Tính Nguyên Kim. ĐC: 245B Trần Quang Khải,P Tân Định ,Q.1,TPHCM .
+ SĐT: 028 22 246 246 – Lầu 1 : Phòng Bảo Hành - 873
+                    </div>
                     <div class="box-qoute">
                         <%--   <div class="entry">
                             <p style="text-align: center;">Hãy để lại thông tin và yêu cầu</p>
@@ -158,26 +163,27 @@
                                 </div>
                                 <div class="form-field">
                                     <div class="form-label">
-                                        <label for="company">Tên nhà xe</label>
+                                        <label for="company">Thời gian dự kiến gửi</label>
                                     </div>
                                     <div class="form-input">
-                                        <input runat="server" type="text" name="CarName" value="" id="CarName" class="form-control" />
+                                        <input runat="server" type="text" name="NgayGui" value="" id="NgayGui" class="form-control" required />
                                     </div>
                                 </div>
                                 <div class="form-field">
                                     <div class="form-label">
-                                        <label for="company">Thời gian dự kiến</label>
+                                        <label for="company">Tên nhà xe</label>
                                     </div>
                                     <div class="form-input">
-                                        <input runat="server" type="text" name="NgayGui" value="" id="NgayGui" class="form-control" />
+                                        <input runat="server" type="text" name="CarName" value="" id="CarName" class="form-control" required />
                                     </div>
                                 </div>
+                                
                                 <div class="form-field">
                                     <div class="form-label">
                                         <label for="company">Địa chỉ nhà xe</label>
                                     </div>
                                     <div class="form-input">
-                                        <input runat="server" type="text" name="CarAddress" value="" id="CarAddress" class="form-control" />
+                                        <input runat="server" type="text" name="CarAddress" value="" id="CarAddress" class="form-control" required />
                                     </div>
                                 </div>
                                 <div class="form-field">
@@ -301,7 +307,7 @@
                     success: function (result) {
 
                         if (result == '{"d":1}') {
-                            alert("Gửi thành công!");
+                            alert("Gửi thành công. Vui lòng kiểm tra Email để xác nhận thông tin!");
                             location.reload();
                         }
                         if (result == '{"d":2}') {
@@ -413,8 +419,9 @@
 
        
       
-
+        document.title = "Gửi bảo hành";
        
    
     </script>
+
 </asp:Content>

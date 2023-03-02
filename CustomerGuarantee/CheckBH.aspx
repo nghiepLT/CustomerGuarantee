@@ -225,5 +225,6 @@
                 }
             });
         }
+        document.title = "Kiểm tra bảo hành";
     </script>
 </asp:Content>

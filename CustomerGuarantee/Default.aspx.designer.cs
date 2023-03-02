@@ -85,15 +85,6 @@ namespace CustomerGuarantee {
         protected global::System.Web.UI.HtmlControls.HtmlInputText ProductName;
         
         /// <summary>
-        /// CarName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText CarName;
-        
-        /// <summary>
         /// NgayGui control.
         /// </summary>
         /// <remarks>
@@ -101,6 +92,15 @@ namespace CustomerGuarantee {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText NgayGui;
+        
+        /// <summary>
+        /// CarName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText CarName;
         
         /// <summary>
         /// CarAddress control.
