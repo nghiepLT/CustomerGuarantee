@@ -11,6 +11,7 @@
           </Key>
           <Property Name="CustomerCaseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CustomerName" Type="nvarchar" MaxLength="200" />
+          <Property Name="NguoiLienHe" Type="nvarchar" MaxLength="200" />
           <Property Name="Address" Type="nvarchar" MaxLength="500" />
           <Property Name="PhoneCustomer" Type="nvarchar" MaxLength="200" />
           <Property Name="Email" Type="nvarchar" MaxLength="200" />
@@ -37,6 +38,20 @@
           <Property Name="UserGuiType" Type="int" />
           <Property Name="USerGuiTra" Type="nvarchar" MaxLength="200" />
           <Property Name="UserSDTGiaoHang" Type="nvarchar" MaxLength="200" />
+          <Property Name="ProductSeri" Type="nvarchar" MaxLength="200" />
+          <Property Name="ProductNgayMua" Type="nvarchar" MaxLength="200" />
+          <Property Name="ProductTinhTrangLoi" Type="nvarchar" MaxLength="200" />
+          <Property Name="ProductPhukien" Type="nvarchar" MaxLength="500" />
+          <Property Name="PhuongThucGui" Type="int" />
+          <Property Name="TenGiaoNhan" Type="nvarchar" MaxLength="200" />
+          <Property Name="SoDienThoaiGiaoNhan" Type="nvarchar" MaxLength="200" />
+          <Property Name="HinhThucGui" Type="int" />
+          <Property Name="GhiChuPhatSinh" Type="nvarchar" MaxLength="500" />
+          <Property Name="Step1" Type="datetime" />
+          <Property Name="Step2" Type="datetime" />
+          <Property Name="Step3" Type="datetime" />
+          <Property Name="Step4" Type="datetime" />
+          <Property Name="Step5" Type="datetime" />
         </EntityType>
         <EntityType Name="tCustomerUser">
           <Key>
@@ -106,6 +121,21 @@
           <Property Name="UserGuiType" Type="Int32" />
           <Property Name="USerGuiTra" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="UserSDTGiaoHang" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="NguoiLienHe" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ProductSeri" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ProductNgayMua" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ProductTinhTrangLoi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ProductPhukien" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="PhuongThucGui" Type="Int32" />
+          <Property Name="TenGiaoNhan" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="SoDienThoaiGiaoNhan" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="HinhThucGui" Type="Int32" />
+          <Property Name="GhiChuPhatSinh" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Step1" Type="DateTime" Precision="3" />
+          <Property Name="Step2" Type="DateTime" Precision="3" />
+          <Property Name="Step3" Type="DateTime" Precision="3" />
+          <Property Name="Step4" Type="DateTime" Precision="3" />
+          <Property Name="Step5" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="tUSer">
           <Key>
@@ -138,6 +168,21 @@
           <EntitySetMapping Name="CustomerCaseInfors">
             <EntityTypeMapping TypeName="CustomerCaseModel.CustomerCaseInfor">
               <MappingFragment StoreEntitySet="CustomerCaseInfor">
+                <ScalarProperty Name="Step5" ColumnName="Step5" />
+                <ScalarProperty Name="Step4" ColumnName="Step4" />
+                <ScalarProperty Name="Step3" ColumnName="Step3" />
+                <ScalarProperty Name="Step2" ColumnName="Step2" />
+                <ScalarProperty Name="Step1" ColumnName="Step1" />
+                <ScalarProperty Name="GhiChuPhatSinh" ColumnName="GhiChuPhatSinh" />
+                <ScalarProperty Name="HinhThucGui" ColumnName="HinhThucGui" />
+                <ScalarProperty Name="SoDienThoaiGiaoNhan" ColumnName="SoDienThoaiGiaoNhan" />
+                <ScalarProperty Name="TenGiaoNhan" ColumnName="TenGiaoNhan" />
+                <ScalarProperty Name="PhuongThucGui" ColumnName="PhuongThucGui" />
+                <ScalarProperty Name="ProductPhukien" ColumnName="ProductPhukien" />
+                <ScalarProperty Name="ProductTinhTrangLoi" ColumnName="ProductTinhTrangLoi" />
+                <ScalarProperty Name="ProductNgayMua" ColumnName="ProductNgayMua" />
+                <ScalarProperty Name="ProductSeri" ColumnName="ProductSeri" />
+                <ScalarProperty Name="NguoiLienHe" ColumnName="NguoiLienHe" />
                 <ScalarProperty Name="UserSDTGiaoHang" ColumnName="UserSDTGiaoHang" />
                 <ScalarProperty Name="USerGuiTra" ColumnName="USerGuiTra" />
                 <ScalarProperty Name="UserGuiType" ColumnName="UserGuiType" />

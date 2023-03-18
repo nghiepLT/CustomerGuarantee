@@ -21,7 +21,7 @@ namespace CustomerGuarantee
                 if (Request.Cookies["Baohanhlogin"] != null)
                 {
                     CustomerCaseEntities db = new CustomerCaseEntities();
-                    var cus = db.CustomerCaseInfors.ToList();
+                    var cus = db.CustomerCaseInfors.ToList(); 
                     userlogin.Value = Request.Cookies["Baohanhlogin"].Value;
                 }
                 else
@@ -58,6 +58,7 @@ namespace CustomerGuarantee
             cus.ThoiGianXuLy = DateTime.Now.ToString();
             cus.UserEdit = CustomerCaseInfor.UserEdit;
             //Thông tin trả
+            cus.Step5 = DateTime.Now;
             cus.UserNgayGui = CustomerCaseInfor.UserNgayGui;
             cus.UserTenNhaXe = CustomerCaseInfor.UserTenNhaXe;
             cus.UserAddress = CustomerCaseInfor.UserAddress;
@@ -66,13 +67,13 @@ namespace CustomerGuarantee
             cus.USerGuiTra = CustomerCaseInfor.USerGuiTra;
             db.SaveChanges();
             string htmlContents = "";
-            if (cus.Status == 2)
+            if (cus.Status ==1)
             {
                 htmlContents += "<div>Xin chào Anh/Chị" + " " + cus.CustomerName + "</div>";
                 htmlContents += "<div>Đơn bảo hành với mã " + cus.CodeGenerate + " đã được tiếp nhận</div>";
                 sendEmail(cus.Email, "Thông báo tiếp nhận đơn hàng", htmlContents);
             }
-            if (cus.Status == 3)
+            if (cus.Status == 4)
             {
                 htmlContents += "<div>Xin chào Anh/Chị" + " " + cus.CustomerName + "</div>";
                 htmlContents += "<div>Đơn bảo hành với mã " + cus.CodeGenerate + " đã hoàn thành</div>";
@@ -110,14 +111,26 @@ namespace CustomerGuarantee
 
             return 1;
         }
+
+        [WebMethod]
+        public static int CapNhatGhiChuPhatSinh(CustomerCaseInfor CustomerCaseInfor)
+        {
+            CustomerCaseEntities db = new CustomerCaseEntities();
+            CustomerCaseInfor cus = db.CustomerCaseInfors.Where(m => m.CustomerCaseID == CustomerCaseInfor.CustomerCaseID).FirstOrDefault();
+            cus.Status = 3;
+            cus.Step4 = DateTime.Now;
+            cus.GhiChuPhatSinh = CustomerCaseInfor.GhiChuPhatSinh;
+            db.SaveChanges();
+            return 1;
+        }
         public static bool sendEmail(string to, string title, string sContent)
         {
             try
             {
-                string AdminEmail = "nghiphep@nguyenkimvn.vn";
-                string AdminPass = "12345678";
-                string MailHost = "192.168.117.200";
-                string PortMailHost = "25";
+                string AdminEmail = Config.GetConfigValue("AdminEmailTo");
+                string AdminPass = Config.GetConfigValue("AdminPass");
+                string MailHost = Config.GetConfigValue("MailHost");
+                string PortMailHost = Config.GetConfigValue("PortMailHost");
                 int intPort = Helper.TryParseInt(PortMailHost, 25);
                 SmtpClient SmtpServer = new SmtpClient();
                 SmtpServer.Credentials = new System.Net.NetworkCredential(AdminEmail, AdminPass);
@@ -131,7 +144,7 @@ namespace CustomerGuarantee
 
                 System.Net.Mail.MailMessage mail = new System.Net.Mail.MailMessage();
                 // mail.From = new MailAddress(AdminEmail, Request.Url.Host.ToString(), System.Text.Encoding.UTF8);
-                mail.From = new MailAddress("nghiphep@nguyenkimvn.vn");
+                mail.From = new MailAddress(Config.GetConfigValue("AdminEmailTo"));
                 mail.To.Add(to);
                 mail.Subject = title;
                 mail.Body = sContent;
@@ -152,6 +165,30 @@ namespace CustomerGuarantee
                 return false;
             }
 
+        }
+
+        [WebMethod]
+        public static bool Caphattrangthai(CustomerCaseInfor CustomerCaseInfor)
+        {
+            CustomerCaseEntities db = new CustomerCaseEntities();
+            CustomerCaseInfor cus = db.CustomerCaseInfors.Where(m => m.CustomerCaseID == CustomerCaseInfor.CustomerCaseID).FirstOrDefault();
+            int status = CustomerCaseInfor.Status.Value;
+            if (cus != null)
+            {
+                if (status == 1)
+                {
+                    cus.Step2 = DateTime.Now;
+                    cus.Status = 1;
+                }
+                if (status == 2)
+                {
+                    cus.Step3 = DateTime.Now;
+                    cus.Status = 2;
+                }
+                db.SaveChanges();
+            }
+
+            return true;
         }
     }
 }

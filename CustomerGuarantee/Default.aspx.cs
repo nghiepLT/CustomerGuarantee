@@ -121,6 +121,7 @@ namespace CustomerGuarantee
             {
                 data.DateCreate = DateTime.Now;
                 data.Status = 0;
+                data.Step1 = DateTime.Now;
                 db.CustomerCaseInfors.Add(data);
 
                 //Tạo tài khoản khách hàng
@@ -134,7 +135,7 @@ namespace CustomerGuarantee
                 if (chkCustomerUser == null)
                 { 
                     tcus.CustomerEmail = data.Email;
-                    tcus.CustomerName = data.CustomerName;
+                    tcus.CustomerName = data.NguoiLienHe;
                     tcus.CustomerPhone = data.PhoneCustomer;
                     tcus.CustomerUser = data.Email;
                     tcus.CustomerAddress = data.Address;
@@ -151,49 +152,55 @@ namespace CustomerGuarantee
                 htmlContents += "<div>Xin chào Anh/Chị" + " " + data.CustomerName + "</div>"; 
                 htmlContents += "<div>Cảm ơn Anh/Chị đã gửi thông tin bảo hành cho chúng tôi." + "</div>";
 
-                htmlContents += "<table style=\"width:100%;margin:10px 0px\">";
+                string htmlThan = "";
+                htmlThan += "<table style=\"width:100%;margin:10px 0px\">";
 
-                htmlContents += "<tr>";
-                htmlContents += "<td style=\"border: 1px solid;padding:5px;background-color:#65FFFF;width:150px\">Tên khách hàng</td>";
-                htmlContents += "<td style=\"border: 1px solid;padding:5px\">" + data.CustomerName+"</td>";
-                htmlContents += "</tr>";
+                htmlThan += "<tr>";
+                htmlThan += "<td style=\"border: 1px solid;padding:5px;background-color:#65FFFF;width:150px\">Tên khách hàng</td>";
+                htmlThan += "<td style=\"border: 1px solid;padding:5px\">" + data.CustomerName+"</td>";
+                htmlThan += "</tr>";
 
-                htmlContents += "<tr>";
-                htmlContents += "<td style=\"border: 1px solid;padding:5px;background-color:#65FFFF;width:150px\">Địa chỉ</td>";
-                htmlContents += "<td style=\"border: 1px solid;padding:5px\">" + data.Address + "</td>";
-                htmlContents += "</tr>";
+                htmlThan += "<tr>";
+                htmlThan += "<td style=\"border: 1px solid;padding:5px;background-color:#65FFFF;width:150px\">Địa chỉ</td>";
+                htmlThan += "<td style=\"border: 1px solid;padding:5px\">" + data.Address + "</td>";
+                htmlThan += "</tr>";
 
-                htmlContents += "<tr>";
-                htmlContents += "<td style=\"border: 1px solid;padding:5px;background-color:#65FFFF;width:150px\">SĐT & người liên hệ</td>";
-                htmlContents += "<td style=\"border: 1px solid;padding:5px\">" + data.PhoneCustomer + "</td>";
-                htmlContents += "</tr>";
+                htmlThan += "<tr>";
+                htmlThan += "<td style=\"border: 1px solid;padding:5px;background-color:#65FFFF;width:150px\">SĐT & người liên hệ</td>";
+                htmlThan += "<td style=\"border: 1px solid;padding:5px\">" + data.PhoneCustomer + "</td>";
+                htmlThan += "</tr>";
 
-                htmlContents += "<tr>";
-                htmlContents += "<td style=\"border: 1px solid;padding:5px;background-color:#65FFFF;width:150px\">Sản phẩm gửi BH</td>";
-                htmlContents += "<td style=\"border: 1px solid;padding:5px\">" + data.ProductImage + "</td>";
-                htmlContents += "</tr>";
-                htmlContents += "<tr>"; 
+                htmlThan += "<tr>";
+                htmlThan += "<td style=\"border: 1px solid;padding:5px;background-color:#65FFFF;width:150px\">Sản phẩm gửi BH</td>";
+                htmlThan += "<td style=\"border: 1px solid;padding:5px\">" + data.ProductImage + "</td>";
+                htmlThan += "</tr>";
+                htmlThan += "<tr>";
 
-                htmlContents += "<td style=\"border: 1px solid;padding:5px;background-color:#65FFFF;width:150px\">Tên nhà xe</td>";
-                htmlContents += "<td style=\"border: 1px solid;padding:5px\">" + data.CarName + "</td>";
-                htmlContents += "</tr>";
+                htmlThan += "<td style=\"border: 1px solid;padding:5px;background-color:#65FFFF;width:150px\">Tên nhà xe</td>";
+                htmlThan += "<td style=\"border: 1px solid;padding:5px\">" + data.CarName + "</td>";
+                htmlThan += "</tr>";
 
-                htmlContents += "<tr>";
-                htmlContents += "<td style=\"border: 1px solid;padding:5px;background-color:#65FFFF;width:150px\">Địa chỉ nhà xe</td>";
-                htmlContents += "<td style=\"border: 1px solid;padding:5px\">" + data.CarAddress + "</td>";
-                htmlContents += "</tr>";
+                htmlThan += "<tr>";
+                htmlThan += "<td style=\"border: 1px solid;padding:5px;background-color:#65FFFF;width:150px\">Địa chỉ nhà xe</td>";
+                htmlThan += "<td style=\"border: 1px solid;padding:5px\">" + data.CarAddress + "</td>";
+                htmlThan += "</tr>";
 
-                htmlContents += "</table>";
-
+                htmlThan += "</table>";
+                htmlContents += htmlThan;
                 htmlContents += "<div>Mã đơn bảo hành của Anh/Chị là <strong>" + data.CodeGenerate + "</strong></div>";
                 htmlContents += "<div>Để kiểm tra thông tin bảo hành vui lòng Anh/Chị hãy vào đường link http://192.168.117.111:8082/kiem-tra-bao-hanh với Mã để kiểm tra tình trạng đơn bảo hành  </div>";
 
                 if (isTaoTK)
                 {
-                   
                     htmlContents += "<div>Chúng tôi đã tạo tài khoản cho bạn với User name: <strong>" + tcus.CustomerUser+ "</strong> Password mặc định là <strong>"+ test + "</strong><div>";
                 }
-                sendEmail(data.Email, "Title",htmlContents);
+                htmlContents += "<div>Trong trường hợp chưa nhận được mail phản hồi, vui lòng Anh/Chị kiểm tra hộp thư rác.</div>";
+                sendEmail(data.Email, "Xác nhận đăng ký gửi bảo hành",htmlContents);
+                //Send Mail cho Bộ phận xử lý
+                htmlContents = "";
+                htmlContents += "<div>Có đơn đặt bảo hành của khách hàng với thông tin</div>";
+                htmlContents += htmlThan;
+                sendEmail(Config.GetConfigValue("EmailBaoHanh"), "Khách gửi bảo hành", htmlContents);
                 db.SaveChanges();
             }
             catch(Exception ex)
@@ -210,10 +217,10 @@ namespace CustomerGuarantee
         {
             try
             {
-                string AdminEmail = "nghiphep@nguyenkimvn.vn";
-                string AdminPass = "12345678";
-                string MailHost = "192.168.117.200";
-                string PortMailHost = "25";
+                string AdminEmail = Config.GetConfigValue("AdminEmailTo");
+                string AdminPass = Config.GetConfigValue("AdminPass");
+                string MailHost = Config.GetConfigValue("MailHost");
+                string PortMailHost = Config.GetConfigValue("PortMailHost");
                 int intPort = Helper.TryParseInt(PortMailHost, 25);
                 SmtpClient SmtpServer = new SmtpClient();
                 SmtpServer.Credentials = new System.Net.NetworkCredential(AdminEmail, AdminPass);
@@ -227,7 +234,7 @@ namespace CustomerGuarantee
 
                 System.Net.Mail.MailMessage mail = new System.Net.Mail.MailMessage();
                 // mail.From = new MailAddress(AdminEmail, Request.Url.Host.ToString(), System.Text.Encoding.UTF8);
-                mail.From = new MailAddress("nghiphep@nguyenkimvn.vn");
+                mail.From = new MailAddress(Config.GetConfigValue("AdminEmailTo"));
                 mail.To.Add(to);
                 mail.Subject = title;
                 mail.Body = sContent;
@@ -304,6 +311,24 @@ namespace CustomerGuarantee
                 db.SaveChanges();
             }
             return true;
+        }
+
+        [WebMethod]
+        public static int Register(tCustomerUser data)
+        {
+            CustomerCaseEntities db = new CustomerCaseEntities();
+            var cus = db.tCustomerUsers.Where(m => m.CustomerUser == data.CustomerUser).FirstOrDefault();
+            if (cus != null)
+            {
+                return 2;
+            }
+            tCustomerUser tcus = new tCustomerUser();
+            tcus.CustomerEmail = data.CustomerUser;
+            tcus.CustomerUser = data.CustomerUser;
+            tcus.CustomerPassword = Encrypt(data.CustomerPassword);
+            db.tCustomerUsers.Add(tcus);
+            db.SaveChanges();
+            return 1; 
         }
 
     }

@@ -82,7 +82,7 @@
                     success: function (result) {
                         if (result == '{"d":1}') {
                             alert("Đăng nhập thành công");
-                            location.href = "/yeu-cau-khach-gui";
+                            location.href = "/xulybaohanh";
                         }
                         else {
                             alert("Đăng nhập thất bại");

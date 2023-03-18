@@ -251,3 +251,466 @@
     font-weight: bold;
     margin-bottom: 5px;
 }
+
+/*custom font*/
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+/*basic reset*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100%;
+    /*Image only BG fallback*/
+    /*background = gradient + image pattern combo*/
+    background: linear-gradient(rgba(196, 102, 0, 0.6), rgba(155, 89, 182, 0.6));
+}
+
+body {
+    font-family: montserrat, arial, verdana;
+}
+/*form styles*/
+#msform {
+    width: 400px;
+    margin: 50px auto;
+    text-align: center;
+    position: relative;
+}
+
+    #msform fieldset {
+        background: white;
+        border: 0 none;
+        border-radius: 3px;
+        box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+        padding: 20px 30px;
+        box-sizing: border-box;
+        width: 80%;
+        margin: 0 10%;
+        /*stacking fieldsets above each other*/
+        position: relative;
+    }
+        /*Hide all except first fieldset*/
+        #msform fieldset:not(:first-of-type) {
+            display: none;
+        }
+    /*inputs*/
+    #msform input, #msform textarea {
+        padding: 15px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        margin-bottom: 10px;
+        width: 100%;
+        box-sizing: border-box;
+        font-family: montserrat;
+        color: #2C3E50;
+        font-size: 13px;
+    }
+    /*buttons*/
+    #msform .action-button {
+        width: 100px;
+        background: #1c449c;
+        font-weight: bold;
+        color: white;
+        border: 0 none;
+        border-radius: 1px;
+        cursor: pointer;
+        padding: 10px;
+        margin: 10px 5px;
+        text-decoration: none;
+        font-size: 14px;
+    }
+
+        #msform .action-button:hover, #msform .action-button:focus {
+            box-shadow: 0 0 0 2px white, 0 0 0 3px #337ab7;
+        }
+/*headings*/
+.fs-title {
+    font-size: 15px;
+    text-transform: uppercase;
+    color: #2C3E50;
+    margin-bottom: 10px;
+}
+
+.fs-subtitle {
+    font-weight: normal;
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 20px;
+}
+/*progressbar*/
+#progressbar {
+    margin-bottom: 30px;
+    overflow: hidden;
+    /*CSS counters to number the steps*/
+    counter-reset: step;
+}
+
+    #progressbar li {
+        list-style-type: none;
+        color: white;
+        text-transform: uppercase;
+        font-size: 9px;
+        width: 33.33%;
+        float: left;
+        position: relative;
+    }
+
+        #progressbar li:before {
+            content: counter(step);
+            counter-increment: step;
+            width: 20px;
+            line-height: 20px;
+            display: block;
+            font-size: 10px;
+            color: #333;
+            background: white;
+            border-radius: 3px;
+            margin: 0 auto 5px auto;
+        }
+        /*progressbar connectors*/
+        #progressbar li:after {
+            content: '';
+            width: 100%;
+            height: 2px;
+            background: white;
+            position: absolute;
+            left: -50%;
+            top: 9px;
+            z-index: -1; /*put it behind the numbers*/
+        }
+
+        #progressbar li:first-child:after {
+            /*connector not needed before the first step*/
+            content: none;
+        }
+        /*marking active/completed steps green*/
+        /*The number of the step and the connector before it = green*/
+        #progressbar li.active:before, #progressbar li.active:after {
+            background: #27AE60;
+            color: white;
+        }
+
+.step_form_box {
+    text-align: center;
+}
+
+    .step_form_box ul {
+        width: 500px;
+        margin: 0px auto;
+        padding: 0px;
+        margin-top: 30px;
+    }
+
+        .step_form_box ul li {
+            display: inline-block;
+        }
+
+            .step_form_box ul li a {
+            }
+
+.step_item {
+    position: relative;
+}
+
+    .step_item:before {
+        position: absolute;
+        content: '';
+        width: 104%;
+        height: 1px;
+        right: 54%;
+        top: 50%;
+        background-color: red;
+    }
+
+.step_itematv:first-child {
+    width: 0px;
+}
+/*custom font*/
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+/*basic reset*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100%;
+    /*Image only BG fallback*/
+    /*background = gradient + image pattern combo*/
+    background: linear-gradient(rgba(196, 102, 0, 0.6), rgba(155, 89, 182, 0.6));
+}
+
+body {
+    font-family: montserrat, arial, verdana;
+}
+/*form styles*/
+#msform {
+    width: 570px;
+    margin: 50px auto;
+    text-align: center;
+    position: relative;
+}
+
+    #msform fieldset {
+        background: white;
+        border: 0 none;
+        border-radius: 3px;
+        box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+        padding: 20px 5px;
+        box-sizing: border-box;
+        width: 100%;
+        /*stacking fieldsets above each other*/
+        position: relative;
+    }
+        /*Hide all except first fieldset*/
+        #msform fieldset:not(:first-of-type) {
+            display: none;
+        }
+    /*inputs*/
+    #msform input, #msform textarea {
+        padding: 15px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        margin-bottom: 10px;
+        width: 100%;
+        box-sizing: border-box;
+        font-family: montserrat;
+        color: #2C3E50;
+        font-size: 13px;
+    }
+    /*buttons*/
+    #msform .action-button {
+        width: 100px;
+        background: #1c449c;
+        font-weight: bold;
+        color: white;
+        border: 0 none;
+        border-radius: 1px;
+        cursor: pointer;
+        padding: 6px;
+        margin: 10px 5px;
+        text-decoration: none;
+        font-size: 14px;
+    }
+
+        #msform .action-button:hover, #msform .action-button:focus {
+            box-shadow: 0 0 0 2px white, 0 0 0 3px #337ab7;
+        }
+/*headings*/
+.fs-title {
+    font-size: 15px;
+    text-transform: uppercase;
+    color: #2C3E50;
+    margin-bottom: 10px;
+}
+
+.fs-subtitle {
+    font-weight: normal;
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 20px;
+}
+/*progressbar*/
+#progressbar {
+    margin-bottom: 30px;
+    overflow: hidden;
+    /*CSS counters to number the steps*/
+    counter-reset: step;
+    margin-left: 18%;
+}
+
+    #progressbar li {
+        list-style-type: none;
+        color: black;
+        text-transform: uppercase;
+        font-size: 9px;
+        width: 33.33%;
+        float: left;
+        position: relative;
+        font-weight: bold;
+    }
+
+        #progressbar li:before {
+            content: counter(step);
+            counter-increment: step;
+            width: 20px;
+            line-height: 20px;
+            display: block;
+            font-size: 10px;
+            color: #fff;
+            background: #919191;
+            border-radius: 3px;
+            margin: 0 auto 5px auto;
+        }
+        /*progressbar connectors*/
+        #progressbar li:after {
+            content: '';
+            width: 87%;
+            height: 2px;
+            background: #7c7c7c;
+            position: absolute;
+            left: -43.3%;
+            top: 9px;
+            z-index: 1; /*put it behind the numbers*/
+        }
+
+        #progressbar li:first-child:after {
+            /*connector not needed before the first step*/
+            content: none;
+        }
+        /*marking active/completed steps green*/
+        /*The number of the step and the connector before it = green*/
+        #progressbar li.active:before, #progressbar li.active:after {
+            background: #1c449c;
+            color: white;
+        }
+
+.stepchung {
+}
+
+.nextprevbox {
+    position: sticky;
+    bottom: 0px;
+    left: 0px;
+    background-color: white;
+}
+
+.arrow-steps .step {
+    font-size: 14px;
+    text-align: center;
+    color: #666;
+    cursor: default;
+    margin: 0 3px;
+    padding: 6px 10px 10px 30px;
+    min-width: 116px;
+    float: left;
+    position: relative;
+    background-color: #d9e3f7;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    transition: background-color 0.2s ease;
+}
+
+    .arrow-steps .step:after,
+    .arrow-steps .step:before {
+        content: " ";
+        position: absolute;
+        top: 0;
+        right: -17px;
+        width: 0;
+        height: 0;
+        border-top: 19px solid transparent;
+        border-bottom: 17px solid transparent;
+        border-left: 17px solid #d9e3f7;
+        z-index: 2;
+        transition: border-color 0.2s ease;
+    }
+
+    .arrow-steps .step:before {
+        right: auto;
+        left: 0;
+        border-left: 17px solid #fff;
+        z-index: 0;
+    }
+
+    .arrow-steps .step:first-child:before {
+        border: none;
+    }
+
+    .arrow-steps .step:first-child {
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+    }
+
+    .arrow-steps .step span {
+        position: relative;
+    }
+
+        .arrow-steps .step span:before {
+            opacity: 0;
+            content: "✔";
+            position: absolute;
+            top: -2px;
+            left: -20px;
+        }
+
+    .arrow-steps .step.done span:before {
+        opacity: 1;
+        -webkit-transition: opacity 0.3s ease 0.5s;
+        -moz-transition: opacity 0.3s ease 0.5s;
+        -ms-transition: opacity 0.3s ease 0.5s;
+        transition: opacity 0.3s ease 0.5s;
+    }
+
+    .arrow-steps .step.current {
+        color: #fff;
+        background-color: #23468c;
+    }
+
+        .arrow-steps .step.current:after {
+            border-left: 17px solid #23468c;
+        }
+
+.pull-right {
+    float: right;
+}
+
+.capnhattrangthai_title {
+    font-size: 18px;
+    text-transform: capitalize;
+    text-align: center;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.step {
+    cursor: pointer !important;
+}
+
+.disabletabstep {
+    /*background-color:#666!important;*/
+    pointer-events: none;
+    /*color: #fff!important;*/
+}
+
+    .disabletabstep:after {
+        /*border-left: 17px solid #666!important;*/
+    }
+
+.ghichuphatsinh {
+    width: 54%;
+    margin-top: 19px !important;
+    outline: none;
+}
+
+.tinhtrangdon_box {
+}
+
+    .tinhtrangdon_box ul {
+        margin: 0px;
+        padding: 0px;
+    }
+
+        .tinhtrangdon_box ul li {
+            padding-bottom: 30px;
+            position: relative;
+            padding-left: 30px;
+        }
+
+            .tinhtrangdon_box ul li:after {
+                position:absolute;
+                content:'*';
+                height: 95%;
+                width:1px;
+                background-color:black;
+                left: 3px;
+                top:0px;
+            }
+            .tinhtrangdon_box ul li:last-child{
+                height:0px;
+            }

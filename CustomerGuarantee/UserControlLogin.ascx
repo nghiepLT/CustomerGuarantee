@@ -43,7 +43,7 @@
                                     <div>
                                         <div class="form-wrap">
                                             <div class="form-field">
-                                                <input type="text" name="CustomerUser" id="CustomerUser" value="" class="form-control" placeholder="Tên dăng nhập *" required="1" autofocus="1" autocomplete="off">
+                                                <input type="text" name="CustomerUser" id="CustomerUser" value="" class="form-control" placeholder="Email *" required="1" autofocus="1" autocomplete="off">
                                             </div>
                                             <div class="form-field">
                                                 <input type="password" name="CustomerPassword" id="CustomerPassword" value="" class="form-control" placeholder="Mật khẩu *" required="1" autocomplete="off">
@@ -51,7 +51,31 @@
                                             <div class="form-button" style="width: 100%">
                                                 <button style="width: 100%; margin-bottom: 13px; margin-top: 5px;" onclick="Dangnhap()" name="login" type="submit" class="effect fa-sign-in">Đăng nhập</button>
                                             </div>
-                                            <div style="width: 100%" class="g_id_signin" data-type="standard"></div>
+                                            <div class="form-button" style="width: 100%">
+                                                <button style="width: 100%; margin-bottom: 13px; margin-top: 5px;" onclick="DangKy()" name="login"  class="effect fa-user">Đăng ký tài khoản</button>
+                                            </div>
+                                           <%-- <div style="width: 100%" class="g_id_signin" data-type="standard"></div>--%>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="box-login2" class="box-info">
+                                    <div>
+                                        <div class="form-wrap">
+                                            <div class="form-field">
+                                                <input type="text" name="dkCustomerUser" id="dkCustomerUser" value="" class="form-control" placeholder="Nhập địa chỉ Email *" required="1" autofocus="1" autocomplete="off">
+                                            </div>
+                                            <div class="form-field">
+                                                <input type="password" name="dkCustomerPassword" id="dkCustomerPassword" value="" class="form-control" placeholder="Mật khẩu *" required="1" autocomplete="off">
+                                            </div>
+                                             <div class="form-field">
+                                                <input type="password" name="dkCustomerPassword2" id="dkCustomerPassword2" value="" class="form-control" placeholder="Nhập lại mật khẩu *" required="1" autocomplete="off">
+                                            </div>
+                                            <div class="form-button" style="width: 100%">
+                                                <button style="width: 100%; margin-bottom: 13px; margin-top: 5px;" onclick="DangKyLuu()" name="login" type="submit" class="effect fa-sign-in">Đăng Ký</button>
+                                            </div>
+                                            <div class="form-button" style="width: 100%">
+                                                <button style="width: 100%; margin-bottom: 13px; margin-top: 5px;" onclick="Quaylai()" name="login" type="submit" class="effect fa-back">Quay lại</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -111,6 +135,13 @@
         </div>
     </div>
 <script>
+
+    //Khai báo biến
+    var varCustomerName = "";
+    var varNguoiLienHe = "";
+    var varPhoneCustomer = "";
+    var varAddress = "";
+    var varEmail = "";
     $(document).ready(function () {
         if ($("#MainContent_UserControlLogin_customerlogin").val() == 0) {
             $("#exampleModal").modal("toggle");
@@ -169,8 +200,18 @@
     function tgdn() {
         $("#exampleModal").modal("toggle");
     }
-
+    $("#box-login2").hide();
     function Dangnhap() {
+        if ($("#CustomerUser").val() == '') {
+            alert("Vui lòng nhập Email");
+            $("#CustomerUser").focus();
+            return;
+        }
+        if ($("#CustomerPassword").val() == '') {
+            alert("Vui lòng Mật khẩu");
+            $("#CustomerPassword").focus();
+            return;
+        }
         var param = {
             CustomerUser: $('#CustomerUser').val(),
             CustomerPassword: $('#CustomerPassword').val()
@@ -195,5 +236,65 @@
             }
         });
     }
+    function DangKy() {
+        $("#box-login").hide();
+        $("#box-login2").show();
+        $("#exampleModalLabel").html("ĐĂNG KÝ TÀI KHOẢN");
+    }
+    function Quaylai() {
+        $("#box-login").show();
+        $("#box-login2").hide();
+        $("#exampleModalLabel").html("ĐĂNG NHẬP HỆ THỐNG");
+    }
+    function DangKyLuu() {
 
+        if ($("#dkCustomerUser").val() == '') {
+            alert("Vui lòng nhập Email");
+            $("#dkCustomerUser").focus();
+            return;
+        }
+        if ($("#dkCustomerPassword").val() == '') {
+            alert("Vui lòng nhập Mật khẩu");
+            $("#dkCustomerPassword").focus();
+            return;
+        }
+
+        if ($("#dkCustomerPassword2").val() == '') {
+            alert("Vui lòng nhập Mật khẩu");
+            $("#dkCustomerPassword2").focus();
+            return;
+        }
+
+        if ($("#dkCustomerPassword").val() != $("#dkCustomerPassword2").val()) {
+            alert("Mật khẩu không trùng khớp");
+            return;
+        }
+        var param = {
+            CustomerUser: $('#dkCustomerUser').val(),
+            CustomerPassword: $('#dkCustomerPassword').val()
+        }
+        $.ajax({
+            url: 'Default.aspx/Register',
+            type: "POST",
+            dataType: "html",
+            contentType: "application/json; charset=utf-8",
+            data: "{data:" + JSON.stringify(param) + "}",
+            success: function (result) {
+                if (result == '{"d":2}') {
+                    alert("Email đã được tạo tài khoản!");
+                    return;
+                }
+                if (result == '{"d":1}') {
+                    alert("Tạo tài khoản thành công");
+                    location.reload();
+                }
+                else {
+                    alert("Đăng nhập thất bại");
+                }
+            },
+            error: function (result) {
+                alert("Failed");
+            }
+        });
+    }
 </script>

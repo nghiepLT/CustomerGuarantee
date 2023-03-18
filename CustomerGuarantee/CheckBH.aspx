@@ -217,6 +217,11 @@
             $("#myimg").attr("src","");
         }
         function searchphieu() {
+            if ($("#MainContent_CodeGenerate").val() == "") {
+                alert("Vui lòng nhập mã!");
+                $("#MainContent_CodeGenerate").focus();
+                return false;
+            }
             $.ajax({
                 url: 'CheckBH.aspx/CheckPhieu',
                 type: "POST",
@@ -224,12 +229,14 @@
                 contentType: "application/json; charset=utf-8",
                 data: "{MaPhieu:'" + $("#MainContent_CodeGenerate").val().trim() + "'}",
                 success: function (result) {
-                    $(".tb_thongtinphieu").show();
                     var data = result.d;
                     if (data == "null") {
-                        alert("Mã không hợp lệ!");
+                        alert("Mã không tồn tại trong hệ thống!");
                         clearData();
+                        return false;
                     }
+
+                    $(".tb_thongtinphieu").show();
                     const obj = JSON.parse(data);
                     if (obj.Status == 0) {
                         $("#Status").html('Chưa nhận');

@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="Yêu cầu khách gửi" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Yeucaukhachgui.aspx.cs" Inherits="CustomerGuarantee.Yeucaukhachgui" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server"> 
     <link href="Content/Site.css" rel="stylesheet" />
     <input id="userlogin" runat="server" style="display:none;" />
     <div id="breadrumb" class="outer hidden-xs">
@@ -67,28 +66,51 @@
             </div>
         </div>
     </div>
-    <div class="modal fade danhgiamodal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"  data-backdrop="static" >
-        <div class="modal-dialog" role="document" style="width:400px;">
+    <div class="modal fade danhgiamodal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+        <div class="modal-dialog" role="document" style="width:700px;">
             <div class="modal-content">
 
                 <div class="modal-body">
-                    <div>
+                    <div class="capnhattrangthai_title">
                         Cập nhật trạng thái
                     </div>
-                    <ul>
-                        <li> 
+                    <div class="container">
+                        <div class="wrapper">
+                            <div class="arrow-steps clearfix">
+                                <div id="tab1" data-status="0" onclick="tgstep(this)" class="step current"><span>Chưa nhận</span> </div>
+                                <div id="tab2" data-status="1" onclick="tgstep(this)" class="step"><span>Đã nhận</span> </div>
+                                <div id="tab3" data-status="2" onclick="tgstep(this)" class="step"><span>Đang xử lý</span> </div>
+                                <div id="tab4" data-status="3" onclick="tgstep(this)" class="step"><span>Phát sinh</span> </div>
+                                <div id="tab5" data-status="4" onclick="tgstep(this)" class="step"><span>Đã xử lý xong</span> </div>
+                            </div>
+                        </div>
+                      <div>
+                         <textarea rows="4" class="ghichuphatsinh" id="GhiChuPhatSinh" placeholder="Ghi chú phát sinh" style="display:none;"></textarea>
+                      </div>
+                    </div>
+                    <ul style="display:none;">
+                        <li>
                             <input type="radio" name="radChange" id="rad1" onchange="radChange(1)" />
                             <span>Chưa nhận</span>
                         </li>
                         <li>
-                            <input type="radio" name="radChange" id="rad2"  onchange="radChange(2)" />
-                            <span>Đã nhận và đang xử lý</span>
+                            <input type="radio" name="radChange" id="rad2" onchange="radChange(2)" />
+                            <span>Đã nhận</span>
+                        </li>
+                        <li>
+                            <input type="radio" name="radChange" id="rad3" onchange="radChange(3)" />
+                            <span>Đang tiếp nhận</span>
+                        </li>
+                            <li>
+                            <input type="radio" name="radChange" id="rad5" onchange="radChange(5)" />
+                            <span>Phát sinh</span>
                         </li>
                         <li>
                             <input type="radio" name="radChange" id="rad4" onchange="radChange(4)" />
                             <span>Đã xử lý xong</span>
                         </li>
                     </ul>
+                   
                     <div class="thongtintrakhach_box">
                          <div class="mg-10">
                             <div class="row ">
@@ -170,7 +192,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button onclick="capnhattrangthai()" type="button" class="btn btn-primary">Lưu</button>
+                    <button onclick="capnhattrangthai()" type="button" class="btn btn-primary btnluu">Lưu</button>
                 </div>
             </div>
         </div>
@@ -377,17 +399,30 @@
                         }
                         if (obj[i].Status == 1) {
                             htmlContents += "<td>";
-                            htmlContents += "<a class=\"btn btn-xs btn-primary\" onclick=\"tgStatus(" + obj[i].CustomerCaseID + ")\" >Đã nhận và đang xử lý</a>";
+                            htmlContents += "<a class=\"btn btn-xs btn-primary\" onclick=\"tgStatus(" + obj[i].CustomerCaseID + ")\" >Đã nhận</a>";
                             htmlContents += "</td>";
                         }
-                      
+                        if (obj[i].Status == 2) {
+                            htmlContents += "<td>";
+                            htmlContents += "<a class=\"btn btn-xs btn-primary\" onclick=\"tgStatus(" + obj[i].CustomerCaseID + ")\" >Đang xử lý</a>";
+                            htmlContents += "</td>";
+                        }
                         if (obj[i].Status == 3) {
                             htmlContents += "<td>";
+                            htmlContents += "<a class=\"btn btn-xs btn-primary\" onclick=\"tgStatus(" + obj[i].CustomerCaseID + ")\" >Đang phát sinh</a>";
+                            htmlContents += "</td>";
+                        }
+                        if (obj[i].Status == 4) {
+                            htmlContents += "<td>";
                             htmlContents += "<a style=\"pointer-events: none;\" class=\"btn btn-xs btn-success\" onclick=\"tgStatus(" + obj[i].CustomerCaseID + ")\" >Đã xử lý xong</a>";
-                            htmlContents += "<div>Ngày trả: ";
-                            var date = new Date(parseInt(obj[i].UserNgayGui.substr(6)));
-                            htmlContents += GetFormattedDate(date)
-                            htmlContents += "</div>";
+                           
+                            if (obj[i].UserNgayGui != null) {
+                                htmlContents += "<div>Ngày trả: ";
+                                var date = new Date(parseInt(obj[i].UserNgayGui.substr(6)));
+                                htmlContents += GetFormattedDate(date)
+                                htmlContents += "</div>";
+                            }
+                          
                             htmlContents += "</td>";
                         }
                         htmlContents += "<td>";
@@ -403,10 +438,48 @@
             });
         }
         var CustomerCaseID = 0;
+        var currentStatus = 0;
+
+        function ActiceStep1() {
+            $("#tab1").addClass("disabletabstep");
+            $("#tab3").addClass("disabletabstep");
+            $("#tab4").addClass("disabletabstep");
+            $("#tab5").addClass("disabletabstep");
+            $(".step").removeClass("current");
+            $("#tab1").addClass("current");
+            $(".btnluu").hide();
+        }
+        function ActiceStep2() {
+            $("#tab1").addClass("disabletabstep");
+            $("#tab2").addClass("disabletabstep");
+            $("#tab4").addClass("disabletabstep");
+            $("#tab5").addClass("disabletabstep");
+            $(".step").removeClass("current");
+            $("#tab2").addClass("current");
+            $(".btnluu").hide();
+        }
+        function ActiceStep3() {
+            $("#tab1").addClass("disabletabstep");
+            $("#tab2").addClass("disabletabstep");
+            $("#tab3").addClass("disabletabstep"); 
+            $(".step").removeClass("current");
+            $("#tab3").addClass("current");
+        }
+
+        function ActiceStep4() {
+            $("#tab1").addClass("disabletabstep");
+            $("#tab2").addClass("disabletabstep");
+            $("#tab3").addClass("disabletabstep");
+            $(".step").removeClass("current");
+            $("#tab4").addClass("current");
+            $(".ghichuphatsinh").show();
+            step = 3;
+        }
         function tgStatus(id) {
             $(".thongtintrakhach_box").hide();
             $("#exampleModal").modal("toggle");
-
+            $(".ghichuphatsinh").hide();
+            $(".thongtintrakhach_box").hide();
             $.ajax({
                 url: 'Yeucaukhachgui.aspx/GetData',
                 type: "POST",
@@ -416,19 +489,25 @@
                 success: function (result) {
                     var data = result.d;
                     const obj = JSON.parse(data);
-                    CustomerCaseID = obj.CustomerCaseID;
+                    CustomerCaseID = obj.CustomerCaseID; 
                     if (obj.Status == 0) {
                         $("#rad1").prop("checked", true);
+                        ActiceStep1();
                     }
                     if (obj.Status == 1) {
                         $("#rad2").prop("checked", true);
+                        ActiceStep2();
                     }
                     if (obj.Status == 2) {
                         $("#rad3").prop("checked", true);
+                        ActiceStep3();
                     }
                     if (obj.Status == 3) {
                         $("#rad4").prop("checked", true);
+                        ActiceStep4();
+                        $("#GhiChuPhatSinh").val(obj.GhiChuPhatSinh)
                     }
+                    currentStatus = obj.Status;
                 },
                 error: function (result) {
                     alert("Failed");
@@ -436,62 +515,88 @@
             });
         }
 
-        function capnhattrangthai() {
-            $("#exampleModal").modal("toggle");
-            var status = 0;
-            if ($("#rad1").prop("checked") == true) {
-                status = 0;
-            }
-            if ($("#rad2").prop("checked") == true) {
-                status = 1;
-            }
-            if ($("#rad3").prop("checked") == true) {
-                status = 2;
-            }
-            if ($("#rad4").prop("checked") == true) {
-                status = 3;
-            }
-            var userstatus = 0;
-            if ($("#slHinhthuc").val() == 1) {
-                userstatus = 1;
-            }
-            else {
-                userstatus = 2;
-            }
-            //
-            if (userstatus == 1) {
-                if ($("#USerGuiTra").val() == '') {
-                    alert("Vui lòng nhập thông tin"); 
-                    return false;
-                }
-            }
+        function capnhattrangthai() { 
+              
             var param = {
                 CustomerCaseID: CustomerCaseID,
-                Status: status,
-                GhiChuXuLy: $('#GhiChuXuLy').val(),
-                UserEdit: $("#MainContent_userlogin").val(),
-                UserNgayGui: $("#UserNgayGui").val(),
-                UserTenNhaXe:$("#UserTenNhaXe").val(),
-                UserAddress: $("#UserAddress").val(),
-                USerSoDTNhaXe: $("#USerSoDTNhaXe").val(),
-                USerGuiTra: $("#USerGuiTra").val(),
-                UserGuiType: userstatus
+                Status: step,
             }
             $.ajax({
-                url: 'Yeucaukhachgui.aspx/UpdateData',
+                url: 'Yeucaukhachgui.aspx/Caphattrangthai',
                 type: "POST",
                 dataType: "html",
                 contentType: "application/json; charset=utf-8",
                 data: "{CustomerCaseInfor:" + JSON.stringify(param) + "}",
                 success: function (result) {
-                    //var data = result.d;
-                    //const obj = JSON.parse(data);
-                    location.reload();
+                   
                 },
                 error: function (result) {
                     alert("Failed");
                 }
             });
+            if (step == 3) {
+                var param = {
+                    CustomerCaseID: CustomerCaseID,
+                    GhiChuPhatSinh: $('#GhiChuPhatSinh').val() 
+                }
+                $.ajax({
+                    url: 'Yeucaukhachgui.aspx/CapNhatGhiChuPhatSinh',
+                    type: "POST",
+                    dataType: "html",
+                    contentType: "application/json; charset=utf-8",
+                    data: "{CustomerCaseInfor:" + JSON.stringify(param) + "}",
+                    success: function (result) {
+                        
+                        location.reload();
+                    },
+                    error: function (result) {
+                        alert("Failed");
+                    }
+                });
+            }
+            if (step == 4) {
+                var userstatus = 0;
+                if ($("#slHinhthuc").val() == 1) {
+                    userstatus = 1;
+                }
+                else {
+                    userstatus = 2;
+                }
+                //
+                if (userstatus == 3) {
+                    if ($("#USerGuiTra").val() == '') {
+                        alert("Vui lòng nhập thông tin");
+                        return false;
+                    }
+                }
+                var param = {
+                    CustomerCaseID: CustomerCaseID,
+                    Status: step,
+                    GhiChuXuLy: $('#GhiChuXuLy').val(),
+                    UserEdit: $("#MainContent_userlogin").val(),
+                    UserNgayGui: $("#UserNgayGui").val(),
+                    UserTenNhaXe: $("#UserTenNhaXe").val(),
+                    UserAddress: $("#UserAddress").val(),
+                    USerSoDTNhaXe: $("#USerSoDTNhaXe").val(),
+                    USerGuiTra: $("#USerGuiTra").val(),
+                    UserGuiType: userstatus
+                }
+                $.ajax({
+                    url: 'Yeucaukhachgui.aspx/UpdateData',
+                    type: "POST",
+                    dataType: "html",
+                    contentType: "application/json; charset=utf-8",
+                    data: "{CustomerCaseInfor:" + JSON.stringify(param) + "}",
+                    success: function (result) {
+                        //var data = result.d;
+                        //const obj = JSON.parse(data);
+                        location.reload();
+                    },
+                    error: function (result) {
+                        alert("Failed");
+                    }
+                });
+            } 
         }
 
         function xemchitiet(id) {
@@ -504,7 +609,7 @@
                 data: "{CustomerCaseID:'" + id + "'}",
                 success: function (result) {
                     var data = result.d;
-                    const obj = JSON.parse(data);
+                    const obj = JSON.parse(data); 
                     $("#txtCustomerName").html(obj.CustomerName);
                     $("#txtAddress").html(obj.Address);
                     $("#txtPhoneCustomer").html(obj.PhoneCustomer);
@@ -524,7 +629,7 @@
                     var getdate = GetFormattedDate(date);
                     $("#txtUserNgayGui").html("<strong>" + getdate+"</strong>");
                     if (obj.UserGuiType == 1) {
-                        $("#txtUserGuiType").html("Nhà xe trả");
+                        $("#txtUserGuiType").html("Gửi chành xe");
                     }
                     else {
                         $("#txtUserGuiType").html("Giao nhận");
@@ -562,7 +667,7 @@
             }
             else {
                 $(".thongtintrakhach_box").hide();
-            }
+            } 
         }
 
         function slTra() {
@@ -575,6 +680,33 @@
             }
         }
         document.title = "Yêu cầu khách hàng";
+
+        var step = 0;
+        function tgstep(dis) {
+            var status = $(dis).attr("data-status");
+            step = status;
+            if (step < 3) {
+                if (confirm('Chuyển trạng thái cho đơn bảo hành này?')) {
+                    $(".step").removeClass("current");
+                    $(dis).addClass("current");
+                    $(".btnluu").trigger("click");
+                    window.location.reload();
+                    //
+                }
+            }
+            else {
+                $(".step").removeClass("current");
+                $(dis).addClass("current");
+                if (step == 3) {
+                    $(".ghichuphatsinh").show();
+                    $(".thongtintrakhach_box").hide();
+                }
+                if (step == 4) {
+                    $(".ghichuphatsinh").hide();
+                    $(".thongtintrakhach_box").show();
+                }
+            }
+        }
     </script>
 
 </asp:Content>

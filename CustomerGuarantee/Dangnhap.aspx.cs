@@ -57,7 +57,6 @@ namespace CustomerGuarantee
                 cookie.Expires = DateTime.Now.AddDays(1);
                 HttpContext.Current.Response.Cookies.Add(cookie);
                 return 1;
-
             }
             return -1;
         }

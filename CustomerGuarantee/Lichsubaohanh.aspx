@@ -94,7 +94,30 @@
             <div class="modal-content">
 
                 <div class="modal-body">
-                     <div class="thongtinkhachgui_title">
+                    <div class="thongtinkhachgui_title">
+                        Tình trạng đơn
+                    </div>
+                    <div class="tinhtrangdon_box">
+                        <ul>
+                            <li id="li_1">
+                               <span> Dịch vụ bảo hành của quý khách đã được tạo với mã Bảo hành là: BH-12345</span>
+                            </li>
+                            <li id="li_2" style="display:none">
+                                <span>Trường hợp bảo hành của quý khách đã được tiếp nhận.</span>
+                            </li>
+                            <li id="li_3" style="display:none;">
+                               <span>Trường hợp bảo hành của quý khách đang được hãng xử lí 
+                                (Dự kiến 3-5 ngày làm việc)</span>
+                            </li>
+                            <li id="li_4" style="display:none;">
+                               <span>Trường phát sinh (Nếu có)</span>
+                            </li>
+                            <li id="li_5" style="display:none;">
+                                <span>Trường hợp bảo hành của quý khách đã hoàn tất</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="thongtinkhachgui_title" style="margin-top:30px">
                         Thông tin khách gửi
                     </div>
                    <table class="table table-bordered">
@@ -442,7 +465,7 @@
                     var getdate = GetFormattedDate(date);
                     $("#txtUserNgayGui").html("<strong>" + getdate + "</strong>");
                     if (obj.UserGuiType == 1) {
-                        $("#txtUserGuiType").html("Nhà xe trả");
+                        $("#txtUserGuiType").html("Gửi chành xe");
                     }
                     else {
                         $("#txtUserGuiType").html("Giao nhận");

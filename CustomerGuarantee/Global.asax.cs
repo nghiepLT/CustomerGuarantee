@@ -23,7 +23,7 @@ namespace CustomerGuarantee
             string currentLocation = context.Request.Path.ToLower();
             try
             {
-                if (currentLocation.Equals("/yeu-cau-khach-gui"))
+                if (currentLocation.Equals("/xulybaohanh"))
                 {
                     context.RewritePath("~/Yeucaukhachgui.aspx");
                 }

@@ -183,6 +183,7 @@
     <Content Include="css\style.min.css" />
     <Content Include="Dangkytaikhoan.aspx" />
     <Content Include="Dangnhap.aspx" />
+    <Content Include="Database\script.sql" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />

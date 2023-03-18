@@ -42,5 +42,20 @@ namespace CustomerGuarantee.Models
         public Nullable<int> UserGuiType { get; set; }
         public string USerGuiTra { get; set; }
         public string UserSDTGiaoHang { get; set; }
+        public string NguoiLienHe { get; set; }
+        public string ProductSeri { get; set; }
+        public string ProductNgayMua { get; set; }
+        public string ProductTinhTrangLoi { get; set; }
+        public string ProductPhukien { get; set; }
+        public Nullable<int> PhuongThucGui { get; set; }
+        public string TenGiaoNhan { get; set; }
+        public string SoDienThoaiGiaoNhan { get; set; }
+        public Nullable<int> HinhThucGui { get; set; }
+        public string GhiChuPhatSinh { get; set; }
+        public Nullable<System.DateTime> Step1 { get; set; }
+        public Nullable<System.DateTime> Step2 { get; set; }
+        public Nullable<System.DateTime> Step3 { get; set; }
+        public Nullable<System.DateTime> Step4 { get; set; }
+        public Nullable<System.DateTime> Step5 { get; set; }
     }
 }

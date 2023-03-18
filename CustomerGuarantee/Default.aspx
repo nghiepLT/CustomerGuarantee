@@ -10,7 +10,7 @@
 
     <link href="Content/Site.css" rel="stylesheet" />
     <input id="randomCode" runat="server" style="display: none;" />
-  
+
     <div id="breadrumb" class="outer hidden-xs">
         <div class="wrapper">
             <div class="col-md-12">
@@ -38,14 +38,13 @@
                         <a href="kiem-tra-bao-hanh">KIỂM TRA THÔNG TIN
                         </a>
                     </li>
-                   <li>
-                         <a  href="lich-su-bao-hanh">
-                           LỊCH SỬ BẢO HÀNH
+                    <li>
+                        <a href="lich-su-bao-hanh">LỊCH SỬ BẢO HÀNH
                         </a>
-                   </li>
+                    </li>
                 </ul>
-                <uc1:UserControlLogin runat="server" id="UserControlLogin" />
-               <%-- <div class="dangnhapkhachhang_box">
+                <uc1:UserControlLogin runat="server" ID="UserControlLogin" />
+                <%-- <div class="dangnhapkhachhang_box">
                     <a onclick="tgdn()" class="btn-dangnhap btn btn-xs btn-primary">Đăng nhập
                     </a>
                     <div class="ttdn_box">
@@ -81,41 +80,43 @@
 Công Ty TNHH Vi Tính Nguyên Kim. ĐC: 245B Trần Quang Khải,P Tân Định ,Q.1,TPHCM .
  SĐT: 028 22 246 246 – Lầu 1 : Phòng Bảo Hành - 873
                     </div>
-                    <div class="box-qoute">
-                        <%--   <div class="entry">
-                            <p style="text-align: center;">Hãy để lại thông tin và yêu cầu</p>
-                        </div>--%>
-                        <div class="box-form-wrap voucher">
-                            <%-- <div class="tabDangNhap">
-                                <ul>
-                                    <li>
-                                        <a class="tabDangNhapActive achung" onclick="activeTab(this)">Đăng Nhập
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="achung" onclick="activeTab(this)">Không Đăng Nhập
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>--%>
-                            <div class="formdangnhapkh">
-                                <div class="row">
-                                    <div class="col-sm-6 col-sm-offset-3">
-                                    </div>
-                                </div>
-                            </div>
-                            <form id="form1" runat="server">
-
+                    <!-- multistep form -->
+                    <form id="msform" runat="server">
+                        <!-- progressbar -->
+                        <ul id="progressbar">
+                            <li class="active l1">Thông tin khách</li>
+                            <li class="l2">Thông tin sản phẩm</li>
+                            <li class="l3">Phương thức gửi</li>
+                        </ul>
+                        <!-- fieldsets -->
+                        <fieldset id="fiel1">
+                            <div id="step1" class="stepchung">
+                                 <h2 class="fs-title">I.Thông tin khách</h2>
                                 <div class="form-field required">
                                     <div class="form-label">
-                                        <label for="name">Tên của bạn</label>
+                                        <label for="name">Tên công ty</label>
                                     </div>
                                     <div class="form-input">
                                         <input id="CustomerCaseID" type="hidden" />
-                                        <input runat="server" type="text" name="CustomerName" value="" id="CustomerName" class="form-control" required autofocus="1" />
+                                        <input runat="server" type="text" name="CustomerName" value="" id="CustomerName" class="form-control" />
                                     </div>
                                 </div>
-
+                                <div class="form-field required">
+                                    <div class="form-label">
+                                        <label for="phone">Tên người liên hệ</label>
+                                    </div>
+                                    <div class="form-input">
+                                        <input runat="server" type="text" name="NguoiLienHe" value="" id="NguoiLienHe" class="form-control" required />
+                                    </div>
+                                </div>
+                                   <div class="form-field required">
+                                    <div class="form-label">
+                                        <label for="email">Số điện thoại</label>
+                                    </div>
+                                    <div class="form-input">
+                                        <input runat="server" type="text" name="PhoneCustomer" value="" id="PhoneCustomer" class="form-control" />
+                                    </div>
+                                </div>
                                 <div class="form-field required">
                                     <div class="form-label">
                                         <label for="phone">Địa chỉ</label>
@@ -125,60 +126,108 @@ Công Ty TNHH Vi Tính Nguyên Kim. ĐC: 245B Trần Quang Khải,P Tân Địn
                                     </div>
                                 </div>
 
-                                <div class="form-field">
+                             
+                                <div class="form-field required">
                                     <div class="form-label">
-                                        <label for="email">SĐT & người liên hệ</label>
-                                    </div>
-                                    <div class="form-input">
-                                        <input runat="server" type="text" name="PhoneCustomer" value="" id="PhoneCustomer" class="form-control" />
-                                    </div>
-                                </div>
-                                <div class="form-field">
-                                    <div class="form-label">
-                                        <label for="email">Email</label>
+                                        <label for="email">Địa chỉ Email</label>
                                     </div>
                                     <div class="form-input">
                                         <input runat="server" type="email" name="Email" value="" id="Email" class="form-control" />
                                     </div>
                                 </div>
-                                <div class="form-field">
+                               
+                              
+                                <input type="hidden" name="do_submit" value="1" />
+                            </div>
+                            <div id="step2" class="stepchung">
+                                <h2 class="fs-title">II.Thông sản phẩm</h2>
+                                  <div class="form-field required">
                                     <div class="form-label">
-                                        <label for="company">Sản phẩm gửi BH</label>
+                                        <label for="company">Tên sản phẩm</label>
                                     </div>
                                     <div class="form-input">
-                                        <input runat="server" type="text" name="ProductName" value="" id="ProductName" required class="form-control" />
+                                        <input runat="server" type="text" name="ProductName" value="" id="ProductName"  class="form-control" />
+                                    </div>
+                                </div> 
+                                <div class="form-field">
+                                    <div class="form-label">
+                                        <label for="email">Số seri</label>
+                                    </div>
+                                    <div class="form-input">
+                                        <input runat="server" type="text" name="ProductSeri" value="" id="ProductSeri" class="form-control" />
                                     </div>
                                 </div>
                                 <div class="form-field">
                                     <div class="form-label">
-                                        <label for="company">Hình ảnh</label>
+                                        <label for="email">Ngày mua</label>
+                                    </div>
+                                    <div class="form-input">
+                                        <input  type="date" name="ProductNgayMua" value="" id="ProductNgayMua" class="form-control" />
+                                    </div>
+                                </div>
+                                 <div class="form-field">
+                                    <div class="form-label">
+                                        <label for="company">Hình ảnh lỗi</label>
                                     </div>
                                     <div class="form-input">
                                         <input type="file" class="btn-group btn btn-xs upload" id="uploadAvatar" accept="application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,text/plain, application/pdf, image/*" /><br />
                                         <input type="hidden" id="Filess" />
                                         <div class="imgbox">
-                                            <img id="myimg" style="width: 200px;" /><a style="display: none" onclick="closeimg()" class="fa fa-close btnclose"></a>
+                                            <img src="" id="myimg" style="width: 200px;" /><a style="display: none" onclick="closeimg()" class="fa fa-close btnclose"></a>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-field">
+                                <div class="form-field required">
                                     <div class="form-label">
-                                        <label for="company">Thời gian dự kiến gửi</label>
+                                        <label for="email">Tình trạng lỗi</label>
                                     </div>
                                     <div class="form-input">
-                                        <input runat="server" type="text" name="NgayGui" value="" id="NgayGui" class="form-control" required />
+                                        <input runat="server" type="text" name="ProductTinhTrangLoi" value="" id="ProductTinhTrangLoi" class="form-control" />
                                     </div>
                                 </div>
-                                <div class="form-field">
+                                  <div class="form-field required">
                                     <div class="form-label">
-                                        <label for="company">Tên nhà xe</label>
+                                        <label for="email">Phụ kiện kèm theo</label>
+                                    </div>
+                                    <div class="form-input">
+                                        <input runat="server" type="text" name="ProductPhukien" value="" id="ProductPhukien" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="step3" class="stepchung">
+                                <h2 class="fs-title">III.Phương thức gửi</h2>
+                                  <div class="form-field">
+                                    <div class="form-label">
+                                        <label for="company">Hình thức gửi</label>
+                                    </div>
+                                    <div class="form-input">
+                                        <select id="slHinhThucGui" class="form-control" onchange="tgHinhThuc()">
+                                            <option value="1">Gửi trực tiếp đến công ty</option>
+                                            <option value="2">Giao nhận mang về</option>
+                                            <option selected value="3">Chành xe/ chuyển phát</option>
+                                        </select>
+                                    </div>
+                                </div> 
+                             <div class="sl1">
+                                  <div class="form-field required">
+                                    <div class="form-label">
+                                        <label for="company">Tên chành xe/ Đơn vị chuyển phát</label>
                                     </div>
                                     <div class="form-input">
                                         <input runat="server" type="text" name="CarName" value="" id="CarName" class="form-control" required />
                                     </div>
                                 </div>
+                                <div class="form-field required">
+                                    <div class="form-label">
+                                        <label for="company">Thời gian dự kiến gửi</label>
+                                    </div>
+                                    <div class="form-input">
+                                        <input  type="date" name="NgayGui" value="" id="NgayGui" class="form-control" required />
+                                    </div>
+                                </div>
                                 
-                                <div class="form-field">
+
+                                <div class="form-field required">
                                     <div class="form-label">
                                         <label for="company">Địa chỉ nhà xe</label>
                                     </div>
@@ -186,14 +235,15 @@ Công Ty TNHH Vi Tính Nguyên Kim. ĐC: 245B Trần Quang Khải,P Tân Địn
                                         <input runat="server" type="text" name="CarAddress" value="" id="CarAddress" class="form-control" required />
                                     </div>
                                 </div>
-                                <div class="form-field">
-                                    <div class="form-label"><label for="company">   SĐT nhà xe</label>
+                                <div class="form-field required">
+                                    <div class="form-label">
+                                        <label for="company">SĐT nhà xe</label>
                                     </div>
                                     <div class="form-input">
                                         <input runat="server" type="text" name="CarPhoneNumber" value="" id="CarPhoneNumber" class="form-control" required />
                                     </div>
                                 </div>
-                                <div class="form-field">
+                                <div class="form-field hidden">
                                     <div class="form-label">
                                         Thông tin nhận từ(chành xe hoặc khách hàng)
                                     </div>
@@ -215,6 +265,25 @@ Công Ty TNHH Vi Tính Nguyên Kim. ĐC: 245B Trần Quang Khải,P Tân Địn
                                     </div>
                                     <div class="form-input">
                                         <input runat="server" type="text" name="Description" value="" id="Description" class="form-control" />
+                                    </div>
+                                </div>
+                             </div>
+                                <div class="sl2">
+                                    <div class="form-field">
+                                        <div class="form-label">
+                                            Họ tên giao nhận
+                                        </div>
+                                        <div class="form-input">
+                                            <input runat="server" type="text" name="TenGiaoNhan" value="" id="TenGiaoNhan" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="form-field">
+                                        <div class="form-label">
+                                            Số điện thoại
+                                        </div>
+                                        <div class="form-input">
+                                            <input runat="server" type="text" name="SoDienThoaiGiaoNhan" value="" id="SoDienThoaiGiaoNhan" class="form-control" />
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-field field-security_code required">
@@ -240,10 +309,7 @@ Công Ty TNHH Vi Tính Nguyên Kim. ĐC: 245B Trần Quang Khải,P Tân Địn
                                     </div>
                                     <div class="form-input">
                                         <div class="form-button">
-                                            <div class="btn_gui">
-                                                <asp:Button ID="btnGui" runat="server" Text="Gửi" CssClass="btn-submit" />
-                                                <i class="fa fa-envelope-o"></i>
-                                            </div>
+                                      
                                         </div>
 
                                         <%--                                        <div class="form-button">
@@ -252,8 +318,39 @@ Công Ty TNHH Vi Tính Nguyên Kim. ĐC: 245B Trần Quang Khải,P Tân Địn
                                     </div>
                                 </div>
 
-                                <input type="hidden" name="do_submit" value="1" />
-                            </form>
+                            </div>
+                           <div class="nextprevbox">
+                                <input onclick="prevstep()" type="button" name="previous" class="previous action-button" value="Quay lại">
+                            <input onclick="nextstep()" type="button" name="next" class="next action-button" value="Bước tiếp theo" /> 
+                                  <%-- <asp:Button OnClick="datbaohanh()" ID="btnGui" runat="server" Text="Gửi" CssClass="next action-button" /> --%>
+                               <input OnClick="datbaohanh()" id="btnGui" runat="server" class="next action-button text-center" value="Gửi" />
+                           </div>
+                        </fieldset>
+                    </form>
+                    <div class="box-qoute">
+                        <%--   <div class="entry">
+                            <p style="text-align: center;">Hãy để lại thông tin và yêu cầu</p>
+                        </div>--%>
+                        <div class="box-form-wrap voucher">
+                            <%-- <div class="tabDangNhap">
+                                <ul>
+                                    <li>
+                                        <a class="tabDangNhapActive achung" onclick="activeTab(this)">Đăng Nhập
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="achung" onclick="activeTab(this)">Không Đăng Nhập
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>--%>
+                            <div class="formdangnhapkh">
+                                <div class="row">
+                                    <div class="col-sm-6 col-sm-offset-3">
+                                    </div>
+                                </div>
+                            </div>
+                             
                         </div>
                     </div>
                 </div>
@@ -261,67 +358,248 @@ Công Ty TNHH Vi Tính Nguyên Kim. ĐC: 245B Trần Quang Khải,P Tân Địn
         </div>
     </div>
 
-  
-    <script>
 
+    <script>
+        //Khai bao doi tuong
+        var CustomerName = "";
+        var NguoiLienHe = "";
+        var Address = "";
+        var PhoneCustomer = "";
+        var Email = "";
+        //Step 2
+        var ProductName = "";
+        var ProductSeri = "";
+        var ProductNgayMua = "";
+        var ProductTinhTrangLoi = "";
+        var ProductPhukien = "";
+        var ProductImage = "";
+        //Step 3
+        var HinhThucGui = 0;
+        var CarName = "";
+        var NgayGui = "";
+        var CarAddress = "";
+        var CarPhoneNumber = "";
+        var BillNumber = "";
+        var Description = "";
+        var CodeGenerate="";
+        var TenGiaoNhan = "";
+        var SoDienThoaiGiaoNhan = "";
+
+        var step = 1;
+        function prevstep() {
+            step -= 1;
+            if (step == 0)
+                step = 1;
+            toglestep();
+        }
+        function Checkvalidate() {
+
+        }
+        function nextstep() {
+             
+            //Checkvalidate
+            if (step == 1) {
+                if ($("#MainContent_CustomerName").val() == '') {
+                    alert("Vui lòng nhập họ tên");
+                    $("#MainContent_CustomerName").focus();
+                    return false;
+                }
+                if ($("#MainContent_NguoiLienHe").val() == '') {
+                    alert("Vui lòng nhập tên người liên hệ");
+                    $("#MainContent_NguoiLienHe").focus();
+                    return false;
+                }
+                if ($("#MainContent_PhoneCustomer").val() == '') {
+                    alert("Vui lòng nhập Số điện thoại");
+                    $("#MainContent_PhoneCustomer").focus();
+                    return false;
+                }
+                if ($("#MainContent_Address").val() == '') {
+                    alert("Vui lòng nhập Địa chỉ");
+                    $("#MainContent_Address").focus();
+                    return false;
+                }
+            }
+            if (step == 2) {
+                if ($("#MainContent_ProductName").val() == '') {
+                    alert("Vui lòng nhập tên sản phẩm");
+                    $("#MainContent_ProductName").focus();
+                    return false;
+                }
+
+                if ($("#MainContent_ProductTinhTrangLoi").val() == '') {
+                    alert("Vui lòng nhập tình trạng lỗi");
+                    $("#MainContent_ProductTinhTrangLoi").focus();
+                    return false;
+                }
+                if ($("#MainContent_ProductPhukien").val() == '') {
+                    alert("Vui lòng nhập phụ kiện kèm theo");
+                    $("#MainContent_ProductPhukien").focus();
+                    return false;
+                }   
+            }
+
+            
+            //Cập nhật giá  trị
+            if (step == 1) {
+
+                CustomerName = $("#MainContent_CustomerName").val();
+                NguoiLienHe = $("#MainContent_NguoiLienHe").val();
+                PhoneCustomer = $("#MainContent_PhoneCustomer").val();
+                Address = $("#MainContent_Address").val();
+                Email = $("#MainContent_Email").val();
+            }
+            if (step == 2) {
+                ProductName = $("#MainContent_ProductName").val();
+                ProductSeri = $("#MainContent_ProductSeri").val();
+                ProductNgayMua = $("#ProductNgayMua").val();
+                ProductTinhTrangLoi = $("#MainContent_ProductTinhTrangLoi").val();
+                ProductPhukien = $("#MainContent_ProductPhukien").val();
+                ProductImage = $("#Filess").val();
+            }
+           
+
+            step += 1;
+            if (step == 3)
+                step = 3;
+            toglestep();
+        }
+        function toglestep() { 
+            if (step == 1) {
+
+                $("#step1").show();
+                $("#step2").hide();
+                $("#step3").hide();
+                $(".previous").css("opacity", 0);
+                //
+                $(".l2").removeClass("active");
+                $(".l3").removeClass("active");
+
+                $(".next").show();
+                $("#MainContent_btnGui").hide();
+              
+
+
+            }
+            if (step == 2) {
+                $("#step2").show();
+                $("#step1").hide();
+                $("#step3").hide();
+                $(".previous").css("opacity", 1);
+                $(".l2").addClass("active");
+                $(".l3").removeClass("active");
+
+                $(".next").show();
+                $("#MainContent_btnGui").hide();
+            }
+            if (step == 3) {
+                $("#step3").show();
+                $("#step1").hide();
+                $("#step2").hide();
+                $(".previous").css("opacity", 1);
+                $(".l2").addClass("active");
+                $(".l3").addClass("active");
+
+                $(".next").hide();
+                $("#MainContent_btnGui").show();
+            }
+        }
         $(document).ready(function () {
 
-            //if ($("#MainContent_customerlogin").val() == 0) {
-            //    $("#exampleModal").modal("toggle");
-            //    $(".ttdn_box").hide();
-            //}
-            //else {
-            //    $(".tendangnhap").html($("#MainContent_customeruser").val());
-            //    $(".btn-dangnhap").hide();
-            //    $(".ttdn_box").show();
-            //}
-
+            $("#MainContent_btnGui").hide();
+            $(".sl2").hide();
+            $(".previous").css("opacity",0);
             //Filess
-            $('form').submit(function () {
-                var param = {
-                    CustomerName: $('#MainContent_CustomerName').val(),
-                    Address: $('#MainContent_Address').val(),
-                    PhoneCustomer: $('#MainContent_PhoneCustomer').val(),
-                    Email: $('#MainContent_Email').val(),
-                    ProductName: $('#MainContent_ProductName').val(),
-                    ProductImage: $('#Filess').val(),
-                    CarName: $('#MainContent_CarName').val(),
-                    CarAddress: $('#MainContent_CarAddress').val(),
-                    CarPhoneNumber: $('#MainContent_CarPhoneNumber').val(),
-                    InforFromCustomer: $('#MainContent_InforFromCustomer').val(),
-                    BillNumber: $('#MainContent_BillNumber').val(),
-                    Description: $('#MainContent_Description').val(),
-                    CodeGenerate: $("#MainContent_randomCode").val(),
-                    NgayGui: $("#MainContent_NgayGui").val(),
-                }
-                $.ajax({
-                    url: 'Default.aspx/UpdateData',
-                    type: "POST",
-                    dataType: "html",
-                    contentType: "application/json; charset=utf-8",
-                    data: "{data:" + JSON.stringify(param) + ",capchaText:'" + $("#MainContent_security_codes").val() + "'}",
-                    //data: JSON.stringify({
-                    //    CustomerName: $('#CustomerName').val() 
-                    //}),
-                    success: function (result) {
-
-                        if (result == '{"d":1}') {
-                            alert("Gửi thành công. Vui lòng kiểm tra Email để xác nhận thông tin!");
-                            location.reload();
-                        }
-                        if (result == '{"d":2}') {
-                            $("#MainContent_security_codes").focus();
-                            alert("Mã bảo vệ không đúng! Vui lòng nhập lại");
-                        }
-                    },
-                    error: function (result) {
-                        alert("Failed");
-                    }
-                });
-                return false;
-            });
+            
         });
+        function datbaohanh() {
+            HinhThucGui = $("#slHinhThucGui").val();
+            //Validate
+            if (HinhThucGui == 3) {
+                if ($("#MainContent_CarName").val() == '') {
+                    alert("Vui lòng nhập tên chành xe");
+                    $("#MainContent_CarName").focus();
+                    return false;
+                }
+                if ($("#NgayGui").val() == '') {
+                    alert("Vui lòng nhập thời gian dự kiến");
+                    $("#NgayGui").focus();
+                    return false;
+                }
+                if ($("#MainContent_CarAddress").val() == '') {
+                    alert("Vui lòng nhập địa chỉ chành xe");
+                    $("#MainContent_CarAddress").focus();
+                    return false;
+                }
+                if ($("#MainContent_CarPhoneNumber").val() == '') {
+                    alert("Vui lòng nhập số điện thoại chành xe");
+                    $("#MainContent_CarPhoneNumber").focus();
+                    return false;
+                }
+                if ($("#MainContent_security_codes").val() == '') {
+                    alert("Vui lòng nhập mã bảo vệ");
+                    $("#MainContent_security_codes").focus();
+                    return false;
+                }
+            }
+          
+            CarName = $("#MainContent_CarName").val();
+            NgayGui = $("#NgayGui").val();
+            CarAddress = $("#MainContent_CarAddress").val();
+            CarPhoneNumber = $("#MainContent_CarPhoneNumber").val();
+            BillNumber = $("#MainContent_BillNumber").val();
+            Description = $("#MainContent_Description").val();
+            CodeGenerate = $("#MainContent_randomCode").val();
+            TenGiaoNhan = $("#MainContent_TenGiaoNhan").val();
+            SoDienThoaiGiaoNhan = $("#MainContent_SoDienThoaiGiaoNhan").val();
+            var param = {
+                CustomerName: CustomerName,
+                Address: Address,
+                NguoiLienHe: NguoiLienHe,
+                PhoneCustomer: PhoneCustomer,
+                Email: Email,
+                ProductName: ProductName,
+                ProductSeri: ProductSeri,
+                ProductNgayMua: ProductNgayMua,
+                ProductTinhTrangLoi: ProductTinhTrangLoi,
+                ProductPhukien: ProductPhukien,
+                ProductImage: ProductImage,
+                HinhThucGui: HinhThucGui,
+                CarName: CarName,
+                NgayGui: NgayGui,
+                CarAddress: CarAddress,
+                CarPhoneNumber: CarPhoneNumber,
+                BillNumber: BillNumber,
+                Description: Description,
+                CodeGenerate: CodeGenerate,
+                TenGiaoNhan:TenGiaoNhan,
+                SoDienThoaiGiaoNhan: SoDienThoaiGiaoNhan
+            }
+            $.ajax({
+                url: 'Default.aspx/UpdateData',
+                type: "POST",
+                dataType: "html",
+                contentType: "application/json; charset=utf-8",
+                data: "{data:" + JSON.stringify(param) + ",capchaText:'" + $("#MainContent_security_codes").val() + "'}",
+                //data: JSON.stringify({
+                //    CustomerName: $('#CustomerName').val() 
+                //}),
+                success: function (result) {
 
+                    if (result == '{"d":1}') {
+                        alert("Gửi thành công. Vui lòng kiểm tra Email hoặc Email Spam để xác nhận thông tin!");
+                        location.reload();
+                    }
+                    if (result == '{"d":2}') {
+                        $("#MainContent_security_codes").focus();
+                        alert("Mã bảo vệ không đúng! Vui lòng nhập lại");
+                    }
+                },
+                error: function (result) {
+                    alert("Failed");
+                }
+            });
+        }
 
         var _URL = window.URL || window.webkitURL;
         $("#uploadAvatar").on('change', function () {
@@ -416,11 +694,27 @@ Công Ty TNHH Vi Tính Nguyên Kim. ĐC: 245B Trần Quang Khải,P Tân Địn
             $(dis).addClass("tabDangNhapActive");
         }
 
-       
-      
-        document.title = "Gửi bảo hành";
-       
-   
-    </script>
 
+
+        document.title = "Gửi bảo hành";
+
+        $("#step2").hide();
+        $("#step3").hide();
+
+        function tgHinhThuc() {
+            var vl = $("#slHinhThucGui").val();
+            if (vl == 1) {
+                $(".sl2").hide();
+                $(".sl1").hide();
+            }
+            if (vl == 2) {
+                $(".sl2").show();
+                $(".sl1").hide();
+            }
+            if (vl == 3) {
+                $(".sl2").hide();
+                $(".sl1").show();
+            }
+        }
+    </script>
 </asp:Content>
