@@ -57,5 +57,7 @@ namespace CustomerGuarantee.Models
         public Nullable<System.DateTime> Step3 { get; set; }
         public Nullable<System.DateTime> Step4 { get; set; }
         public Nullable<System.DateTime> Step5 { get; set; }
+        public Nullable<int> StarRate { get; set; }
+        public string RateDescription { get; set; }
     }
 }

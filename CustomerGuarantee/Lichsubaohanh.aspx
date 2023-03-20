@@ -100,30 +100,70 @@
                     <div class="tinhtrangdon_box">
                         <ul>
                             <li id="li_1">
-                               <span> Dịch vụ bảo hành của quý khách đã được tạo với mã Bảo hành là: BH-12345</span>
+                                <div class="lefthistory">
+                                    <span id="datestep1"></span>
+                                </div>
+                                <div class="righthistory">
+                                    <span>Dịch vụ bảo hành của quý khách đã được tạo với mã Bảo hành là:</span> <strong id="mabaohanh">BH-12345</strong>
+                                </div>
+                                <div class="clearfix">
+
+                                </div>
                             </li>
-                            <li id="li_2" style="display:none">
-                                <span>Trường hợp bảo hành của quý khách đã được tiếp nhận.</span>
+                            <li id="li_2" style="display: none;">
+                                <div class="lefthistory">
+                                    <span id="datestep2"></span>
+                                </div>
+                                <div class="righthistory">
+                                    <span>Trường hợp bảo hành của quý khách đã được tiếp nhận.</span>
+                                </div>
+                                <div class="clearfix">
+                                </div>
                             </li>
-                            <li id="li_3" style="display:none;">
-                               <span>Trường hợp bảo hành của quý khách đang được hãng xử lí 
+                            <li id="li_3" style="display: none;">
+                                <div class="lefthistory">
+                                    <span id="datestep3"></span>
+                                </div>
+                                <div class="righthistory">
+                                    <span>Trường hợp bảo hành của quý khách đang được hãng xử lí 
                                 (Dự kiến 3-5 ngày làm việc)</span>
+                                </div>
+                                  <div class="clearfix">
+
+                                </div>
                             </li>
-                            <li id="li_4" style="display:none;">
-                               <span>Trường phát sinh (Nếu có)</span>
+                            <li id="li_4" style="display: none;">
+                                <div class="lefthistory">
+                                    <span id="datestep4"></span>
+                                </div>
+                                 <div class="righthistory">
+                                    <span id="spghichuphatsinh">Trường phát sinh (Nếu có)</span>
+                                </div>
+                                 <div class="clearfix">
+
+                                </div>
                             </li>
                             <li id="li_5" style="display:none;">
-                                <span>Trường hợp bảo hành của quý khách đã hoàn tất</span>
+                                <div class="lefthistory">
+                                    <span id="datestep5"></span>
+                                </div>
+                             <div class="righthistory">
+                                    <span>Trường hợp bảo hành của quý khách đã hoàn tất</span>
+                              </div>
+                                 <div class="clearfix">
+
+                                </div>
                             </li>
                         </ul>
                     </div>
+                    <hr />
                     <div class="thongtinkhachgui_title" style="margin-top:30px">
-                        Thông tin khách gửi
+                        Thông tin gửi hàng
                     </div>
-                   <table class="table table-bordered">
+                   <table class="table table-bordered" style="padding: 15px 15px;background-color: #f7f7f7;border-radius: 5px;box-shadow: 0 3px 9px rgb(0 0 0 / 22%);">
                        <tr>
                            <td>
-                               Tên khách hàng
+                              <strong> Tên khách hàng</strong>
                            </td>
                            <td>
                                <span  id="txtCustomerName"></span>
@@ -131,7 +171,7 @@
                        </tr>
                        <tr>
                            <td>
-                               Địa chỉ
+                               <strong>Địa chỉ</strong>
                            </td>
                            <td>
                                <span  id="txtAddress"></span>
@@ -139,7 +179,7 @@
                        </tr>
                         <tr>
                            <td>
-                              SĐT & người liên hệ	
+                             <strong>SĐT & người liên hệ</strong>
                            </td>
                            <td>
                                <span  id="txtPhoneCustomer"></span>
@@ -147,7 +187,7 @@
                        </tr>
                         <tr>
                            <td>
-                             Email
+                            <strong>Email</strong>
                            </td>
                            <td>
                                <span  id="txtEmail"></span>
@@ -155,7 +195,7 @@
                        </tr>
                         <tr>
                            <td>
-                             Sản phẩm gửi BH
+                             <strong>Sản phẩm gửi BH</strong>
                            </td>
                            <td>
                                <span  id="txtProductName"></span>
@@ -163,7 +203,7 @@
                        </tr>
                         <tr>
                            <td>
-                            Tên nhà xe	
+                            <strong>Tên nhà xe</strong>	
                            </td>
                            <td>
                                <span  id="txtCarName"></span>
@@ -171,7 +211,7 @@
                        </tr>
                         <tr>
                            <td>
-                           Địa chỉ nhà xe	
+                           <strong>Địa chỉ nhà xe</strong>	
                            </td>
                            <td>
                                <span  id="txtCarAddress"></span>
@@ -179,50 +219,51 @@
                        </tr>
                         <tr>
                            <td>
-                          SĐT nhà xe	
+                         <strong>SĐT nhà xe</strong>	
                            </td>
                            <td>
                                <span  id="txtCarPhoneNumber"></span>
                            </td>
                        </tr>
-                       <tr>
-                           <td>Thông tin nhận từ(chành xe hoặc khách hàng)	
+                    <%--   <tr>
+                           <td><strong>Thông tin nhận từ(chành xe hoặc khách hàng)</strong>
                            </td>
                            <td>
                                <span id="txtInforFromCustomer"></span>
                            </td>
-                       </tr>
+                       </tr>--%>
                        <tr>
-                           <td>Số Bill	
+                           <td><strong>Số Bill</strong>	
                            </td>
                            <td>
                                <span id="txtBillNumber"></span>
                            </td>
                        </tr>
                         <tr>
-                           <td>Ghi chú		
+                           <td><strong>Ghi chú</strong>	
                            </td>
                            <td>
                                <span id="txtDescription"></span>
                            </td>
                        </tr>
                    </table>
+                     <hr />
                      <div class="thongtinkhachgui_title">
-                        Thông tin trả hàng
+                        <strong>Thông tin trả hàng</strong>
                     </div>
 
-                    <table class="table table-bordered">
+                    <table class="table table-bordered" style="padding: 15px 15px;background-color: #f7f7f7;border-radius: 5px;box-shadow: 0 3px 9px rgb(0 0 0 / 22%);">
                         <tr>
                             <td>
-                               Thời gian trả
+                               <strong>Thời gian trả</strong>
                             </td>
                             <td>
-                               <span  id="txtUserNgayGui"></span>
+                               <strong style="color:red"  id="txtUserNgayGui"></strong>
                            </td>
                         </tr>
                          <tr style="display:none;">
                             <td>
-                               Nhân viên thực hiện
+                               <strong>Nhân viên thực hiện</strong>
                             </td>
                             <td>
                                <span  id="txtUSerGuiTra"></span>
@@ -230,7 +271,7 @@
                         </tr>
                          <tr>
                             <td>
-                              Hình thức trả
+                              <strong>Hình thức trả</strong>
                             </td>
                             <td>
                                <span  id="txtUserGuiType"></span>
@@ -238,7 +279,7 @@
                         </tr>
                          <tr class="trtxtUserTenNhaXe">
                             <td>
-                             Tên nhà xe
+                             <strong>Tên nhà xe</strong>
                             </td>
                             <td>
                                <span  id="txtUserTenNhaXe"></span>
@@ -246,7 +287,7 @@
                         </tr>
                          <tr class="trUserAddress">
                             <td>
-                             Địa chỉ nhà xe
+                             <strong>Địa chỉ nhà xe</strong>
                             </td>
                             <td>
                                <span  id="txtUserAddress"></span>
@@ -254,19 +295,119 @@
                         </tr>
                          <tr class="trUserAddress">
                             <td>
-                             Số điện thoại
+                             <strong>Số điện thoại</strong>
                             </td>
                             <td>
                                <span  id="txtUSerSoDTNhaXe"></span>
                            </td>
                         </tr>
                     </table>
+                      <hr />
+                     <div class="thongtinkhachgui_title">
+                        <strong>Đánh giá của bạn</strong>
+                    </div>
+                    <div class="starvote_box">
+                        <ul class="ratings">
+                            <li class="star" data-value="5"></li>
+                            <li class="star" data-value="4"></li>
+                            <li class="star" data-value="3"></li>
+                            <li class="star" data-value="2"></li>
+                            <li class="star" data-value="1"></li>
+                        </ul>
+                        <div class="noidungdanhgia_box">
+                            <textarea id="txtRateDescription" rows="4" placeholder="Nội dung đánh giá"></textarea>
+                        </div>
+                        <div class="giudanhgia">
+                            <a onclick="Guidanhgia()">Gửi đánh giá</a>
+                        </div>
+                    </div>
+                    <div class="starvoted_box">
+                        <ul>
+                            <li>
+                                <i id="i_tg1"  class="fa fa-star"></i>
+                            </li>
+                             <li>
+                                <i id="i_tg2"  class="fa fa-star"></i>
+                            </li>
+                             <li>
+                                <i id="i_tg3" class="fa fa-star"></i>
+                            </li>
+                             <li>
+                                <i id="i_tg4" class="fa fa-star"></i>
+                            </li>
+                             <li>
+                                <i id="i_tg5" class="fa fa-star"></i>
+                            </li>
+                        </ul>
+                        <div>
+                            <span id="noidungdanhgia"></span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     <script>
+        var datavalue = 0;
+        $(function () {
+            var star = '.star',
+                selected = '.selected';
+
+            $(star).on('click', function () {
+                $(selected).each(function () {
+                    $(this).removeClass('selected');
+                });
+                $(this).addClass('selected');
+                datavalue = $(this).attr("data-value");
+            });
+
+        });
+        function Guidanhgia() {
+            var param = {
+                CustomerCaseID: CustomerCaseID,
+                StarRate: datavalue,
+                RateDescription: $('#txtRateDescription').val(),
+            }
+            $.ajax({
+                url: 'Yeucaukhachgui.aspx/UpdateStarVote',
+                type: "POST",
+                dataType: "html",
+                contentType: "application/json; charset=utf-8",
+                data: "{CustomerCaseInfor:" + JSON.stringify(param) + "}",
+                success: function (result) {
+                    //var data = result.d;
+                    //const obj = JSON.parse(data);
+                   // location.reload();
+                },
+                error: function (result) {
+                    alert("Failed");
+                }
+            });
+        }
         searchphieu();
+        var starvote = 3;
+        function togglevote(dis) {
+            var data = $(dis).attr("data-value");
+            if (data == 3) {
+                $("#i_star3").addClass("staractive");
+                $("#i_star4").removeClass("staractive");
+                $("#i_star5").removeClass("staractive");
+                starvote = 3;
+            }
+            if (data == 4) {
+                $("#i_star3").addClass("staractive");
+                $("#i_star4").addClass("staractive");
+                $("#i_star5").removeClass("staractive");
+                starvote = 4;
+            }
+           
+            if (data == 5) {
+                $("#i_star3").addClass("staractive");
+                $("#i_star4").addClass("staractive");
+                $("#i_star5").addClass("staractive");
+                starvote = 5;
+            }
+        }
         function searchphieu() {
             $.ajax({
                 url: 'Lichsubaohanh.aspx/LoadDanhSach',
@@ -302,6 +443,8 @@
                         htmlContents += "<td>";
                         if (obj[i].NgayGui != null) {
                             htmlContents += obj[i].NgayGui;
+                        } else {
+                            htmlContents += "";
                         }
                         htmlContents += "</td>";
                         if (obj[i].Status == 0)
@@ -320,7 +463,12 @@
                             htmlContents += "<a class=\" text-primary\" >Đang xử lý</a>";
                             htmlContents += "</td>";
                         }
-                        if (obj[i].Status == 3) {
+                        if (obj[i].Status ==3) {
+                            htmlContents += "<td>";
+                            htmlContents += "<strong><a class=\" text-success\" >"+obj[i].GhiChuPhatSinh+"</a></strong>";
+                            htmlContents += "</td>";
+                        }
+                        if (obj[i].Status == 4) {
                             htmlContents += "<td>";
                             htmlContents += "<strong><a class=\" text-success\" >Đã hoàn tất </a></strong>";
                             htmlContents += "<div>Ngày trả: ";
@@ -330,7 +478,7 @@
                             htmlContents += "</td>";
                         }
                         htmlContents += "<td>";
-                        htmlContents += "<a class=\"btn btn-xs btn-primary text-default\" onclick=\"xemchitiet(" + obj[i].CustomerCaseID + ")\" >Xem chi tiết</a>";
+                        htmlContents += "<a class=\"btn btn-sm btn-warning\" onclick=\"xemchitiet(" + obj[i].CustomerCaseID + ")\" >Xem Chi Tiết</a>";
                         htmlContents += "</td>";
                         htmlContents += "</tr>";
                     }
@@ -446,6 +594,7 @@
                 success: function (result) {
                     var data = result.d;
                     const obj = JSON.parse(data);
+                    CustomerCaseID = obj.CustomerCaseID;
                     $("#txtCustomerName").html(obj.CustomerName);
                     $("#txtAddress").html(obj.Address);
                     $("#txtPhoneCustomer").html(obj.PhoneCustomer);
@@ -455,15 +604,18 @@
                     $("#txtCarName").html(obj.CarName);
                     $("#txtCarAddress").html(obj.CarAddress);
                     $("#txtCarPhoneNumber").html(obj.CarPhoneNumber);
-                    $("#txtInforFromCustomer").html(obj.InforFromCustomer);
+                    //$("#txtInforFromCustomer").html(obj.InforFromCustomer);
                     $("#txtBillNumber").html(obj.BillNumber);
                     $("#txtDescription").html(obj.Description);
                     //
                     $("#txtUSerGuiTra").html(obj.USerGuiTra);
 
-                    var date = new Date(parseInt(obj.UserNgayGui.substr(6)));
-                    var getdate = GetFormattedDate(date);
-                    $("#txtUserNgayGui").html("<strong>" + getdate + "</strong>");
+                    if (obj.UserNgayGui != null) {
+                        var date = new Date(parseInt(obj.UserNgayGui.substr(6)));
+                        var getdate = GetFormattedDate(date);
+                        $("#txtUserNgayGui").html("<strong>" + getdate + "</strong>");
+                    }
+                    
                     if (obj.UserGuiType == 1) {
                         $("#txtUserGuiType").html("Gửi chành xe");
                     }
@@ -474,6 +626,79 @@
                     $("#txtUserTenNhaXe").html(obj.UserTenNhaXe);
                     $("#txtUserAddress").html(obj.UserAddress);
                     $("#txtUSerSoDTNhaXe").html(obj.USerSoDTNhaXe);
+
+                    //Step 1
+                    $("#li_2").hide();
+                    $("#li_3").hide();
+                    $("#li_4").hide();
+                    $("#li_5").hide();
+
+                    var date = new Date(parseInt(obj.Step1.substr(6)));
+                    var Step1 = GetFormattedDate(date);
+                    $("#datestep1").html(Step1);
+                    $("#mabaohanh").html(obj.CodeGenerate)
+                    if (obj.Step1 != null) {
+                        $("#li_1").show();
+                    }
+                    //Step 2
+                    if (obj.Step2 != null) {
+                        var date2 = new Date(parseInt(obj.Step2.substr(6)));
+                        var Step2 = GetFormattedDate(date2);
+                        $("#datestep2").html(Step2);
+                        if (obj.Step2 != null) {
+                            $("#li_2").show();
+                        }
+                        else {
+                            $("#li_2").hide();
+                        }
+                    }
+                   
+                    //Step 3
+                    if (obj.Step3 != null) {
+                        var date3 = new Date(parseInt(obj.Step3.substr(6)));
+                        var Step3 = GetFormattedDate(date3);
+                        $("#datestep3").html(Step3);
+                        if (obj.Step3 != null) {
+                            $("#li_3").show();
+                        }
+                    }
+                   
+                    //Step 4
+                    if (obj.Step4 != null) {
+                        var date4 = new Date(parseInt(obj.Step4.substr(6)));
+                        var Step4 = GetFormattedDate(date4);
+                        $("#spghichuphatsinh").html(obj.GhiChuPhatSinh)
+                        $("#datestep4").html(Step4);
+                        if (obj.Step4 != null) {
+                            $("#li_4").show();
+                        }
+                    }
+                    
+                    //Step 5
+                    if (obj.Step5 != null) {
+                        var date5 = new Date(parseInt(obj.Step5.substr(6)));
+                        var Step5 = GetFormattedDate(date5);
+                        $("#datestep5").html(Step5);
+                        if (obj.Step5 != null) {
+                            $("#li_5").show();
+                        }
+                    }
+                   
+
+                    //
+                    if (obj.StarRate != null) {
+                        $(".starvote_box").hide();
+                        $(".starvoted_box").show();
+                        $("#noidungdanhgia").html(obj.RateDescription);
+
+                        for (i = 1; i <= obj.StarRate; i++) {
+                            $("#i_tg" + i).addClass("staractive");
+                        }
+                    }
+                    else {
+                        $(".starvote_box").show();
+                        $(".starvoted_box").hide();
+                    }
                 },
                 error: function (result) {
                     alert("Failed");
@@ -489,7 +714,7 @@
             var hour = todayTime.getHours();
             var minus = todayTime.getMinutes();
             var seconds = todayTime.getSeconds();
-            return month + "/" + day + "/" + year;
+            return hour+":"+minus +" "+day + "-" + month + "-" + year;
         }
         document.title = "Lịch sử bảo hành";
     </script>

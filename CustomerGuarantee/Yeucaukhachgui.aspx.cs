@@ -49,6 +49,16 @@ namespace CustomerGuarantee
             return result;
         }
         [WebMethod]
+        public static int UpdateStarVote(CustomerCaseInfor CustomerCaseInfor)
+        {
+            CustomerCaseEntities db = new CustomerCaseEntities();
+            var cus = db.CustomerCaseInfors.Where(m => m.CustomerCaseID == CustomerCaseInfor.CustomerCaseID).FirstOrDefault();
+            cus.StarRate = CustomerCaseInfor.StarRate.Value;
+            cus.RateDescription = CustomerCaseInfor.RateDescription;
+            db.SaveChanges();
+            return 1;
+        }
+        [WebMethod]
         public static int UpdateData(CustomerCaseInfor CustomerCaseInfor)
         {
             CustomerCaseEntities db = new CustomerCaseEntities();
