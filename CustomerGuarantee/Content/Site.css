@@ -841,3 +841,11 @@ body {
     font-size: 15px;
     font-weight: bold;
 }
+    .khstar_box{
+        padding:0px;
+        margin:0px;
+    }
+    .khstar_box li{
+        display:inline-block;
+    }
+    .boquathongtin{padding: 10px 19px;color: red;font-style: italic;padding-top: 0px;font-weight: bold;}

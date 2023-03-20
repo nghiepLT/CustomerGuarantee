@@ -49,7 +49,9 @@
                                             </td>
                                             <td>Sản phẩm gửi BH
                                             </td>
-                                          
+                                          <td>
+                                              Đánh giá của khách
+                                          </td>
                                             <td>
                                                 Trạng thái
                                             </td>
@@ -391,6 +393,73 @@
                       
                         htmlContents += "</td>";
                        
+                        //Đánh giá của khách	
+                        htmlContents += "<td>";
+                        if (obj[i].StarRate != null) {
+                            htmlContents += "<ul class=\"khstar_box\">";
+
+                            //star 1
+                            var aactive = "";
+                            if (obj[i].StarRate >= 1) {
+                                aactive = "staractive";
+                            }
+                            else {
+                                aactive = "";
+                            }
+                           
+                            htmlContents += "<li>";
+                            htmlContents += "<i id=\"i_st1\" class=\"fa fa-star "+aactive+"\" ></i>";
+                            htmlContents += "</li>";
+                            //star 2
+                            if (obj[i].StarRate >= 2) {
+                                aactive = "staractive";
+                            }
+                            else {
+                                aactive = "";
+                            }
+                            htmlContents += "<li>";
+                            htmlContents += "<i id=\"i_st2\" class=\"fa fa-star " + aactive + "\" ></i>";
+                            htmlContents += "</li>";
+                            //star 3
+                            if (obj[i].StarRate >= 3) {
+                                aactive = "staractive";
+                            }
+                            else {
+                                aactive = "";
+                            }
+                            htmlContents += "<li>";
+                            htmlContents += "<i id=\"i_st3\" class=\"fa fa-star " + aactive + "\" ></i>";
+                            htmlContents += "</li>";
+                            //star 4
+                            if (obj[i].StarRate >= 4) {
+                                aactive = "staractive";
+                            }
+                            else {
+                                aactive = "";
+                            }
+                            htmlContents += "<li>";
+                            htmlContents += "<i id=\"i_st4\" class=\"fa fa-star " + aactive + "\" ></i>";
+                            htmlContents += "</li>";
+                            //star 5
+                            if (obj[i].StarRate >= 5) {
+                                aactive = "staractive";
+                            }
+                            else {
+                                aactive = "";
+                            }
+                            htmlContents += "<li>";
+                            htmlContents += "<i id=\"i_st5\" class=\"fa fa-star " + aactive + "\" ></i>";
+                            htmlContents += "</li>";
+                             
+                            htmlContents += "</ul>";
+                            htmlContents += "<div style=\"margin-top:5px;\">";
+                            htmlContents += obj[i].RateDescription
+                            htmlContents += "</div>";
+                        }
+                        htmlContents += "</td>";
+
+
+
                         if (obj[i].Status == 0)
                         {
                             htmlContents += "<td>";

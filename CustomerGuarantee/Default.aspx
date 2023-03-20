@@ -114,7 +114,7 @@ Công Ty TNHH Vi Tính Nguyên Kim. ĐC: 245B Trần Quang Khải,P Tân Địn
                                         <label for="email">Số điện thoại</label>
                                     </div>
                                     <div class="form-input">
-                                        <input runat="server" type="text" name="PhoneCustomer" value="" id="PhoneCustomer" class="form-control" />
+                                        <input runat="server" type="number" name="PhoneCustomer" value="" id="PhoneCustomer" class="form-control" />
                                     </div>
                                 </div>
                                 <div class="form-field required">

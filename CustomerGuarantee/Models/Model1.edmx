@@ -61,6 +61,7 @@
           </Key>
           <Property Name="CustomerUserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CustomerName" Type="nvarchar" MaxLength="200" />
+          <Property Name="CustomerNLH" Type="nvarchar" MaxLength="500" />
           <Property Name="CustomerPhone" Type="nvarchar" MaxLength="200" />
           <Property Name="CustomerUser" Type="nvarchar" MaxLength="200" />
           <Property Name="CustomerPassword" Type="nvarchar" MaxLength="200" />
@@ -162,6 +163,7 @@
           <Property Name="CustomerPassword" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="CustomerEmail" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="CustomerAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerNLH" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -234,6 +236,7 @@
           <EntitySetMapping Name="tCustomerUsers">
             <EntityTypeMapping TypeName="CustomerCaseModel.tCustomerUser">
               <MappingFragment StoreEntitySet="tCustomerUser">
+                <ScalarProperty Name="CustomerNLH" ColumnName="CustomerNLH" />
                 <ScalarProperty Name="CustomerAddress" ColumnName="CustomerAddress" />
                 <ScalarProperty Name="CustomerEmail" ColumnName="CustomerEmail" />
                 <ScalarProperty Name="CustomerPassword" ColumnName="CustomerPassword" />

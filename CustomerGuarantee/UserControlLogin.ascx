@@ -49,7 +49,8 @@
                                                 <input type="password" name="CustomerPassword" id="CustomerPassword" value="" class="form-control" placeholder="Mật khẩu *" required="1" autocomplete="off">
                                             </div>
                                             <div class="form-button" style="width: 100%">
-                                                <button style="width: 100%; margin-bottom: 13px; margin-top: 5px;" onclick="Dangnhap()" name="login" type="submit" class="effect fa-sign-in">Đăng nhập</button>
+                                                <button style="width: 100%; margin-bottom: 13px; margin-top: 5px;    background-color: #1c449c;
+    color: white;" onclick="Dangnhap()" name="login" type="submit" class="effect fa-sign-in">Đăng nhập</button>
                                             </div>
                                             <div class="form-button" style="width: 100%">
                                                 <button style="width: 100%; margin-bottom: 13px; margin-top: 5px;" onclick="DangKy()" name="login"  class="effect fa-user">Đăng ký tài khoản</button>
@@ -87,6 +88,9 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Bỏ qua</button>
+                </div>
+                <div class="boquathongtin">
+                    Trường hợp bạn bỏ qua, hệ thống sẽ tự đông tạo tài khoản sau khi nhập thông tin.
                 </div>
             </div>
         </div>

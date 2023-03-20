@@ -139,6 +139,7 @@ namespace CustomerGuarantee
                     tcus.CustomerPhone = data.PhoneCustomer;
                     tcus.CustomerUser = data.Email;
                     tcus.CustomerAddress = data.Address;
+                    tcus.CustomerNLH = data.NguoiLienHe;
                     tcus.CustomerPassword = Encrypt(test);
                     db.tCustomerUsers.Add(tcus);
                     db.SaveChanges();
