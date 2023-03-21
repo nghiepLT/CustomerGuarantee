@@ -61,7 +61,7 @@
                                             <td>
                                                 Mã đơn
                                             </td>
-                                            <td style="width:15%;">Tên khách hàng	
+                                            <td style="width:15%;">Tên công ty	
                                             </td>
                                             <td style="width:15%;">Địa chỉ
                                             </td>
@@ -193,15 +193,31 @@
                                <span  id="txtEmail"></span>
                            </td>
                        </tr>
-                        <tr>
+                        <tr >
                            <td>
                              <strong>Sản phẩm gửi BH</strong>
                            </td>
                            <td>
                                <span  id="txtProductName"></span>
                            </td>
+                       </tr >
+                       <tr>
+                           <td>
+                               <strong>Tình trạng lỗi	</strong>
+                           </td>
+                           <td>
+                               <strong style="color:red" id="ProductTinhTrangLoi"></strong>
+                           </td>
                        </tr>
                         <tr>
+                           <td>
+                               <strong>Phụ kiện kèm theo</strong>
+                           </td>
+                           <td>
+                               <span id="ProductPhukien"></span>
+                           </td>
+                       </tr>
+                        <tr class="type1">
                            <td>
                             <strong>Tên nhà xe</strong>	
                            </td>
@@ -209,7 +225,7 @@
                                <span  id="txtCarName"></span>
                            </td>
                        </tr>
-                        <tr>
+                        <tr class="type1">
                            <td>
                            <strong>Địa chỉ nhà xe</strong>	
                            </td>
@@ -217,7 +233,7 @@
                                <span  id="txtCarAddress"></span>
                            </td>
                        </tr>
-                        <tr>
+                        <tr class="type1">
                            <td>
                          <strong>SĐT nhà xe</strong>	
                            </td>
@@ -232,18 +248,32 @@
                                <span id="txtInforFromCustomer"></span>
                            </td>
                        </tr>--%>
-                       <tr>
+                       <tr class="type1">
                            <td><strong>Số Bill</strong>	
                            </td>
                            <td>
                                <span id="txtBillNumber"></span>
                            </td>
                        </tr>
-                        <tr>
-                           <td><strong>Ghi chú</strong>	
+                       <tr class="type1">
+                           <td><strong>Ghi chú</strong>
                            </td>
                            <td>
                                <span id="txtDescription"></span>
+                           </td>
+                       </tr>
+                       <tr class="type2">
+                           <td><strong>Nhân viên nhận hàng</strong>
+                           </td>
+                           <td>
+                               <span id="TenGiaoNhan"></span>
+                           </td>
+                       </tr>
+                        <tr class="type2">
+                           <td><strong>Số điện thoại</strong>
+                           </td>
+                           <td>
+                               <span id="SoDienThoaiGiaoNhan"></span>
                            </td>
                        </tr>
                    </table>
@@ -303,7 +333,8 @@
                         </tr>
                     </table>
                       <hr />
-                     <div class="thongtinkhachgui_title">
+                  <div id="danhgiasao_box">
+                        <div class="thongtinkhachgui_title">
                         <strong>Đánh giá của bạn</strong>
                     </div>
                     <div class="starvote_box">
@@ -324,18 +355,18 @@
                     <div class="starvoted_box">
                         <ul>
                             <li>
-                                <i id="i_tg1"  class="fa fa-star"></i>
+                                <i id="i_tg1" class="fa fa-star"></i>
                             </li>
-                             <li>
-                                <i id="i_tg2"  class="fa fa-star"></i>
+                            <li>
+                                <i id="i_tg2" class="fa fa-star"></i>
                             </li>
-                             <li>
+                            <li>
                                 <i id="i_tg3" class="fa fa-star"></i>
                             </li>
-                             <li>
+                            <li>
                                 <i id="i_tg4" class="fa fa-star"></i>
                             </li>
-                             <li>
+                            <li>
                                 <i id="i_tg5" class="fa fa-star"></i>
                             </li>
                         </ul>
@@ -343,6 +374,7 @@
                             <span id="noidungdanhgia"></span>
                         </div>
                     </div>
+                  </div>
                 </div>
             </div>
         </div>
@@ -377,7 +409,7 @@
                 success: function (result) {
                     //var data = result.d;
                     //const obj = JSON.parse(data);
-                   // location.reload();
+                    location.reload();
                 },
                 error: function (result) {
                     alert("Failed");
@@ -425,7 +457,8 @@
                         htmlContents += "<strong style=\"color:red\">"+obj[i].CodeGenerate+"</strong>";
                         htmlContents += "</td>";
                         htmlContents += "<td>";
-                        htmlContents +="<strong>"+obj[i].CustomerName+"</strong>";
+                        htmlContents += "<strong>" + obj[i].CustomerName + "</strong>";
+                        htmlContents += "<div style=\"margin-top:5px;\">Người liên hệ : " + obj[i].NguoiLienHe + "</div>";
                         htmlContents += "</td>";
                         htmlContents += "<td>";
                         htmlContents += obj[i].Address;
@@ -601,12 +634,26 @@
                     $("#txtEmail").html(obj.Email);
                     $("#txtProductName").html(obj.ProductName);
                     $("#txtProductImage").html(obj.ProductImage);
-                    $("#txtCarName").html(obj.CarName);
-                    $("#txtCarAddress").html(obj.CarAddress);
-                    $("#txtCarPhoneNumber").html(obj.CarPhoneNumber);
-                    //$("#txtInforFromCustomer").html(obj.InforFromCustomer);
-                    $("#txtBillNumber").html(obj.BillNumber);
-                    $("#txtDescription").html(obj.Description);
+                    $("#ProductTinhTrangLoi").html(obj.ProductTinhTrangLoi);
+                    $("#ProductPhukien").html(obj.ProductPhukien);
+                    if (obj.Status != 4) {
+                        $("#danhgiasao_box").hide();
+                    }
+                    if (obj.HinhThucGui == 3) {
+                        $(".type1").show();
+                        $(".type2").hide();
+                        $("#txtCarName").html(obj.CarName);
+                        $("#txtCarAddress").html(obj.CarAddress);
+                        $("#txtCarPhoneNumber").html(obj.CarPhoneNumber);
+                        $("#txtBillNumber").html(obj.BillNumber);
+                        $("#txtDescription").html(obj.Description);
+                    }
+                    if (obj.HinhThucGui == 2) {
+                        $(".type1").hide();
+                        $(".type2").show();
+                        $("#TenGiaoNhan").html(obj.TenGiaoNhan);
+                        $("#SoDienThoaiGiaoNhan").html(obj.SoDienThoaiGiaoNhan);
+                    }
                     //
                     $("#txtUSerGuiTra").html(obj.USerGuiTra);
 

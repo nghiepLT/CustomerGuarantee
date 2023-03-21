@@ -91,7 +91,7 @@ Công Ty TNHH Vi Tính Nguyên Kim. ĐC: 245B Trần Quang Khải,P Tân Địn
                         <!-- fieldsets -->
                         <fieldset id="fiel1">
                             <div id="step1" class="stepchung">
-                                 <h2 class="fs-title">I.Thông tin khách</h2>
+                                <h2 class="fs-title">I.Thông tin khách</h2>
                                 <div class="form-field required">
                                     <div class="form-label">
                                         <label for="name">Tên công ty</label>
@@ -109,7 +109,7 @@ Công Ty TNHH Vi Tính Nguyên Kim. ĐC: 245B Trần Quang Khải,P Tân Địn
                                         <input runat="server" type="text" name="NguoiLienHe" value="" id="NguoiLienHe" class="form-control" required />
                                     </div>
                                 </div>
-                                   <div class="form-field required">
+                                <div class="form-field required">
                                     <div class="form-label">
                                         <label for="email">Số điện thoại</label>
                                     </div>
@@ -126,7 +126,7 @@ Công Ty TNHH Vi Tính Nguyên Kim. ĐC: 245B Trần Quang Khải,P Tân Địn
                                     </div>
                                 </div>
 
-                             
+
                                 <div class="form-field required">
                                     <div class="form-label">
                                         <label for="email">Địa chỉ Email</label>
@@ -135,20 +135,20 @@ Công Ty TNHH Vi Tính Nguyên Kim. ĐC: 245B Trần Quang Khải,P Tân Địn
                                         <input runat="server" type="email" name="Email" value="" id="Email" class="form-control" />
                                     </div>
                                 </div>
-                               
-                              
+
+
                                 <input type="hidden" name="do_submit" value="1" />
                             </div>
                             <div id="step2" class="stepchung">
                                 <h2 class="fs-title">II.Thông sản phẩm</h2>
-                                  <div class="form-field required">
+                                <div class="form-field required">
                                     <div class="form-label">
                                         <label for="company">Tên sản phẩm</label>
                                     </div>
                                     <div class="form-input">
-                                        <input runat="server" type="text" name="ProductName" value="" id="ProductName"  class="form-control" />
+                                        <input runat="server" type="text" name="ProductName" value="" id="ProductName" class="form-control" />
                                     </div>
-                                </div> 
+                                </div>
                                 <div class="form-field">
                                     <div class="form-label">
                                         <label for="email">Số seri</label>
@@ -162,10 +162,10 @@ Công Ty TNHH Vi Tính Nguyên Kim. ĐC: 245B Trần Quang Khải,P Tân Địn
                                         <label for="email">Ngày mua</label>
                                     </div>
                                     <div class="form-input">
-                                        <input  type="date" name="ProductNgayMua" value="" id="ProductNgayMua" class="form-control" />
+                                        <input type="date" name="ProductNgayMua" value="" id="ProductNgayMua" class="form-control" />
                                     </div>
                                 </div>
-                                 <div class="form-field">
+                                <div class="form-field">
                                     <div class="form-label">
                                         <label for="company">Hình ảnh lỗi</label>
                                     </div>
@@ -185,9 +185,9 @@ Công Ty TNHH Vi Tính Nguyên Kim. ĐC: 245B Trần Quang Khải,P Tân Địn
                                         <input runat="server" type="text" name="ProductTinhTrangLoi" value="" id="ProductTinhTrangLoi" class="form-control" />
                                     </div>
                                 </div>
-                                  <div class="form-field required">
+                                <div class="form-field required">
                                     <div class="form-label">
-                                        <label for="email">Phụ kiện kèm theo</label>
+                                        Phụ kiện kèm theo
                                     </div>
                                     <div class="form-input">
                                         <input runat="server" type="text" name="ProductPhukien" value="" id="ProductPhukien" class="form-control" />
@@ -196,7 +196,7 @@ Công Ty TNHH Vi Tính Nguyên Kim. ĐC: 245B Trần Quang Khải,P Tân Địn
                             </div>
                             <div id="step3" class="stepchung">
                                 <h2 class="fs-title">III.Phương thức gửi</h2>
-                                  <div class="form-field">
+                                <div class="form-field">
                                     <div class="form-label">
                                         <label for="company">Hình thức gửi</label>
                                     </div>
@@ -207,67 +207,67 @@ Công Ty TNHH Vi Tính Nguyên Kim. ĐC: 245B Trần Quang Khải,P Tân Địn
                                             <option selected value="3">Chành xe/ chuyển phát</option>
                                         </select>
                                     </div>
-                                </div> 
-                             <div class="sl1">
-                                  <div class="form-field required">
-                                    <div class="form-label">
-                                        <label for="company">Tên chành xe/ Đơn vị chuyển phát</label>
-                                    </div>
-                                    <div class="form-input">
-                                        <input runat="server" type="text" name="CarName" value="" id="CarName" class="form-control" required />
-                                    </div>
                                 </div>
-                                <div class="form-field required">
-                                    <div class="form-label">
-                                        <label for="company">Thời gian dự kiến gửi</label>
+                                <div class="sl1">
+                                    <div class="form-field required">
+                                        <div class="form-label">
+                                            <label for="company">Tên chành xe/ Đơn vị chuyển phát</label>
+                                        </div>
+                                        <div class="form-input">
+                                            <input runat="server" type="text" name="CarName" value="" id="CarName" class="form-control" required />
+                                        </div>
                                     </div>
-                                    <div class="form-input">
-                                        <input  type="date" name="NgayGui" value="" id="NgayGui" class="form-control" required />
+                                    <div class="form-field required">
+                                        <div class="form-label">
+                                            <label for="company">Thời gian dự kiến gửi</label>
+                                        </div>
+                                        <div class="form-input">
+                                            <input type="date" name="NgayGui" value="" id="NgayGui" class="form-control" required />
+                                        </div>
                                     </div>
-                                </div>
-                                
 
-                                <div class="form-field required">
-                                    <div class="form-label">
-                                        <label for="company">Địa chỉ nhà xe</label>
+
+                                    <div class="form-field required">
+                                        <div class="form-label">
+                                            <label for="company">Địa chỉ nhà xe</label>
+                                        </div>
+                                        <div class="form-input">
+                                            <input runat="server" type="text" name="CarAddress" value="" id="CarAddress" class="form-control" required />
+                                        </div>
                                     </div>
-                                    <div class="form-input">
-                                        <input runat="server" type="text" name="CarAddress" value="" id="CarAddress" class="form-control" required />
+                                    <div class="form-field required">
+                                        <div class="form-label">
+                                            <label for="company">SĐT nhà xe</label>
+                                        </div>
+                                        <div class="form-input">
+                                            <input runat="server" type="text" name="CarPhoneNumber" value="" id="CarPhoneNumber" class="form-control" required />
+                                        </div>
+                                    </div>
+                                    <div class="form-field hidden">
+                                        <div class="form-label">
+                                            Thông tin nhận từ(chành xe hoặc khách hàng)
+                                        </div>
+                                        <div class="form-input">
+                                            <input runat="server" type="text" name="InforFromCustomer" value="" id="InforFromCustomer" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="form-field">
+                                        <div class="form-label">
+                                            Số Bill (nếu có)
+                                        </div>
+                                        <div class="form-input">
+                                            <input runat="server" type="text" name="BillNumber" value="" id="BillNumber" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="form-field">
+                                        <div class="form-label">
+                                            Ghi chú
+                                        </div>
+                                        <div class="form-input">
+                                            <input runat="server" type="text" name="Description" value="" id="Description" class="form-control" />
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="form-field required">
-                                    <div class="form-label">
-                                        <label for="company">SĐT nhà xe</label>
-                                    </div>
-                                    <div class="form-input">
-                                        <input runat="server" type="text" name="CarPhoneNumber" value="" id="CarPhoneNumber" class="form-control" required />
-                                    </div>
-                                </div>
-                                <div class="form-field hidden">
-                                    <div class="form-label">
-                                        Thông tin nhận từ(chành xe hoặc khách hàng)
-                                    </div>
-                                    <div class="form-input">
-                                        <input runat="server" type="text" name="InforFromCustomer" value="" id="InforFromCustomer" class="form-control" />
-                                    </div>
-                                </div>
-                                <div class="form-field">
-                                    <div class="form-label">
-                                        Số Bill (nếu có)
-                                    </div>
-                                    <div class="form-input">
-                                        <input runat="server" type="text" name="BillNumber" value="" id="BillNumber" class="form-control" />
-                                    </div>
-                                </div>
-                                <div class="form-field">
-                                    <div class="form-label">
-                                        Ghi chú
-                                    </div>
-                                    <div class="form-input">
-                                        <input runat="server" type="text" name="Description" value="" id="Description" class="form-control" />
-                                    </div>
-                                </div>
-                             </div>
                                 <div class="sl2">
                                     <div class="form-field">
                                         <div class="form-label">
@@ -305,11 +305,22 @@ Công Ty TNHH Vi Tính Nguyên Kim. ĐC: 245B Trần Quang Khải,P Tân Địn
                                     </div>
                                 </div>
                                 <div class="form-field field-button last">
+                                    <div class="form-input">
+                                        <div class="row">
+                                            <div class="col-sm-1" style="position: relative; top: -2px; left: 19px;">
+                                                <input id="xndl" type="checkbox" style="transform: scale(1.2);" />
+                                            </div>
+                                            <div class="col-sm-11" style="">
+                                                <span style="color:red">XN Dữ liệu:Tôi chắc chắn sản phẩm đã được backup dữ liệu trước khi gửi bảo hành.</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-field field-button last">
                                     <div class="form-label">
                                     </div>
                                     <div class="form-input">
                                         <div class="form-button">
-                                      
                                         </div>
 
                                         <%--                                        <div class="form-button">
@@ -319,12 +330,12 @@ Công Ty TNHH Vi Tính Nguyên Kim. ĐC: 245B Trần Quang Khải,P Tân Địn
                                 </div>
 
                             </div>
-                           <div class="nextprevbox">
+                            <div class="nextprevbox">
                                 <input onclick="prevstep()" type="button" name="previous" class="previous action-button" value="Quay lại">
-                            <input onclick="nextstep()" type="button" name="next" class="next action-button" value="Bước tiếp theo" /> 
-                                  <%-- <asp:Button OnClick="datbaohanh()" ID="btnGui" runat="server" Text="Gửi" CssClass="next action-button" /> --%>
-                               <input OnClick="datbaohanh()" id="btnGui" runat="server" class="next action-button text-center" value="Gửi" />
-                           </div>
+                                <input onclick="nextstep()" type="button" name="next" class="next action-button" value="Bước tiếp theo" />
+                                <%-- <asp:Button OnClick="datbaohanh()" ID="btnGui" runat="server" Text="Gửi" CssClass="next action-button" /> --%>
+                                <input onclick="datbaohanh()" id="btnGui" runat="server" class="next action-button text-center" value="Gửi" />
+                            </div>
                         </fieldset>
                     </form>
                     <div class="box-qoute">
@@ -350,371 +361,384 @@ Công Ty TNHH Vi Tính Nguyên Kim. ĐC: 245B Trần Quang Khải,P Tân Địn
                                     </div>
                                 </div>
                             </div>
-                             
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
 
-    <script>
-        //Khai bao doi tuong
-        var CustomerName = "";
-        var NguoiLienHe = "";
-        var Address = "";
-        var PhoneCustomer = "";
-        var Email = "";
-        //Step 2
-        var ProductName = "";
-        var ProductSeri = "";
-        var ProductNgayMua = "";
-        var ProductTinhTrangLoi = "";
-        var ProductPhukien = "";
-        var ProductImage = "";
-        //Step 3
-        var HinhThucGui = 0;
-        var CarName = "";
-        var NgayGui = "";
-        var CarAddress = "";
-        var CarPhoneNumber = "";
-        var BillNumber = "";
-        var Description = "";
-        var CodeGenerate="";
-        var TenGiaoNhan = "";
-        var SoDienThoaiGiaoNhan = "";
+        <script>
+            //Khai bao doi tuong
+            var CustomerName = "";
+            var NguoiLienHe = "";
+            var Address = "";
+            var PhoneCustomer = "";
+            var Email = "";
+            //Step 2
+            var ProductName = "";
+            var ProductSeri = "";
+            var ProductNgayMua = "";
+            var ProductTinhTrangLoi = "";
+            var ProductPhukien = "";
+            var ProductImage = "";
+            //Step 3
+            var HinhThucGui = 0;
+            var CarName = "";
+            var NgayGui = "";
+            var CarAddress = "";
+            var CarPhoneNumber = "";
+            var BillNumber = "";
+            var Description = "";
+            var CodeGenerate = "";
+            var TenGiaoNhan = "";
+            var SoDienThoaiGiaoNhan = "";
 
-        var step = 1;
-        function prevstep() {
-            step -= 1;
-            if (step == 0)
-                step = 1;
-            toglestep();
-        }
-        function Checkvalidate() {
+            var step = 1;
+            function prevstep() {
+                var target = $('#fiel1');
+                var top = target.offset().top - 100;
+                $('html,body').animate({ scrollTop: top }, 600);
+                step -= 1;
+                if (step == 0)
+                    step = 1;
+                toglestep();
+               
+            }
+            function Checkvalidate() {
 
-        }
-        function nextstep() {
-             
-            //Checkvalidate
-            if (step == 1) {
-                if ($("#MainContent_CustomerName").val() == '') {
-                    alert("Vui lòng nhập họ tên");
-                    $("#MainContent_CustomerName").focus();
-                    return false;
+            }
+            function nextstep() {
+
+                //Checkvalidate
+                if (step == 1) {
+                    if ($("#MainContent_CustomerName").val() == '') {
+                        alert("Vui lòng nhập họ tên");
+                        $("#MainContent_CustomerName").focus();
+                        return false;
+                    }
+                    if ($("#MainContent_NguoiLienHe").val() == '') {
+                        alert("Vui lòng nhập tên người liên hệ");
+                        $("#MainContent_NguoiLienHe").focus();
+                        return false;
+                    }
+                    if ($("#MainContent_PhoneCustomer").val() == '') {
+                        alert("Vui lòng nhập Số điện thoại");
+                        $("#MainContent_PhoneCustomer").focus();
+                        return false;
+                    }
+                    if ($("#MainContent_Address").val() == '') {
+                        alert("Vui lòng nhập Địa chỉ");
+                        $("#MainContent_Address").focus();
+                        return false;
+                    }
                 }
-                if ($("#MainContent_NguoiLienHe").val() == '') {
-                    alert("Vui lòng nhập tên người liên hệ");
-                    $("#MainContent_NguoiLienHe").focus();
-                    return false;
+                if (step == 2) {
+                    if ($("#MainContent_ProductName").val() == '') {
+                        alert("Vui lòng nhập tên sản phẩm");
+                        $("#MainContent_ProductName").focus();
+                        return false;
+                    }
+
+                    if ($("#MainContent_ProductTinhTrangLoi").val() == '') {
+                        alert("Vui lòng nhập tình trạng lỗi");
+                        $("#MainContent_ProductTinhTrangLoi").focus();
+                        return false;
+                    }
+                    //if ($("#MainContent_ProductPhukien").val() == '') {
+                    //    alert("Vui lòng nhập phụ kiện kèm theo");
+                    //    $("#MainContent_ProductPhukien").focus();
+                    //    return false;
+                    //}   
                 }
-                if ($("#MainContent_PhoneCustomer").val() == '') {
-                    alert("Vui lòng nhập Số điện thoại");
-                    $("#MainContent_PhoneCustomer").focus();
-                    return false;
+
+
+                //Cập nhật giá  trị
+                if (step == 1) {
+
+                    CustomerName = $("#MainContent_CustomerName").val();
+                    NguoiLienHe = $("#MainContent_NguoiLienHe").val();
+                    PhoneCustomer = $("#MainContent_PhoneCustomer").val();
+                    Address = $("#MainContent_Address").val();
+                    Email = $("#MainContent_Email").val();
+                    //Scroll
+                   
                 }
-                if ($("#MainContent_Address").val() == '') {
-                    alert("Vui lòng nhập Địa chỉ");
-                    $("#MainContent_Address").focus();
-                    return false;
+                if (step == 2) {
+                    ProductName = $("#MainContent_ProductName").val();
+                    ProductSeri = $("#MainContent_ProductSeri").val();
+                    ProductNgayMua = $("#ProductNgayMua").val();
+                    ProductTinhTrangLoi = $("#MainContent_ProductTinhTrangLoi").val();
+                    ProductPhukien = $("#MainContent_ProductPhukien").val();
+                    ProductImage = $("#Filess").val();
+                }
+                var target = $('#fiel1');
+                var top = target.offset().top-100;
+                $('html,body').animate({ scrollTop: top }, 600);
+
+                step += 1;
+                if (step == 3)
+                    step = 3;
+                toglestep();
+            }
+            function toglestep() {
+                if (step == 1) {
+
+                    $("#step1").show();
+                    $("#step2").hide();
+                    $("#step3").hide();
+                    $(".previous").css("opacity", 0);
+                    //
+                    $(".l2").removeClass("active");
+                    $(".l3").removeClass("active");
+
+                    $(".next").show();
+                    $("#MainContent_btnGui").hide();
+
+
+
+                }
+                if (step == 2) {
+                    $("#step2").show();
+                    $("#step1").hide();
+                    $("#step3").hide();
+                    $(".previous").css("opacity", 1);
+                    $(".l2").addClass("active");
+                    $(".l3").removeClass("active");
+
+                    $(".next").show();
+                    $("#MainContent_btnGui").hide();
+                }
+                if (step == 3) {
+                    $("#step3").show();
+                    $("#step1").hide();
+                    $("#step2").hide();
+                    $(".previous").css("opacity", 1);
+                    $(".l2").addClass("active");
+                    $(".l3").addClass("active");
+
+                    $(".next").hide();
+                    $("#MainContent_btnGui").show();
                 }
             }
-            if (step == 2) {
-                if ($("#MainContent_ProductName").val() == '') {
-                    alert("Vui lòng nhập tên sản phẩm");
-                    $("#MainContent_ProductName").focus();
-                    return false;
-                }
+            $(document).ready(function () {
 
-                if ($("#MainContent_ProductTinhTrangLoi").val() == '') {
-                    alert("Vui lòng nhập tình trạng lỗi");
-                    $("#MainContent_ProductTinhTrangLoi").focus();
-                    return false;
-                }
-                if ($("#MainContent_ProductPhukien").val() == '') {
-                    alert("Vui lòng nhập phụ kiện kèm theo");
-                    $("#MainContent_ProductPhukien").focus();
-                    return false;
-                }   
-            }
-
-            
-            //Cập nhật giá  trị
-            if (step == 1) {
-
-                CustomerName = $("#MainContent_CustomerName").val();
-                NguoiLienHe = $("#MainContent_NguoiLienHe").val();
-                PhoneCustomer = $("#MainContent_PhoneCustomer").val();
-                Address = $("#MainContent_Address").val();
-                Email = $("#MainContent_Email").val();
-            }
-            if (step == 2) {
-                ProductName = $("#MainContent_ProductName").val();
-                ProductSeri = $("#MainContent_ProductSeri").val();
-                ProductNgayMua = $("#ProductNgayMua").val();
-                ProductTinhTrangLoi = $("#MainContent_ProductTinhTrangLoi").val();
-                ProductPhukien = $("#MainContent_ProductPhukien").val();
-                ProductImage = $("#Filess").val();
-            }
-           
-
-            step += 1;
-            if (step == 3)
-                step = 3;
-            toglestep();
-        }
-        function toglestep() { 
-            if (step == 1) {
-
-                $("#step1").show();
-                $("#step2").hide();
-                $("#step3").hide();
+                $("#MainContent_btnGui").hide();
+                $(".sl2").hide();
                 $(".previous").css("opacity", 0);
-                //
-                $(".l2").removeClass("active");
-                $(".l3").removeClass("active");
+                //Filess
 
-                $(".next").show();
-                $("#MainContent_btnGui").hide();
-              
-
-
-            }
-            if (step == 2) {
-                $("#step2").show();
-                $("#step1").hide();
-                $("#step3").hide();
-                $(".previous").css("opacity", 1);
-                $(".l2").addClass("active");
-                $(".l3").removeClass("active");
-
-                $(".next").show();
-                $("#MainContent_btnGui").hide();
-            }
-            if (step == 3) {
-                $("#step3").show();
-                $("#step1").hide();
-                $("#step2").hide();
-                $(".previous").css("opacity", 1);
-                $(".l2").addClass("active");
-                $(".l3").addClass("active");
-
-                $(".next").hide();
-                $("#MainContent_btnGui").show();
-            }
-        }
-        $(document).ready(function () {
-
-            $("#MainContent_btnGui").hide();
-            $(".sl2").hide();
-            $(".previous").css("opacity",0);
-            //Filess
-            
-        });
-        function datbaohanh() {
-            HinhThucGui = $("#slHinhThucGui").val();
-            //Validate
-            if (HinhThucGui == 3) {
-                if ($("#MainContent_CarName").val() == '') {
-                    alert("Vui lòng nhập tên chành xe");
-                    $("#MainContent_CarName").focus();
-                    return false;
-                }
-                if ($("#NgayGui").val() == '') {
-                    alert("Vui lòng nhập thời gian dự kiến");
-                    $("#NgayGui").focus();
-                    return false;
-                }
-                if ($("#MainContent_CarAddress").val() == '') {
-                    alert("Vui lòng nhập địa chỉ chành xe");
-                    $("#MainContent_CarAddress").focus();
-                    return false;
-                }
-                if ($("#MainContent_CarPhoneNumber").val() == '') {
-                    alert("Vui lòng nhập số điện thoại chành xe");
-                    $("#MainContent_CarPhoneNumber").focus();
-                    return false;
-                }
-                if ($("#MainContent_security_codes").val() == '') {
-                    alert("Vui lòng nhập mã bảo vệ");
-                    $("#MainContent_security_codes").focus();
-                    return false;
-                }
-            }
-          
-            CarName = $("#MainContent_CarName").val();
-            NgayGui = $("#NgayGui").val();
-            CarAddress = $("#MainContent_CarAddress").val();
-            CarPhoneNumber = $("#MainContent_CarPhoneNumber").val();
-            BillNumber = $("#MainContent_BillNumber").val();
-            Description = $("#MainContent_Description").val();
-            CodeGenerate = $("#MainContent_randomCode").val();
-            TenGiaoNhan = $("#MainContent_TenGiaoNhan").val();
-            SoDienThoaiGiaoNhan = $("#MainContent_SoDienThoaiGiaoNhan").val();
-            var param = {
-                CustomerName: CustomerName,
-                Address: Address,
-                NguoiLienHe: NguoiLienHe,
-                PhoneCustomer: PhoneCustomer,
-                Email: Email,
-                ProductName: ProductName,
-                ProductSeri: ProductSeri,
-                ProductNgayMua: ProductNgayMua,
-                ProductTinhTrangLoi: ProductTinhTrangLoi,
-                ProductPhukien: ProductPhukien,
-                ProductImage: ProductImage,
-                HinhThucGui: HinhThucGui,
-                CarName: CarName,
-                NgayGui: NgayGui,
-                CarAddress: CarAddress,
-                CarPhoneNumber: CarPhoneNumber,
-                BillNumber: BillNumber,
-                Description: Description,
-                CodeGenerate: CodeGenerate,
-                TenGiaoNhan:TenGiaoNhan,
-                SoDienThoaiGiaoNhan: SoDienThoaiGiaoNhan
-            }
-            $.ajax({
-                url: 'Default.aspx/UpdateData',
-                type: "POST",
-                dataType: "html",
-                contentType: "application/json; charset=utf-8",
-                data: "{data:" + JSON.stringify(param) + ",capchaText:'" + $("#MainContent_security_codes").val() + "'}",
-                //data: JSON.stringify({
-                //    CustomerName: $('#CustomerName').val() 
-                //}),
-                success: function (result) {
-
-                    if (result == '{"d":1}') {
-                        alert("Gửi thành công. Vui lòng kiểm tra Email hoặc Email Spam để xác nhận thông tin!");
-                        location.reload();
+            });
+            function datbaohanh() {
+                HinhThucGui = $("#slHinhThucGui").val();
+                //Validate
+                if (HinhThucGui == 3) {
+                    if ($("#MainContent_CarName").val() == '') {
+                        alert("Vui lòng nhập tên chành xe");
+                        $("#MainContent_CarName").focus();
+                        return false;
                     }
-                    if (result == '{"d":2}') {
+                    if ($("#NgayGui").val() == '') {
+                        alert("Vui lòng nhập thời gian dự kiến");
+                        $("#NgayGui").focus();
+                        return false;
+                    }
+                    if ($("#MainContent_CarAddress").val() == '') {
+                        alert("Vui lòng nhập địa chỉ chành xe");
+                        $("#MainContent_CarAddress").focus();
+                        return false;
+                    }
+                    if ($("#MainContent_CarPhoneNumber").val() == '') {
+                        alert("Vui lòng nhập số điện thoại chành xe");
+                        $("#MainContent_CarPhoneNumber").focus();
+                        return false;
+                    }
+                    if ($("#MainContent_security_codes").val() == '') {
+                        alert("Vui lòng nhập mã bảo vệ");
                         $("#MainContent_security_codes").focus();
-                        alert("Mã bảo vệ không đúng! Vui lòng nhập lại");
+                        return false;
                     }
-                },
-                error: function (result) {
-                    alert("Failed");
+                }
+                var propcheck = $("#xndl").prop("checked");
+                if (propcheck == false) {
+                    alert("Vui lòng xác nhận dữ liệu.");
+                    $("#xndl").focus();
+                    return false;
+                }
+
+                CarName = $("#MainContent_CarName").val();
+                NgayGui = $("#NgayGui").val();
+                CarAddress = $("#MainContent_CarAddress").val();
+                CarPhoneNumber = $("#MainContent_CarPhoneNumber").val();
+                BillNumber = $("#MainContent_BillNumber").val();
+                Description = $("#MainContent_Description").val();
+                CodeGenerate = $("#MainContent_randomCode").val();
+                TenGiaoNhan = $("#MainContent_TenGiaoNhan").val();
+                SoDienThoaiGiaoNhan = $("#MainContent_SoDienThoaiGiaoNhan").val();
+                var param = {
+                    CustomerName: CustomerName,
+                    Address: Address,
+                    NguoiLienHe: NguoiLienHe,
+                    PhoneCustomer: PhoneCustomer,
+                    Email: Email,
+                    ProductName: ProductName,
+                    ProductSeri: ProductSeri,
+                    ProductNgayMua: ProductNgayMua,
+                    ProductTinhTrangLoi: ProductTinhTrangLoi,
+                    ProductPhukien: ProductPhukien,
+                    ProductImage: ProductImage,
+                    HinhThucGui: HinhThucGui,
+                    CarName: CarName,
+                    NgayGui: NgayGui,
+                    CarAddress: CarAddress,
+                    CarPhoneNumber: CarPhoneNumber,
+                    BillNumber: BillNumber,
+                    Description: Description,
+                    CodeGenerate: CodeGenerate,
+                    TenGiaoNhan: TenGiaoNhan,
+                    SoDienThoaiGiaoNhan: SoDienThoaiGiaoNhan
+                }
+                $.ajax({
+                    url: 'Default.aspx/UpdateData',
+                    type: "POST",
+                    dataType: "html",
+                    contentType: "application/json; charset=utf-8",
+                    data: "{data:" + JSON.stringify(param) + ",capchaText:'" + $("#MainContent_security_codes").val() + "'}",
+                    //data: JSON.stringify({
+                    //    CustomerName: $('#CustomerName').val() 
+                    //}),
+                    success: function (result) {
+
+                        if (result == '{"d":1}') {
+                            alert("Gửi thành công. Vui lòng kiểm tra Email hoặc Email Spam để xác nhận thông tin!");
+                            location.reload();
+                        }
+                        if (result == '{"d":2}') {
+                            $("#MainContent_security_codes").focus();
+                            alert("Mã bảo vệ không đúng! Vui lòng nhập lại");
+                        }
+                    },
+                    error: function (result) {
+                        alert("Failed");
+                    }
+                });
+            }
+
+            var _URL = window.URL || window.webkitURL;
+            $("#uploadAvatar").on('change', function () {
+                var file, img;
+
+                if ((file = this.files[0])) {
+                    //img = new Image();
+                    sendFile(file);
+                    //img.onerror = function () {
+                    //    alert("Not a valid file:" + file.type);
+                    //};
+                    //img.src = _URL.createObjectURL(file);
                 }
             });
-        }
 
-        var _URL = window.URL || window.webkitURL;
-        $("#uploadAvatar").on('change', function () {
-            var file, img;
-
-            if ((file = this.files[0])) {
-                //img = new Image();
-                sendFile(file);
-                //img.onerror = function () {
-                //    alert("Not a valid file:" + file.type);
-                //};
-                //img.src = _URL.createObjectURL(file);
-            }
-        });
-
-        function sendFile(file) {
-            var formData = new FormData();
-            formData.append('file', $('#uploadAvatar')[0].files[0]);
-            $.ajax({
-                url: "../UploadImages.ashx",
-                type: "POST",
-                data: formData,
-                success: function (status) {
-                    $("#Filess").val(status);
-                    $("#myimg").attr("src", "/Images/" + status);
-                    $(".btnclose").show();
-                },
-                processData: false,
-                contentType: false,
-                error: function () {
-                    alert("Whoops something went wrong!");
-                }
-            });
-        }
-
-        function closeimg() {
-            $("#myimg").attr("src", "");
-            $(".btnclose").hide();
-            $("#Filess").val('');
-            $("#uploadAvatar").val('');
-        }
-    </script>
-    <!--Code for the sign on-->
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
-
-    <!--Needed to decode the returned JWT-->
-    <script src="https://unpkg.com/jwt-decode/build/jwt-decode.js"></script>
-    <script>
-
-        function decodeJwtResponse(r) {
-            var decoded = jwt_decode(r);
-            return decoded;
-        }
-        function handleCredentialResponse(response) {
-            const responsePayload = decodeJwtResponse(response.credential);
-            console.log("ID: " + responsePayload.sub);
-            console.log('Full Name: ' + responsePayload.name);
-            console.log('Given Name: ' + responsePayload.given_name);
-            console.log('Family Name: ' + responsePayload.family_name);
-            console.log("Image URL: " + responsePayload.picture);
-            console.log("Email: " + responsePayload.email);
-
-
-            //Tạo tài khoản
-            var param = {
-                CustomerName: responsePayload.name,
-                CustomerEmail: responsePayload.email
-            }
-            $.ajax({
-                url: 'Default.aspx/LoginByEmail',
-                type: "POST",
-                dataType: "html",
-                contentType: "application/json; charset=utf-8",
-                data: "{data:" + JSON.stringify(param) + "}",
-                success: function (result) {
-                    if (result == '{"d":true}') {
-                        alert("Đăng nhập thành công");
-                        location.reload();
+            function sendFile(file) {
+                var formData = new FormData();
+                formData.append('file', $('#uploadAvatar')[0].files[0]);
+                $.ajax({
+                    url: "../UploadImages.ashx",
+                    type: "POST",
+                    data: formData,
+                    success: function (status) {
+                        $("#Filess").val(status);
+                        $("#myimg").attr("src", "/Images/" + status);
+                        $(".btnclose").show();
+                    },
+                    processData: false,
+                    contentType: false,
+                    error: function () {
+                        alert("Whoops something went wrong!");
                     }
-                    else {
-                        alert("Đăng nhập thất bại");
-                    }
-                },
-                error: function (result) {
-                    alert("Failed");
+                });
+            }
+
+            function closeimg() {
+                $("#myimg").attr("src", "");
+                $(".btnclose").hide();
+                $("#Filess").val('');
+                $("#uploadAvatar").val('');
+            }
+        </script>
+        <!--Code for the sign on-->
+        <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+        <!--Needed to decode the returned JWT-->
+        <script src="https://unpkg.com/jwt-decode/build/jwt-decode.js"></script>
+        <script>
+
+            function decodeJwtResponse(r) {
+                var decoded = jwt_decode(r);
+                return decoded;
+            }
+            function handleCredentialResponse(response) {
+                const responsePayload = decodeJwtResponse(response.credential);
+                console.log("ID: " + responsePayload.sub);
+                console.log('Full Name: ' + responsePayload.name);
+                console.log('Given Name: ' + responsePayload.given_name);
+                console.log('Family Name: ' + responsePayload.family_name);
+                console.log("Image URL: " + responsePayload.picture);
+                console.log("Email: " + responsePayload.email);
+
+
+                //Tạo tài khoản
+                var param = {
+                    CustomerName: responsePayload.name,
+                    CustomerEmail: responsePayload.email
                 }
-            });
-        }
-
-        function activeTab(dis) {
-            $(".achung").removeClass("tabDangNhapActive");
-            $(dis).addClass("tabDangNhapActive");
-        }
-
-
-
-        document.title = "Gửi bảo hành";
-
-        $("#step2").hide();
-        $("#step3").hide();
-
-        function tgHinhThuc() {
-            var vl = $("#slHinhThucGui").val();
-            if (vl == 1) {
-                $(".sl2").hide();
-                $(".sl1").hide();
+                $.ajax({
+                    url: 'Default.aspx/LoginByEmail',
+                    type: "POST",
+                    dataType: "html",
+                    contentType: "application/json; charset=utf-8",
+                    data: "{data:" + JSON.stringify(param) + "}",
+                    success: function (result) {
+                        if (result == '{"d":true}') {
+                            alert("Đăng nhập thành công");
+                            location.reload();
+                        }
+                        else {
+                            alert("Đăng nhập thất bại");
+                        }
+                    },
+                    error: function (result) {
+                        alert("Failed");
+                    }
+                });
             }
-            if (vl == 2) {
-                $(".sl2").show();
-                $(".sl1").hide();
+
+            function activeTab(dis) {
+                $(".achung").removeClass("tabDangNhapActive");
+                $(dis).addClass("tabDangNhapActive");
             }
-            if (vl == 3) {
-                $(".sl2").hide();
-                $(".sl1").show();
+
+
+
+            document.title = "Gửi bảo hành";
+
+            $("#step2").hide();
+            $("#step3").hide();
+
+            function tgHinhThuc() {
+                var vl = $("#slHinhThucGui").val();
+                if (vl == 1) {
+                    $(".sl2").hide();
+                    $(".sl1").hide();
+                }
+                if (vl == 2) {
+                    $(".sl2").show();
+                    $(".sl1").hide();
+                }
+                if (vl == 3) {
+                    $(".sl2").hide();
+                    $(".sl1").show();
+                }
             }
-        }
-    </script>
+        </script>
 </asp:Content>

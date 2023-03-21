@@ -43,6 +43,7 @@ namespace CustomerGuarantee
                        // this.CustomerUserId.Value = cus.CustomerUserId.ToString();
                         //
                         this.CustomerName.Value = cus.CustomerName;
+                        this.NguoiLienHe.Value = cus.CustomerNLH;
                         this.Address.Value = cus.CustomerAddress;
                         this.PhoneCustomer.Value = cus.CustomerPhone;
                         this.Email.Value = cus.CustomerEmail;
@@ -135,7 +136,8 @@ namespace CustomerGuarantee
                 if (chkCustomerUser == null)
                 { 
                     tcus.CustomerEmail = data.Email;
-                    tcus.CustomerName = data.NguoiLienHe;
+                    tcus.CustomerName = data.CustomerName;
+                    tcus.CustomerNLH = data.NguoiLienHe;
                     tcus.CustomerPhone = data.PhoneCustomer;
                     tcus.CustomerUser = data.Email;
                     tcus.CustomerAddress = data.Address;
@@ -157,8 +159,13 @@ namespace CustomerGuarantee
                 htmlThan += "<table style=\"width:100%;margin:10px 0px\">";
 
                 htmlThan += "<tr>";
-                htmlThan += "<td style=\"border: 1px solid;padding:5px;background-color:#65FFFF;width:150px\">Tên khách hàng</td>";
+                htmlThan += "<td style=\"border: 1px solid;padding:5px;background-color:#65FFFF;width:150px\">Tên công ty</td>";
                 htmlThan += "<td style=\"border: 1px solid;padding:5px\">" + data.CustomerName+"</td>";
+                htmlThan += "</tr>";
+
+                htmlThan += "<tr>";
+                htmlThan += "<td style=\"border: 1px solid;padding:5px;background-color:#65FFFF;width:150px\">Người liên hệ</td>";
+                htmlThan += "<td style=\"border: 1px solid;padding:5px\">" + data.NguoiLienHe + "</td>";
                 htmlThan += "</tr>";
 
                 htmlThan += "<tr>";
@@ -173,23 +180,72 @@ namespace CustomerGuarantee
 
                 htmlThan += "<tr>";
                 htmlThan += "<td style=\"border: 1px solid;padding:5px;background-color:#65FFFF;width:150px\">Sản phẩm gửi BH</td>";
-                htmlThan += "<td style=\"border: 1px solid;padding:5px\">" + data.ProductImage + "</td>";
-                htmlThan += "</tr>";
-                htmlThan += "<tr>";
-
-                htmlThan += "<td style=\"border: 1px solid;padding:5px;background-color:#65FFFF;width:150px\">Tên nhà xe</td>";
-                htmlThan += "<td style=\"border: 1px solid;padding:5px\">" + data.CarName + "</td>";
+                htmlThan += "<td style=\"border: 1px solid;padding:5px\">" + data.ProductName + "</td>";
                 htmlThan += "</tr>";
 
                 htmlThan += "<tr>";
-                htmlThan += "<td style=\"border: 1px solid;padding:5px;background-color:#65FFFF;width:150px\">Địa chỉ nhà xe</td>";
-                htmlThan += "<td style=\"border: 1px solid;padding:5px\">" + data.CarAddress + "</td>";
+                htmlThan += "<td style=\"border: 1px solid;padding:5px;background-color:#65FFFF;width:150px\">Tình trạng lỗi</td>";
+                htmlThan += "<td style=\"border: 1px solid;padding:5px\">" + data.ProductTinhTrangLoi + "</td>";
+                htmlThan += "</tr>";
+
+                if (!string.IsNullOrEmpty(data.ProductPhukien))
+                {
+                    htmlThan += "<tr>";
+                    htmlThan += "<td style=\"border: 1px solid;padding:5px;background-color:#65FFFF;width:150px\">Phụ kiện đi kèm</td>";
+                    htmlThan += "<td style=\"border: 1px solid;padding:5px\">" + data.ProductPhukien + "</td>";
+                    htmlThan += "</tr>";
+                }
+
+                htmlThan += "<tr>";
+
+                if (data.HinhThucGui == 3)
+                {
+                    htmlThan += "<td style=\"border: 1px solid;padding:5px;background-color:#65FFFF;width:150px\">Hình thức gửi</td>";
+                    htmlThan += "<td style=\"border: 1px solid;padding:5px\">" + "Chành xe/ chuyển phát" + "</td>";
+                    htmlThan += "</tr>";
+
+                    htmlThan += "<td style=\"border: 1px solid;padding:5px;background-color:#65FFFF;width:150px\">Tên nhà xe</td>";
+                    htmlThan += "<td style=\"border: 1px solid;padding:5px\">" + data.CarName + "</td>";
+                    htmlThan += "</tr>";
+
+                    htmlThan += "<tr>";
+                    htmlThan += "<td style=\"border: 1px solid;padding:5px;background-color:#65FFFF;width:150px\">Địa chỉ nhà xe</td>";
+                    htmlThan += "<td style=\"border: 1px solid;padding:5px\">" + data.CarAddress + "</td>";
+                    htmlThan += "</tr>";
+
+                    htmlThan += "<tr>";
+                    htmlThan += "<td style=\"border: 1px solid;padding:5px;background-color:#65FFFF;width:150px\">Số điện thoại nhà xe</td>";
+                    htmlThan += "<td style=\"border: 1px solid;padding:5px\">" + data.CarPhoneNumber + "</td>";
+                    htmlThan += "</tr>";
+                }
+                if (data.HinhThucGui == 2)
+                {
+                    htmlThan += "<tr>";
+                    htmlThan += "<td style=\"border: 1px solid;padding:5px;background-color:#65FFFF;width:150px\">Hình thức gửi</td>";
+                    htmlThan += "<td style=\"border: 1px solid;padding:5px\">" + "Giao nhận mang về" + "</td>";
+                    htmlThan += "</tr>";
+
+                    htmlThan += "<tr>";
+                    htmlThan += "<td style=\"border: 1px solid;padding:5px;background-color:#65FFFF;width:150px\">Tên nhân viên</td>";
+                    htmlThan += "<td style=\"border: 1px solid;padding:5px\">" + data.TenGiaoNhan + "</td>";
+                    htmlThan += "</tr>";
+
+
+                    htmlThan += "<tr>";
+                    htmlThan += "<td style=\"border: 1px solid;padding:5px;background-color:#65FFFF;width:150px\">Số điện thoại</td>";
+                    htmlThan += "<td style=\"border: 1px solid;padding:5px\">" + data.SoDienThoaiGiaoNhan + "</td>";
+                    htmlThan += "</tr>";
+                }
+
+                htmlThan += "<tr>";
+                htmlThan += "<td style=\"border: 1px solid;padding:5px;background-color:#65FFFF;width:150px\">Thời gian dự kiến gửi	</td>";
+                htmlThan += "<td style=\"border: 1px solid;padding:5px\">" + data.NgayGui + "</td>";
                 htmlThan += "</tr>";
 
                 htmlThan += "</table>";
                 htmlContents += htmlThan;
                 htmlContents += "<div>Mã đơn bảo hành của Anh/Chị là <strong>" + data.CodeGenerate + "</strong></div>";
-                htmlContents += "<div>Để kiểm tra thông tin bảo hành vui lòng Anh/Chị hãy vào đường link http://192.168.117.111:8082/kiem-tra-bao-hanh với Mã để kiểm tra tình trạng đơn bảo hành  </div>";
+                htmlContents += "<div>Để kiểm tra thông tin bảo hành vui lòng Anh/Chị hãy vào đường link http://baohanh.vitinhnguyenkim.vn/kiem-tra-bao-hanh với Mã để kiểm tra tình trạng đơn bảo hành  </div>";
 
                 if (isTaoTK)
                 {

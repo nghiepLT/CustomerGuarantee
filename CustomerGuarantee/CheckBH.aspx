@@ -123,11 +123,7 @@
                                         </td>
                                         <td><span id="CarPhoneNumber"></span></td>
                                     </tr>
-                                    <tr>
-                                        <td style="width: 170px;"><strong>Thông tin nhận từ(chành xe hoặc khách hàng)</strong>
-                                        </td>
-                                        <td><span id="InforFromCustomer"></span></td>
-                                    </tr>
+                                   
                                     <tr>
                                         <td style="width: 170px;"><strong>Số Bill</strong>
                                         </td>
@@ -210,8 +206,7 @@
             $("#ProductName").html('');
             $("#CarName").html('');
             $("#CarAddress").html('');
-            $("#CarPhoneNumber").html('');
-            $("#InforFromCustomer").html('');
+            $("#CarPhoneNumber").html(''); 
             $("#BillNumber").html('');
             $("#Description").html('');
             $("#myimg").attr("src","");
@@ -277,8 +272,7 @@
                     $("#myimg").attr("src", "/Images/" + obj.ProductImage);
                     $("#CarName").html(obj.CarName);
                     $("#CarAddress").html(obj.CarAddress);
-                    $("#CarPhoneNumber").html(obj.CarPhoneNumber);
-                    $("#InforFromCustomer").html(obj.InforFromCustomer);
+                    $("#CarPhoneNumber").html(obj.CarPhoneNumber); 
                     $("#BillNumber").html(obj.BillNumber);
                     $("#Description").html(obj.Description);
                     //

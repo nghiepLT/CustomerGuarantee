@@ -1,8 +1,8 @@
 ﻿<%@ Page Title="Yêu cầu khách gửi" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Yeucaukhachgui.aspx.cs" Inherits="CustomerGuarantee.Yeucaukhachgui" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server"> 
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <link href="Content/Site.css" rel="stylesheet" />
-    <input id="userlogin" runat="server" style="display:none;" />
+    <input id="userlogin" runat="server" style="display: none;" />
     <div id="breadrumb" class="outer hidden-xs">
         <div class="wrapper">
             <div class="col-md-12">
@@ -35,31 +35,26 @@
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>
-                                            <td>
-                                                Mã đơn
+                                            <td>Mã đơn
                                             </td>
-                                              <td>
-                                                Thời gian dự kiến gửi
+                                            <td>Thời gian dự kiến gửi
                                             </td>
-                                            <td style="width:15%;">Tên khách hàng	
+                                            <td style="width: 15%;">Tên khách hàng	
                                             </td>
-                                            <td style="width:15%;">Địa chỉ
+                                            <td style="width: 15%;">Địa chỉ
                                             </td>
                                             <td>SĐT & người liên hệ
                                             </td>
                                             <td>Sản phẩm gửi BH
                                             </td>
-                                          <td>
-                                              Đánh giá của khách
-                                          </td>
-                                            <td>
-                                                Trạng thái
+                                            <td>Đánh giá của khách
+                                            </td>
+                                            <td>Trạng thái
                                             </td>
                                         </tr>
                                     </thead>
-                                   <tbody id="contents">
-                                       
-                                   </tbody>
+                                    <tbody id="contents">
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
@@ -68,8 +63,8 @@
             </div>
         </div>
     </div>
-    <div class="modal fade danhgiamodal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
-        <div class="modal-dialog" role="document" style="width:700px;">
+    <div class="modal fade danhgiamodal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document" style="width: 700px;">
             <div class="modal-content">
 
                 <div class="modal-body">
@@ -86,11 +81,11 @@
                                 <div id="tab5" data-status="4" onclick="tgstep(this)" class="step"><span>Đã xử lý xong</span> </div>
                             </div>
                         </div>
-                      <div>
-                         <textarea rows="4" class="ghichuphatsinh" id="GhiChuPhatSinh" placeholder="Ghi chú phát sinh" style="display:none;"></textarea>
-                      </div>
+                        <div>
+                            <textarea rows="4" class="ghichuphatsinh" id="GhiChuPhatSinh" placeholder="Ghi chú phát sinh" style="display: none;"></textarea>
+                        </div>
                     </div>
-                    <ul style="display:none;">
+                    <ul style="display: none;">
                         <li>
                             <input type="radio" name="radChange" id="rad1" onchange="radChange(1)" />
                             <span>Chưa nhận</span>
@@ -103,7 +98,7 @@
                             <input type="radio" name="radChange" id="rad3" onchange="radChange(3)" />
                             <span>Đang tiếp nhận</span>
                         </li>
-                            <li>
+                        <li>
                             <input type="radio" name="radChange" id="rad5" onchange="radChange(5)" />
                             <span>Phát sinh</span>
                         </li>
@@ -112,9 +107,9 @@
                             <span>Đã xử lý xong</span>
                         </li>
                     </ul>
-                   
+
                     <div class="thongtintrakhach_box">
-                         <div class="mg-10">
+                        <div class="mg-10">
                             <div class="row ">
                                 <div class="col-sm-12">
                                     Nhân viên trả
@@ -134,10 +129,10 @@
                                 </div>
                             </div>
                         </div>
-                         <div class="mg-10">
+                        <div class="mg-10">
                             <div class="row ">
                                 <div class="col-sm-12">
-                                   Hình thức trả
+                                    Hình thức trả
                                 </div>
                                 <div class="col-sm-12">
                                     <select id="slHinhthuc" class="form-control" onchange="slTra()">
@@ -184,7 +179,7 @@
                         <div class="mg-10">
                             <div class="row ">
                                 <div class="col-sm-12">
-                                   Nội dung xử lý
+                                    Nội dung xử lý
                                 </div>
                                 <div class="col-sm-12">
                                     <textarea id="GhiChuXuLy" placeholder="Nội dung xử lý" style="width: 100%" rows="3"></textarea>
@@ -199,154 +194,168 @@
             </div>
         </div>
     </div>
-     <div class="modal fade danhgiamodal" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
-        <div class="modal-dialog" role="document" >
+    <div class="modal fade danhgiamodal" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
             <div class="modal-content">
 
                 <div class="modal-body">
                     <div class="thongtinkhachgui_title">
                         Thông tin khách gửi
                     </div>
-                   <table class="table table-bordered">
-                       <tr>
-                           <td>
-                               Tên khách hàng
-                           </td>
-                           <td>
-                               <span  id="txtCustomerName"></span>
-                           </td>
-                       </tr>
-                       <tr>
-                           <td>
-                               Địa chỉ
-                           </td>
-                           <td>
-                               <span  id="txtAddress"></span>
-                           </td>
-                       </tr>
+                    <table class="table table-bordered">
                         <tr>
-                           <td>
-                              SĐT & người liên hệ	
-                           </td>
-                           <td>
-                               <span  id="txtPhoneCustomer"></span>
-                           </td>
-                       </tr>
+                            <td>Tên khách hàng
+                            </td>
+                            <td>
+                                <span id="txtCustomerName"></span>
+                            </td>
+                        </tr>
                         <tr>
-                           <td>
-                             Email
-                           </td>
-                           <td>
-                               <span  id="txtEmail"></span>
-                           </td>
-                       </tr>
+                            <td>Địa chỉ
+                            </td>
+                            <td>
+                                <span id="txtAddress"></span>
+                            </td>
+                        </tr>
                         <tr>
-                           <td>
-                             Sản phẩm gửi BH
-                           </td>
-                           <td>
-                               <span  id="txtProductName"></span>
-                           </td>
-                       </tr>
+                            <td>SĐT & người liên hệ	
+                            </td>
+                            <td>
+                                <span id="txtPhoneCustomer"></span>
+                            </td>
+                        </tr>
                         <tr>
-                           <td>
-                            Tên nhà xe	
-                           </td>
-                           <td>
-                               <span  id="txtCarName"></span>
-                           </td>
-                       </tr>
+                            <td>Email
+                            </td>
+                            <td>
+                                <span id="txtEmail"></span>
+                            </td>
+                        </tr>
                         <tr>
-                           <td>
-                           Địa chỉ nhà xe	
+                            <td>Sản phẩm gửi BH
+                            </td>
+                            <td>
+                                <span id="txtProductName"></span>
+                            </td>
+                        </tr>
+                        <tr class="type1">
+                            <td>Tên nhà xe	
+                            </td>
+                            <td>
+                                <span id="txtCarName"></span>
+                            </td>
+                        </tr>
+                        <tr class="type1">
+                            <td>Địa chỉ nhà xe	
+                            </td>
+                            <td>
+                                <span id="txtCarAddress"></span>
+                            </td>
+                        </tr>
+                         <tr class="type1">
+                            <td>Tình trạng lỗi
+                            </td>
+                            <td>
+                                <strong style="color:red" id="ProductTinhTrangLoi"></strong>
+                            </td>
+                        </tr>
+                         <tr class="type1">
+                            <td>Phụ kiện kèm theo	
+                            </td>
+                            <td>
+                                <span id="ProductPhukien"></span>
+                            </td>
+                        </tr>
+                        <tr class="type1">
+                            <td>SĐT nhà xe	
+                            </td>
+                            <td>
+                                <span id="txtCarPhoneNumber"></span>
+                            </td>
+                        </tr>
+                      <%--  <tr class="type1">
+                            <td>Thông tin nhận từ(chành xe hoặc khách hàng)	
+                            </td>
+                            <td>
+                                <span id="txtInforFromCustomer"></span>
+                            </td>
+                        </tr>--%>
+                        <tr class="type1">
+                            <td>Số Bill	
+                            </td>
+                            <td>
+                                <span id="txtBillNumber"></span>
+                            </td>
+                        </tr>
+                        <tr class="type1">
+                            <td>Ghi chú		
+                            </td>
+                            <td>
+                                <span id="txtDescription"></span>
+                            </td>
+                        </tr>
+                         <tr class="type2">
+                           <td><strong>Nhân viên nhận hàng</strong>
                            </td>
                            <td>
-                               <span  id="txtCarAddress"></span>
+                               <span id="TenGiaoNhan"></span>
                            </td>
                        </tr>
-                        <tr>
-                           <td>
-                          SĐT nhà xe	
+                        <tr class="type2">
+                           <td><strong>Số điện thoại</strong>
                            </td>
                            <td>
-                               <span  id="txtCarPhoneNumber"></span>
+                               <span id="SoDienThoaiGiaoNhan"></span>
                            </td>
                        </tr>
-                       <tr>
-                           <td>Thông tin nhận từ(chành xe hoặc khách hàng)	
-                           </td>
-                           <td>
-                               <span id="txtInforFromCustomer"></span>
-                           </td>
-                       </tr>
-                       <tr>
-                           <td>Số Bill	
-                           </td>
-                           <td>
-                               <span id="txtBillNumber"></span>
-                           </td>
-                       </tr>
-                        <tr>
-                           <td>Ghi chú		
-                           </td>
-                           <td>
-                               <span id="txtDescription"></span>
-                           </td>
-                       </tr>
-                   </table>
+                    </table>
 
-                     <div class="thongtinkhachgui_title">
+                    <div class="thongtinkhachgui_title">
                         Thông tin trả hàng
                     </div>
 
                     <table class="table table-bordered">
                         <tr>
-                            <td>
-                               Thời gian trả
+                            <td>Thời gian trả
                             </td>
                             <td>
-                               <span  id="txtUserNgayGui"></span>
-                           </td>
+                                <span id="txtUserNgayGui"></span>
+                            </td>
                         </tr>
-                         <tr>
-                            <td>
-                               Nhân viên thực hiện
+                        <tr>
+                            <td>Nhân viên thực hiện
                             </td>
                             <td>
-                               <span  id="txtUSerGuiTra"></span>
-                           </td>
+                                <span id="txtUSerGuiTra"></span>
+                            </td>
                         </tr>
-                         <tr>
-                            <td>
-                              Hình thức trả
+                        <tr>
+                            <td>Hình thức trả
                             </td>
                             <td>
-                               <span  id="txtUserGuiType"></span>
-                           </td>
+                                <span id="txtUserGuiType"></span>
+                            </td>
                         </tr>
-                         <tr class="trtxtUserTenNhaXe">
-                            <td>
-                             Tên nhà xe
+                        <tr class="trtxtUserTenNhaXe">
+                            <td>Tên nhà xe
                             </td>
                             <td>
-                               <span  id="txtUserTenNhaXe"></span>
-                           </td>
+                                <span id="txtUserTenNhaXe"></span>
+                            </td>
                         </tr>
-                         <tr class="trUserAddress">
-                            <td>
-                             Địa chỉ nhà xe
+                        <tr class="trUserAddress">
+                            <td>Địa chỉ nhà xe
                             </td>
                             <td>
-                               <span  id="txtUserAddress"></span>
-                           </td>
+                                <span id="txtUserAddress"></span>
+                            </td>
                         </tr>
-                         <tr class="trUserAddress">
-                            <td>
-                             Số điện thoại
+                        <tr class="trUserAddress">
+                            <td>Số điện thoại
                             </td>
                             <td>
-                               <span  id="txtUSerSoDTNhaXe"></span>
-                           </td>
+                                <span id="txtUSerSoDTNhaXe"></span>
+                            </td>
                         </tr>
                     </table>
                 </div>
@@ -362,14 +371,14 @@
                 dataType: "json",
                 contentType: "application/json; charset=utf-8",
                 data: "{MaPhieu:'" + $("#MainContent_CodeGenerate").val() + "'}",
-                success: function (result) { 
+                success: function (result) {
                     var data = result.d;
                     const obj = JSON.parse(data);
                     var htmlContents = "";
                     for (i = 0; i < obj.length; i++) {
                         htmlContents += "<tr>";
                         htmlContents += "<td>";
-                        htmlContents += "<strong style=\"color:red\">"+obj[i].CodeGenerate+"</strong>";
+                        htmlContents += "<strong style=\"color:red\">" + obj[i].CodeGenerate + "</strong>";
                         htmlContents += "</td>";
                         htmlContents += "<td>";
                         if (obj[i].NgayGui != null) {
@@ -377,22 +386,22 @@
                         }
                         htmlContents += "</td>";
                         htmlContents += "<td>";
-                        htmlContents +="<strong>"+obj[i].CustomerName+"</strong>";
+                        htmlContents += "<strong>" + obj[i].CustomerName + "</strong>";
                         htmlContents += "</td>";
                         htmlContents += "<td>";
                         htmlContents += obj[i].Address;
                         htmlContents += "</td>";
                         htmlContents += "<td>";
                         htmlContents += obj[i].PhoneCustomer;
-                        htmlContents += "</td>"; 
+                        htmlContents += "</td>";
                         htmlContents += "<td>";
                         htmlContents += obj[i].ProductName;
                         if (obj[i].ProductImage != '') {
                             htmlContents += "<div><img style=\"width:100px;\" src=\"/Images/" + obj[i].ProductImage + "\" </div>"
                         }
-                      
+
                         htmlContents += "</td>";
-                       
+
                         //Đánh giá của khách	
                         htmlContents += "<td>";
                         if (obj[i].StarRate != null) {
@@ -406,9 +415,9 @@
                             else {
                                 aactive = "";
                             }
-                           
+
                             htmlContents += "<li>";
-                            htmlContents += "<i id=\"i_st1\" class=\"fa fa-star "+aactive+"\" ></i>";
+                            htmlContents += "<i id=\"i_st1\" class=\"fa fa-star " + aactive + "\" ></i>";
                             htmlContents += "</li>";
                             //star 2
                             if (obj[i].StarRate >= 2) {
@@ -450,7 +459,7 @@
                             htmlContents += "<li>";
                             htmlContents += "<i id=\"i_st5\" class=\"fa fa-star " + aactive + "\" ></i>";
                             htmlContents += "</li>";
-                             
+
                             htmlContents += "</ul>";
                             htmlContents += "<div style=\"margin-top:5px;\">";
                             htmlContents += obj[i].RateDescription
@@ -460,10 +469,9 @@
 
 
 
-                        if (obj[i].Status == 0)
-                        {
+                        if (obj[i].Status == 0) {
                             htmlContents += "<td>";
-                            htmlContents += "<a class=\"btn btn-xs btn-danger\" onclick=\"tgStatus("+obj[i].CustomerCaseID+")\" >Chưa nhận</a>";
+                            htmlContents += "<a class=\"btn btn-xs btn-danger\" onclick=\"tgStatus(" + obj[i].CustomerCaseID + ")\" >Chưa nhận</a>";
                             htmlContents += "</td>";
                         }
                         if (obj[i].Status == 1) {
@@ -484,14 +492,14 @@
                         if (obj[i].Status == 4) {
                             htmlContents += "<td>";
                             htmlContents += "<a style=\"pointer-events: none;\" class=\"btn btn-xs btn-success\" onclick=\"tgStatus(" + obj[i].CustomerCaseID + ")\" >Đã xử lý xong</a>";
-                           
+
                             if (obj[i].UserNgayGui != null) {
                                 htmlContents += "<div>Ngày trả: ";
                                 var date = new Date(parseInt(obj[i].UserNgayGui.substr(6)));
                                 htmlContents += GetFormattedDate(date)
                                 htmlContents += "</div>";
                             }
-                          
+
                             htmlContents += "</td>";
                         }
                         htmlContents += "<td>";
@@ -530,7 +538,7 @@
         function ActiceStep3() {
             $("#tab1").addClass("disabletabstep");
             $("#tab2").addClass("disabletabstep");
-            $("#tab3").addClass("disabletabstep"); 
+            $("#tab3").addClass("disabletabstep");
             $(".step").removeClass("current");
             $("#tab3").addClass("current");
         }
@@ -558,7 +566,7 @@
                 success: function (result) {
                     var data = result.d;
                     const obj = JSON.parse(data);
-                    CustomerCaseID = obj.CustomerCaseID; 
+                    CustomerCaseID = obj.CustomerCaseID;
                     if (obj.Status == 0) {
                         $("#rad1").prop("checked", true);
                         ActiceStep1();
@@ -584,8 +592,8 @@
             });
         }
 
-        function capnhattrangthai() { 
-              
+        function capnhattrangthai() {
+
             var param = {
                 CustomerCaseID: CustomerCaseID,
                 Status: step,
@@ -597,7 +605,7 @@
                 contentType: "application/json; charset=utf-8",
                 data: "{CustomerCaseInfor:" + JSON.stringify(param) + "}",
                 success: function (result) {
-                   
+
                 },
                 error: function (result) {
                     alert("Failed");
@@ -606,7 +614,7 @@
             if (step == 3) {
                 var param = {
                     CustomerCaseID: CustomerCaseID,
-                    GhiChuPhatSinh: $('#GhiChuPhatSinh').val() 
+                    GhiChuPhatSinh: $('#GhiChuPhatSinh').val()
                 }
                 $.ajax({
                     url: 'Yeucaukhachgui.aspx/CapNhatGhiChuPhatSinh',
@@ -615,7 +623,7 @@
                     contentType: "application/json; charset=utf-8",
                     data: "{CustomerCaseInfor:" + JSON.stringify(param) + "}",
                     success: function (result) {
-                        
+
                         location.reload();
                     },
                     error: function (result) {
@@ -665,11 +673,11 @@
                         alert("Failed");
                     }
                 });
-            } 
+            }
         }
 
         function xemchitiet(id) {
-            $("#exampleModal2").modal("toggle"); 
+            $("#exampleModal2").modal("toggle");
             $.ajax({
                 url: 'Yeucaukhachgui.aspx/GetData',
                 type: "POST",
@@ -678,25 +686,36 @@
                 data: "{CustomerCaseID:'" + id + "'}",
                 success: function (result) {
                     var data = result.d;
-                    const obj = JSON.parse(data); 
+                    const obj = JSON.parse(data);
                     $("#txtCustomerName").html(obj.CustomerName);
                     $("#txtAddress").html(obj.Address);
                     $("#txtPhoneCustomer").html(obj.PhoneCustomer);
                     $("#txtEmail").html(obj.Email);
                     $("#txtProductName").html(obj.ProductName);
                     $("#txtProductImage").html(obj.ProductImage);
-                    $("#txtCarName").html(obj.CarName);
-                    $("#txtCarAddress").html(obj.CarAddress);
-                    $("#txtCarPhoneNumber").html(obj.CarPhoneNumber);
-                    $("#txtInforFromCustomer").html(obj.InforFromCustomer);
-                    $("#txtBillNumber").html(obj.BillNumber);
-                    $("#txtDescription").html(obj.Description);
+                    $("#ProductTinhTrangLoi").html(obj.ProductTinhTrangLoi);
+                    $("#ProductPhukien").html(obj.ProductPhukien);
+                    if (obj.HinhThucGui == 3) {
+                        $(".type1").show();
+                        $(".type2").hide();
+                        $("#txtCarName").html(obj.CarName);
+                        $("#txtCarAddress").html(obj.CarAddress);
+                        $("#txtCarPhoneNumber").html(obj.CarPhoneNumber);
+                        $("#txtBillNumber").html(obj.BillNumber);
+                        $("#txtDescription").html(obj.Description);
+                    }
+                    if (obj.HinhThucGui == 2) {
+                        $(".type1").hide();
+                        $(".type2").show(); 
+                        $("#TenGiaoNhan").html(obj.TenGiaoNhan);
+                        $("#SoDienThoaiGiaoNhan").html(obj.SoDienThoaiGiaoNhan);
+                    }
                     //
                     $("#txtUSerGuiTra").html(obj.USerGuiTra);
-                  
+
                     var date = new Date(parseInt(obj.UserNgayGui.substr(6)));
                     var getdate = GetFormattedDate(date);
-                    $("#txtUserNgayGui").html("<strong>" + getdate+"</strong>");
+                    $("#txtUserNgayGui").html("<strong>" + getdate + "</strong>");
                     if (obj.UserGuiType == 1) {
                         $("#txtUserGuiType").html("Gửi chành xe");
                     }
@@ -718,10 +737,10 @@
             var month = todayTime.getMonth() + 1;
             var day = todayTime.getDate();
             var year = todayTime.getFullYear();
-            var hour=todayTime.getHours();
-            var minus=todayTime.getMinutes();
-            var seconds=todayTime.getSeconds();
-            return month + "/" + day + "/" + year +" "+ hour + ":" + minus;
+            var hour = todayTime.getHours();
+            var minus = todayTime.getMinutes();
+            var seconds = todayTime.getSeconds();
+            return month + "/" + day + "/" + year + " " + hour + ":" + minus;
         }
         function thongtintrakhach_box() {
 
@@ -736,7 +755,7 @@
             }
             else {
                 $(".thongtintrakhach_box").hide();
-            } 
+            }
         }
 
         function slTra() {
