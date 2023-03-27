@@ -40,6 +40,15 @@ namespace CustomerGuarantee {
         protected global::System.Web.UI.HtmlControls.HtmlInputText CustomerUserId;
         
         /// <summary>
+        /// CustomerEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText CustomerEmail;
+        
+        /// <summary>
         /// tendangnhap control.
         /// </summary>
         /// <remarks>
@@ -83,5 +92,41 @@ namespace CustomerGuarantee {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTable tb_button;
+        
+        /// <summary>
+        /// CustomerPasswordOld control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputPassword CustomerPasswordOld;
+        
+        /// <summary>
+        /// CustomerPasswordnew control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputPassword CustomerPasswordnew;
+        
+        /// <summary>
+        /// CustomerPasswordnew2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputPassword CustomerPasswordnew2;
+        
+        /// <summary>
+        /// Table1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTable Table1;
     }
 }

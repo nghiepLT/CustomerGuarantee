@@ -24,7 +24,7 @@ namespace CustomerGuarantee
         {
 
             CustomerCaseEntities db = new CustomerCaseEntities();
-            var cus = db.CustomerCaseInfors.Where(m=>m.Email==CustomerUser).ToList();
+            var cus = db.CustomerCaseInfors.Where(m=>m.Email==CustomerUser).OrderBy(m=>m.DateCreate).ToList();
             JavaScriptSerializer js = new JavaScriptSerializer();
             var result = js.Serialize(cus);
             return result;

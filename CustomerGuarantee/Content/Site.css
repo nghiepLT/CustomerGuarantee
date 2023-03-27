@@ -18,8 +18,9 @@
 }
 
 .capcha_image {
+    width: 100%;
     position: absolute;
-    left: 50%;
+    left: 51%;
     top: 50%;
     transform: translate(-50%,-50%);
 }
@@ -126,13 +127,13 @@
 }
 
     .danhgiamodal ul {
-    margin: 0px;
-    padding: 0px;
-    margin-bottom: 5px;
+        margin: 0px;
+        padding: 0px;
+        margin-bottom: 5px;
     }
 
         .danhgiamodal ul li {
-        display: inline-block;
+            display: inline-block;
         }
 
     .danhgiamodal textarea {
@@ -239,14 +240,16 @@
 }
 
 .thongtintrakhach_box {
+    padding: 20px 20px;
 }
 
 .khiguiyc_box {
     color: #fb3c3c;
-    width: 749px;
+    width: 807px;
     margin: 0px auto;
     font-weight: bold;
     font-style: italic;
+    text-align: center;
 }
 
 .thongtinkhachgui_title {
@@ -693,6 +696,12 @@ body {
     outline: none;
 }
 
+.GhiChuThucNhan {
+    width: 54%;
+    margin-top: 19px !important;
+    outline: none;
+}
+
 .tinhtrangdon_box {
     padding: 15px 15px;
     background-color: #f7f7f7;
@@ -821,31 +830,85 @@ body {
 }
 
     .noidungdanhgia_box textarea {
-    width: 100%;
-    outline: none;
+        width: 100%;
+        outline: none;
     }
 
-.giudanhgia {text-align: right;}
+.giudanhgia {
+    text-align: right;
+}
 
     .giudanhgia a {
-    color: white;
-    background-color: black;
-    padding: 7px 12px;
-    font-size: 12px;
-    cursor:pointer;
+        color: white;
+        background-color: black;
+        padding: 7px 12px;
+        font-size: 12px;
+        cursor: pointer;
     }
-    .staractive{
-        color:#ffd201;
-    }
-    span#noidungdanhgia {
+
+.staractive {
+    color: #ffd201;
+}
+
+span#noidungdanhgia {
     font-size: 15px;
     font-weight: bold;
 }
-    .khstar_box{
-        padding:0px;
-        margin:0px;
+
+.khstar_box {
+    padding: 0px;
+    margin: 0px;
+}
+
+    .khstar_box li {
+        display: inline-block;
     }
-    .khstar_box li{
-        display:inline-block;
+
+.boquathongtin {
+    padding: 10px 19px;
+    color: red;
+    font-style: italic;
+    padding-top: 0px;
+    font-weight: bold;
+}
+
+.tooglediachi {
+    margin: 0px;
+    padding: 10px 10px;
+    position: absolute;
+    background-color: #f1f1f1;
+    width: 96%;
+    text-align: left;
+    box-shadow: 0 0 15px 1px rgb(0 0 0 / 29%);
+    top: 84%;
+    border-radius: 0px 0px 5px 5px;
+}
+
+    .tooglediachi li {
+        display: block;
     }
-    .boquathongtin{padding: 10px 19px;color: red;font-style: italic;padding-top: 0px;font-weight: bold;}
+
+.col1 {
+    display: inline-block;
+    float: left;
+    width: 5%;
+    position: relative;
+    top: 5px;
+}
+
+.col3 {
+    float: left;
+    width: 13%;
+}
+
+.colbox {
+    margin-bottom: 15px;
+}
+
+.col3 input {
+    height: 28px;
+    outline: none;
+    padding: 0px 10px;
+    border: 1px solid #c5c5c5;
+    border-radius: 0px;
+}

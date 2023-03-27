@@ -31,15 +31,16 @@ namespace CustomerGuarantee
         {
             if (!IsPostBack)
             {
-                var random = RandomString(12);
-                this.randomCode.Value = random;
+                var random = RandomString(8);
+
+                this.randomCode.Value = "BHNK-" + random;
                 if (Request.Cookies["CustomerLogin"] != null)
                 { 
                     CustomerCaseEntities db = new CustomerCaseEntities();
                     tCustomerUser cus = db.tCustomerUsers.ToList().Where(m => m.CustomerUser == Request.Cookies["CustomerLogin"].Value).FirstOrDefault();
                     if (cus != null)
                     {
-                     
+                        this.emailcus.Value = cus.CustomerEmail;
                        // this.CustomerUserId.Value = cus.CustomerUserId.ToString();
                         //
                         this.CustomerName.Value = cus.CustomerName;
@@ -117,6 +118,7 @@ namespace CustomerGuarantee
             {
                 return 2;
             }
+
                 CustomerCaseEntities db = new CustomerCaseEntities();
             try
             {
@@ -147,7 +149,14 @@ namespace CustomerGuarantee
                     db.SaveChanges();
                     isTaoTK = true;
                 }
-
+                else
+                {
+                    chkCustomerUser.CustomerName= data.CustomerName;
+                    chkCustomerUser.CustomerNLH= data.NguoiLienHe;
+                    chkCustomerUser.CustomerAddress = data.Address;
+                    chkCustomerUser.CustomerPhone = data.PhoneCustomer;
+                    db.SaveChanges();
+                }
                 string htmlContents = "";
                 htmlContents += "<div style=\"color:red;font-weight:bold\">Khi gửi Sản phẩm bảo hành quý khách vui lòng ghi thông tin người nhận :</div>";
                 htmlContents += "<div style=\"color:red;font-weight:bold\">Công Ty TNHH Vi Tính Nguyên Kim. ĐC: 245B Trần Quang Khải,P Tân Định ,Q.1,TPHCM .:</div>";
@@ -291,7 +300,7 @@ namespace CustomerGuarantee
 
                 System.Net.Mail.MailMessage mail = new System.Net.Mail.MailMessage();
                 // mail.From = new MailAddress(AdminEmail, Request.Url.Host.ToString(), System.Text.Encoding.UTF8);
-                mail.From = new MailAddress(Config.GetConfigValue("AdminEmailTo"));
+                mail.From = new MailAddress(Config.GetConfigValue("AdminEmailTo"), "TT.BAOHANH@NGUYENKIMVN.VN");
                 mail.To.Add(to);
                 mail.Subject = title;
                 mail.Body = sContent;
@@ -388,5 +397,60 @@ namespace CustomerGuarantee
             return 1; 
         }
 
+        [WebMethod]
+
+        public static string GetinforChanhXe(string email,string key)
+        {
+            CustomerCaseEntities db = new CustomerCaseEntities();
+            var lstInfo = db.CustomerCaseInfors.Where(m => m.Email == email && m.CarName.Contains(key) && key!="").GroupBy(m=>m.CarName).SelectMany(m=>m.Take(1)).ToList();
+            string result = "";
+            foreach (var item in lstInfo)
+            {
+                result += item.CarName + " - " + item.CarAddress + " - " + item.CarPhoneNumber + ",";
+            }
+            return result;
+        }
+        [WebMethod]
+        public static bool ResetMatkhau(tCustomerUser data)
+        {
+            Random rd = new Random();
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            var test = new string(Enumerable.Repeat(chars, 8)
+                .Select(s => s[rd.Next(s.Length)]).ToArray());
+            CustomerCaseEntities db = new CustomerCaseEntities();
+            var tCustomerUser = db.tCustomerUsers.Where(m => m.CustomerEmail == data.CustomerEmail).FirstOrDefault();
+            if (tCustomerUser != null)
+            {
+                tCustomerUser.CustomerPassword= Encrypt(test);
+                db.SaveChanges();
+            }
+            string htmlContents = "";
+            htmlContents += "<table>";
+
+            htmlContents += "<tr>";
+            htmlContents += "<td>Chào Anh/Chị, Mật khẩu mới của Anh/Chị là "+test+"</td>";
+            htmlContents += "</tr>";
+            htmlContents += "</table>";
+
+            sendEmail(data.CustomerEmail, "Khôi phục mật khẩu", htmlContents);
+            return true;
+        }
+
+        [WebMethod]
+        public static bool Doimatkhau(string oldpassword,string newpassword,string CustomerEmail)
+        {
+            CustomerCaseEntities db = new CustomerCaseEntities();
+            var tCustomerUser = db.tCustomerUsers.Where(m => m.CustomerEmail == CustomerEmail).FirstOrDefault();
+            if(tCustomerUser.CustomerPassword != Encrypt(oldpassword))
+            {
+                return false;
+            }
+            if (tCustomerUser != null)
+            {
+                tCustomerUser.CustomerPassword = Encrypt(newpassword);
+                db.SaveChanges();
+            }
+            return true;
+        }
     }
 }

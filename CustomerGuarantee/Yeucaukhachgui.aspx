@@ -31,6 +31,17 @@
                             <p style="text-align: center;">Hãy để lại thông tin và yêu cầu, chúng tôi sẽ liên lạc lại để tư vấn cho quý khách.</p>
                         </div>--%>
                         <div class="box-form-wrap voucher">
+                            <div class="colbox" style="display:none;">
+                                <div class="col1">
+                                    Mã đơn
+                                </div>
+                                <div class="col3">
+                                    <input />
+                                </div>
+                                <div class="clearfix">
+                                </div>
+                            </div>
+                           
                             <div>
                                 <table class="table table-bordered">
                                     <thead>
@@ -83,6 +94,7 @@
                         </div>
                         <div>
                             <textarea rows="4" class="ghichuphatsinh" id="GhiChuPhatSinh" placeholder="Ghi chú phát sinh" style="display: none;"></textarea>
+                              <textarea rows="4" class="GhiChuThucNhan" id="GhiChuThucNhan" placeholder="Ghi chú phát sinh" style="display: none;"></textarea>
                         </div>
                     </div>
                     <ul style="display: none;">
@@ -139,6 +151,8 @@
                                         <option value="1">Nhà xe trả
                                         </option>
                                         <option value="2">Giao nhận
+                                        </option>
+                                         <option value="3">Khách đến nhận
                                         </option>
                                     </select>
                                 </div>
@@ -203,6 +217,15 @@
                         Thông tin khách gửi
                     </div>
                     <table class="table table-bordered">
+                         <tr>
+
+                           <td>
+                              <strong>Mã bảo hành</strong>
+                           </td>
+                           <td>
+                               <strong style="color:red"  id="txtCodeGenerate"></strong>
+                           </td>
+                       </tr>
                         <tr>
                             <td>Tên khách hàng
                             </td>
@@ -217,8 +240,16 @@
                                 <span id="txtAddress"></span>
                             </td>
                         </tr>
+                         <tr>
+                           <td>
+                          Người liên hệ
+                           </td>
+                           <td>
+                               <strong style="color:blue"  id="txtNguoiLienHe"></strong>
+                           </td>
+                       </tr>
                         <tr>
-                            <td>SĐT & người liên hệ	
+                            <td>SĐT
                             </td>
                             <td>
                                 <span id="txtPhoneCustomer"></span>
@@ -236,6 +267,20 @@
                             </td>
                             <td>
                                 <span id="txtProductName"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Số Seri
+                            </td>
+                            <td>
+                                <strong style="font-style: italic" id="txtProductSeri"></strong>
+                            </td>
+                        </tr>
+                           <tr>
+                            <td>Ngày mua
+                            </td>
+                            <td>
+                                <strong style="font-style: italic" id="txtProductNgayMua"></strong>
                             </td>
                         </tr>
                         <tr class="type1">
@@ -273,6 +318,20 @@
                                 <span id="txtCarPhoneNumber"></span>
                             </td>
                         </tr>
+                        <tr class="type1">
+                            <td>Ngày gửi
+                            </td>
+                            <td>
+                                <span id="txtNgayGui"></span>
+                            </td>
+                        </tr>
+                        <tr class="type1">
+                            <td>Số Bill
+                            </td>
+                            <td>
+                                <span id="txtBillNumber"></span>
+                            </td>
+                        </tr>
                       <%--  <tr class="type1">
                             <td>Thông tin nhận từ(chành xe hoặc khách hàng)	
                             </td>
@@ -280,18 +339,26 @@
                                 <span id="txtInforFromCustomer"></span>
                             </td>
                         </tr>--%>
-                        <tr class="type1">
-                            <td>Số Bill	
-                            </td>
-                            <td>
-                                <span id="txtBillNumber"></span>
-                            </td>
-                        </tr>
+                       
                         <tr class="type1">
                             <td>Ghi chú		
                             </td>
                             <td>
                                 <span id="txtDescription"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                               <td>Thực nhận	
+                            </td>
+                            <td>
+                                <span id="txtThucNhan"></span>
+                            </td>
+                        </tr>
+                         <tr>
+                               <td>Ghi chú phát sinh
+                            </td>
+                            <td>
+                                <span id="txtGhichuphatsinh"></span>
                             </td>
                         </tr>
                          <tr class="type2">
@@ -357,6 +424,13 @@
                                 <span id="txtUSerSoDTNhaXe"></span>
                             </td>
                         </tr>
+                         <tr class="trUserAddress">
+                            <td>Thông tin xử lý:
+                            </td>
+                            <td>
+                                <span id="txtXuLy"></span>
+                            </td>
+                        </tr>
                     </table>
                 </div>
             </div>
@@ -378,11 +452,13 @@
                     for (i = 0; i < obj.length; i++) {
                         htmlContents += "<tr>";
                         htmlContents += "<td>";
-                        htmlContents += "<strong style=\"color:red\">" + obj[i].CodeGenerate + "</strong>";
+                        htmlContents += "<strong style=\"color:red;font-size: 12px;\">" + obj[i].CodeGenerate + "</strong>";
                         htmlContents += "</td>";
                         htmlContents += "<td>";
-                        if (obj[i].NgayGui != null) {
-                            htmlContents += obj[i].NgayGui;
+                        if (obj[i].NgayGui != null && obj[i].NgayGui!='') {
+                            var splitDate = obj[i].NgayGui.split('-');
+                            var newDate = splitDate[2] + '/' + splitDate[1] + '/' + splitDate[0];
+                            htmlContents += newDate;
                         }
                         htmlContents += "</td>";
                         htmlContents += "<td>";
@@ -497,6 +573,16 @@
                                 htmlContents += "<div>Ngày trả: ";
                                 var date = new Date(parseInt(obj[i].UserNgayGui.substr(6)));
                                 htmlContents += GetFormattedDate(date)
+                                if (obj[i].UserGuiType == 1) {
+                                    htmlContents += "<div><strong style=\"color:red\">Gửi chành xe</strong></div>";
+                                }
+                                if (obj[i].UserGuiType == 2) {
+                                    htmlContents += "<div><strong style=\"color:red\">Gửi Nhân viên giao nhận</strong></div>";
+                                }
+                                if (obj[i].UserGuiType == 3) {
+                                    htmlContents += "<div><strong style=\"color:red\">Khách đến nhận</strong></div>";
+                                }
+                              
                                 htmlContents += "</div>";
                             }
 
@@ -533,7 +619,9 @@
             $("#tab5").addClass("disabletabstep");
             $(".step").removeClass("current");
             $("#tab2").addClass("current");
-            $(".btnluu").hide();
+            $("#GhiChuThucNhan").show();
+            step = 2; $(".btnluu").hide();
+            $("#GhiChuThucNhan").attr("disabled",'');
         }
         function ActiceStep3() {
             $("#tab1").addClass("disabletabstep");
@@ -574,6 +662,7 @@
                     if (obj.Status == 1) {
                         $("#rad2").prop("checked", true);
                         ActiceStep2();
+                        $("#GhiChuThucNhan").val(obj.ThucNhan)
                     }
                     if (obj.Status == 2) {
                         $("#rad3").prop("checked", true);
@@ -593,6 +682,27 @@
         }
 
         function capnhattrangthai() {
+
+            if (step == 1) {
+                var param = {
+                    CustomerCaseID: CustomerCaseID,
+                    ThucNhan: $('#GhiChuThucNhan').val()
+                }
+                $.ajax({
+                    url: 'Yeucaukhachgui.aspx/CapNhatGhiChuThucNhan',
+                    type: "POST",
+                    dataType: "html",
+                    contentType: "application/json; charset=utf-8",
+                    data: "{CustomerCaseInfor:" + JSON.stringify(param) + "}",
+                    success: function (result) {
+
+                        location.reload();
+                    },
+                    error: function (result) {
+                        alert("Failed");
+                    }
+                });
+            }
 
             var param = {
                 CustomerCaseID: CustomerCaseID,
@@ -636,8 +746,11 @@
                 if ($("#slHinhthuc").val() == 1) {
                     userstatus = 1;
                 }
-                else {
+                if ($("#slHinhthuc").val() == 2) {
                     userstatus = 2;
+                }
+                if ($("#slHinhthuc").val() == 3) {
+                    userstatus = 3;
                 }
                 //
                 if (userstatus == 3) {
@@ -675,8 +788,38 @@
                 });
             }
         }
+        function cleardata() {
+            $("#txtCodeGenerate").html('');
+            $("#txtCustomerName").html('');
+            $("#txtAddress").html('');
+            $("#txtNguoiLienHe").html('');
+            $("#txtPhoneCustomer").html('');
+            $("#txtEmail").html('');
+            $("#txtProductName").html('');
+            $("#txtProductImage").html('');
+            $("#txtCarName").html('');
+            $("#txtCarAddress").html('');
+            $("#txtNgayGui").html('');
+            $("#txtCarPhoneNumber").html('');
+            $("#txtInforFromCustomer").html('');
+            $("#txtBillNumber").html('');
+            $("#txtDescription").html('');
+            $("#txtthucNhan").html('');
+            //
+            $("#txtUSerGuiTra").html('');
 
+            $("#txtUserNgayGui").html('');
+            $("#txtUserGuiType").html('');
+
+            $("#txtUserTenNhaXe").html('');
+            $("#txtUserAddress").html('');
+            $("#txtUSerSoDTNhaXe").html('');
+            $("#txtProductSeri").html(''); 
+            $("#txtProductNgayMua").html('');
+            $("#txtXuLy").html('');
+        }
         function xemchitiet(id) {
+            cleardata();
             $("#exampleModal2").modal("toggle");
             $.ajax({
                 url: 'Yeucaukhachgui.aspx/GetData',
@@ -687,22 +830,32 @@
                 success: function (result) {
                     var data = result.d;
                     const obj = JSON.parse(data);
+                    $("#txtCodeGenerate").html(obj.CodeGenerate);
                     $("#txtCustomerName").html(obj.CustomerName);
                     $("#txtAddress").html(obj.Address);
+                    $("#txtNguoiLienHe").html(obj.NguoiLienHe);
                     $("#txtPhoneCustomer").html(obj.PhoneCustomer);
                     $("#txtEmail").html(obj.Email);
                     $("#txtProductName").html(obj.ProductName);
                     $("#txtProductImage").html(obj.ProductImage);
                     $("#ProductTinhTrangLoi").html(obj.ProductTinhTrangLoi);
                     $("#ProductPhukien").html(obj.ProductPhukien);
+                    $("#txtThucNhan").html(obj.ThucNhan);
+                    $("#txtGhichuphatsinh").html(obj.GhiChuPhatSinh);
+                    $("#txtProductSeri").html(obj.ProductSeri);
+                    $("#txtProductNgayMua").html(obj.ProductNgayMua);
                     if (obj.HinhThucGui == 3) {
                         $(".type1").show();
                         $(".type2").hide();
                         $("#txtCarName").html(obj.CarName);
+                       
                         $("#txtCarAddress").html(obj.CarAddress);
                         $("#txtCarPhoneNumber").html(obj.CarPhoneNumber);
+                        $("#txtNgayGui").html(obj.NgayGui);
+
                         $("#txtBillNumber").html(obj.BillNumber);
                         $("#txtDescription").html(obj.Description);
+
                     }
                     if (obj.HinhThucGui == 2) {
                         $(".type1").hide();
@@ -712,20 +865,26 @@
                     }
                     //
                     $("#txtUSerGuiTra").html(obj.USerGuiTra);
-
-                    var date = new Date(parseInt(obj.UserNgayGui.substr(6)));
-                    var getdate = GetFormattedDate(date);
-                    $("#txtUserNgayGui").html("<strong>" + getdate + "</strong>");
+                    if (obj.UserNgayGui != null) {
+                        var date = new Date(parseInt(obj.UserNgayGui.substr(6)));
+                        var getdate = GetFormattedDate(date);
+                        $("#txtUserNgayGui").html("<strong>" + getdate + "</strong>");
+                    }
+                    
                     if (obj.UserGuiType == 1) {
                         $("#txtUserGuiType").html("Gửi chành xe");
                     }
-                    else {
-                        $("#txtUserGuiType").html("Giao nhận");
+                    if (obj.UserGuiType == 2) {
+                        $("#txtUserGuiType").html("Gửi Nhân viên giao nhận");
+                    }
+                    if (obj.UserGuiType == 3) {
+                        $("#txtUserGuiType").html("Khách đến nhận");
                     }
 
                     $("#txtUserTenNhaXe").html(obj.UserTenNhaXe);
                     $("#txtUserAddress").html(obj.UserAddress);
                     $("#txtUSerSoDTNhaXe").html(obj.USerSoDTNhaXe);
+                    $("#txtXuLy").html(obj.GhiChuXuLy);
                 },
                 error: function (result) {
                     alert("Failed");
@@ -773,14 +932,26 @@
         function tgstep(dis) {
             var status = $(dis).attr("data-status");
             step = status;
+             
             if (step < 3) {
-                if (confirm('Chuyển trạng thái cho đơn bảo hành này?')) {
+                if (step == 1) {
                     $(".step").removeClass("current");
                     $(dis).addClass("current");
-                    $(".btnluu").trigger("click");
-                    window.location.reload();
-                    //
+                    $(".GhiChuThucNhan").show();
+                    $(".ghichuphatsinh").hide();
+                    $(".thongtintrakhach_box").hide();
+                    $(".btnluu").show();
                 }
+                else {
+                    if (confirm('Chuyển trạng thái cho đơn bảo hành này?')) {
+                        $(".step").removeClass("current");
+                        $(dis).addClass("current");
+                        $(".btnluu").trigger("click");
+                        window.location.reload();
+                        //
+                    }
+                }
+                
             }
             else {
                 $(".step").removeClass("current");
@@ -788,10 +959,12 @@
                 if (step == 3) {
                     $(".ghichuphatsinh").show();
                     $(".thongtintrakhach_box").hide();
+                    $(".GhiChuThucNhan").hide();
                 }
                 if (step == 4) {
                     $(".ghichuphatsinh").hide();
                     $(".thongtintrakhach_box").show();
+                    $(".GhiChuThucNhan").hide();
                 }
             }
         }

@@ -28,6 +28,7 @@ namespace CustomerGuarantee
                         this.mdCustomerPhone.Value = cus.CustomerPhone;
                         this.mdCustomerAddress.Value = cus.CustomerAddress;
                         this.CustomerUserId.Value = cus.CustomerUserId.ToString();
+                        this.CustomerEmail.Value = cus.CustomerEmail;
                     }
                 }
             }
@@ -46,7 +47,7 @@ namespace CustomerGuarantee
             }
             return true;
         }
-
+      
         protected void btnSaveBanner_Click(object sender, EventArgs e)
         {
 

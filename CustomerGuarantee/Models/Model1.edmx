@@ -54,6 +54,7 @@
           <Property Name="Step5" Type="datetime" />
           <Property Name="StarRate" Type="int" />
           <Property Name="RateDescription" Type="nvarchar" MaxLength="500" />
+          <Property Name="ThucNhan" Type="nvarchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="tCustomerUser">
           <Key>
@@ -141,6 +142,7 @@
           <Property Name="Step5" Type="DateTime" Precision="3" />
           <Property Name="StarRate" Type="Int32" />
           <Property Name="RateDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ThucNhan" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="tUSer">
           <Key>
@@ -174,6 +176,7 @@
           <EntitySetMapping Name="CustomerCaseInfors">
             <EntityTypeMapping TypeName="CustomerCaseModel.CustomerCaseInfor">
               <MappingFragment StoreEntitySet="CustomerCaseInfor">
+                <ScalarProperty Name="ThucNhan" ColumnName="ThucNhan" />
                 <ScalarProperty Name="RateDescription" ColumnName="RateDescription" />
                 <ScalarProperty Name="StarRate" ColumnName="StarRate" />
                 <ScalarProperty Name="Step5" ColumnName="Step5" />

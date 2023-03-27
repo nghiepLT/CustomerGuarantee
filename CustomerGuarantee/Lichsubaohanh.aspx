@@ -65,6 +65,9 @@
                                             </td>
                                             <td style="width:15%;">Địa chỉ
                                             </td>
+                                            <td>
+
+                                            </td>
                                             <td>SĐT & người liên hệ
                                             </td>
                                             <td>Sản phẩm gửi BH
@@ -161,9 +164,19 @@
                         Thông tin gửi hàng
                     </div>
                    <table class="table table-bordered" style="padding: 15px 15px;background-color: #f7f7f7;border-radius: 5px;box-shadow: 0 3px 9px rgb(0 0 0 / 22%);">
-                       <tr>
+                        <tr>
+
                            <td>
-                              <strong> Tên khách hàng</strong>
+                              <strong>Mã bảo hành</strong>
+                           </td>
+                           <td>
+                               <strong style="color:red"  id="txtCodeGenerate"></strong>
+                           </td>
+                       </tr>
+                        <tr>
+
+                           <td>
+                              <strong>Tên khách hàng</strong>
                            </td>
                            <td>
                                <span  id="txtCustomerName"></span>
@@ -179,7 +192,15 @@
                        </tr>
                         <tr>
                            <td>
-                             <strong>SĐT & người liên hệ</strong>
+                             <strong>Người liên hệ</strong>
+                           </td>
+                           <td>
+                               <strong style="color:blue"  id="txtNguoiLienHe"></strong>
+                           </td>
+                       </tr>
+                        <tr>
+                           <td>
+                             <strong>SĐT</strong>
                            </td>
                            <td>
                                <span  id="txtPhoneCustomer"></span>
@@ -234,13 +255,19 @@
                            </td>
                        </tr>
                         <tr class="type1">
-                           <td>
-                         <strong>SĐT nhà xe</strong>	
-                           </td>
-                           <td>
-                               <span  id="txtCarPhoneNumber"></span>
-                           </td>
-                       </tr>
+                            <td>Ngày gửi
+                            </td>
+                            <td>
+                                <span id="txtNgayGui"></span>
+                            </td>
+                        </tr>
+                        <tr class="type1">
+                            <td>Số Bill
+                            </td>
+                            <td>
+                                <span id="txtBillNumber"></span>
+                            </td>
+                        </tr>
                     <%--   <tr>
                            <td><strong>Thông tin nhận từ(chành xe hoặc khách hàng)</strong>
                            </td>
@@ -248,18 +275,19 @@
                                <span id="txtInforFromCustomer"></span>
                            </td>
                        </tr>--%>
-                       <tr class="type1">
-                           <td><strong>Số Bill</strong>	
-                           </td>
-                           <td>
-                               <span id="txtBillNumber"></span>
-                           </td>
-                       </tr>
+                       
                        <tr class="type1">
                            <td><strong>Ghi chú</strong>
                            </td>
                            <td>
                                <span id="txtDescription"></span>
+                           </td>
+                       </tr>
+                       <tr>
+                            <td><strong>Thực nhận</strong>
+                           </td>
+                           <td>
+                               <span id="txtThucNhan"></span>
                            </td>
                        </tr>
                        <tr class="type2">
@@ -331,6 +359,14 @@
                                <span  id="txtUSerSoDTNhaXe"></span>
                            </td>
                         </tr>
+                           <tr class="trUserAddress">
+                            <td>
+                             <strong>Thông tin xử lý:</strong>
+                            </td>
+                            <td>
+                               <span  id="txtXuLy"></span>
+                           </td>
+                        </tr>
                     </table>
                       <hr />
                   <div id="danhgiasao_box">
@@ -339,7 +375,7 @@
                     </div>
                     <div class="starvote_box">
                         <ul class="ratings">
-                            <li class="star" data-value="5"></li>
+                            <li class="star selected" data-value="5"></li>
                             <li class="star" data-value="4"></li>
                             <li class="star" data-value="3"></li>
                             <li class="star" data-value="2"></li>
@@ -355,7 +391,7 @@
                     <div class="starvoted_box">
                         <ul>
                             <li>
-                                <i id="i_tg1" class="fa fa-star"></i>
+                                <i id="i_tg1" class="fa fa-star "></i>
                             </li>
                             <li>
                                 <i id="i_tg2" class="fa fa-star"></i>
@@ -380,7 +416,10 @@
         </div>
     </div>
     <script>
-        var datavalue = 0;
+        $(document).ready(function () {
+            $(".starfist ").trigger("click");
+        });
+        var datavalue = 5;
         $(function () {
             var star = '.star',
                 selected = '.selected';
@@ -505,8 +544,20 @@
                             htmlContents += "<td>";
                             htmlContents += "<strong><a class=\" text-success\" >Đã hoàn tất </a></strong>";
                             htmlContents += "<div>Ngày trả: ";
-                            var date = new Date(parseInt(obj[i].UserNgayGui.substr(6)));
-                            htmlContents += GetFormattedDate(date)
+                            if (obj[i].UserNgayGui != null) {
+                                var date = new Date(parseInt(obj[i].UserNgayGui.substr(6)));
+                                htmlContents += GetFormattedDate(date)
+                                if (obj[i].UserGuiType == 1) {
+                                    htmlContents += "<div><strong style=\"color:red\">Gửi chành xe</strong></div>";
+                                }
+                            }
+                           
+                            if (obj[i].UserGuiType == 2) {
+                                htmlContents += "<div><strong style=\"color:red\">Gửi Nhân viên giao nhận</strong></div>";
+                            }
+                            if (obj[i].UserGuiType == 3) {
+                                htmlContents += "<div><strong style=\"color:red\">Khách đến nhận</strong></div>";
+                            }
                             htmlContents += "</div>";
                             htmlContents += "</td>";
                         }
@@ -593,18 +644,22 @@
             });
         }
         function cleardata() {
+            $("#txtCodeGenerate").html('');
             $("#txtCustomerName").html('');
             $("#txtAddress").html('');
+            $("#txtNguoiLienHe").html('');
             $("#txtPhoneCustomer").html('');
             $("#txtEmail").html('');
             $("#txtProductName").html('');
             $("#txtProductImage").html('');
             $("#txtCarName").html('');
             $("#txtCarAddress").html('');
+            $("#txtNgayGui").html('');
             $("#txtCarPhoneNumber").html('');
             $("#txtInforFromCustomer").html('');
             $("#txtBillNumber").html('');
             $("#txtDescription").html('');
+            $("#txtthucNhan").html('');
             //
             $("#txtUSerGuiTra").html('');
              
@@ -614,6 +669,7 @@
             $("#txtUserTenNhaXe").html('');
             $("#txtUserAddress").html('');
             $("#txtUSerSoDTNhaXe").html('');
+            $("#txtXuLy").html('');
         }
         function xemchitiet(id) {
             cleardata();
@@ -628,14 +684,17 @@
                     var data = result.d;
                     const obj = JSON.parse(data);
                     CustomerCaseID = obj.CustomerCaseID;
+                    $("#txtCodeGenerate").html(obj.CodeGenerate);
                     $("#txtCustomerName").html(obj.CustomerName);
                     $("#txtAddress").html(obj.Address);
+                    $("#txtNguoiLienHe").html(obj.NguoiLienHe);
                     $("#txtPhoneCustomer").html(obj.PhoneCustomer);
                     $("#txtEmail").html(obj.Email);
                     $("#txtProductName").html(obj.ProductName);
                     $("#txtProductImage").html(obj.ProductImage);
                     $("#ProductTinhTrangLoi").html(obj.ProductTinhTrangLoi);
                     $("#ProductPhukien").html(obj.ProductPhukien);
+                    $("#txtThucNhan").html(obj.ThucNhan);
                     if (obj.Status != 4) {
                         $("#danhgiasao_box").hide();
                     }
@@ -644,6 +703,7 @@
                         $(".type2").hide();
                         $("#txtCarName").html(obj.CarName);
                         $("#txtCarAddress").html(obj.CarAddress);
+                        $("#txtNgayGui").html(obj.NgayGui);
                         $("#txtCarPhoneNumber").html(obj.CarPhoneNumber);
                         $("#txtBillNumber").html(obj.BillNumber);
                         $("#txtDescription").html(obj.Description);
@@ -666,13 +726,17 @@
                     if (obj.UserGuiType == 1) {
                         $("#txtUserGuiType").html("Gửi chành xe");
                     }
-                    else {
-                        $("#txtUserGuiType").html("Giao nhận");
+                    if (obj.UserGuiType == 2) {
+                        $("#txtUserGuiType").html("Gửi Nhân viên giao nhận");
+                    }
+                    if (obj.UserGuiType == 3) {
+                        $("#txtUserGuiType").html("Khách đến nhận");
                     }
 
                     $("#txtUserTenNhaXe").html(obj.UserTenNhaXe);
                     $("#txtUserAddress").html(obj.UserAddress);
                     $("#txtUSerSoDTNhaXe").html(obj.USerSoDTNhaXe);
+                    $("#txtXuLy").html(obj.GhiChuXuLy);
 
                     //Step 1
                     $("#li_2").hide();

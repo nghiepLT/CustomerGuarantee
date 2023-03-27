@@ -34,7 +34,7 @@ namespace CustomerGuarantee
         public static string LoadDanhSach()
         {
             CustomerCaseEntities db = new CustomerCaseEntities();
-            var cus = db.CustomerCaseInfors.ToList();
+            var cus = db.CustomerCaseInfors.OrderByDescending(m=>m.DateCreate).ToList();
             JavaScriptSerializer js = new JavaScriptSerializer();
             var result = js.Serialize(cus);
             return result;
@@ -85,30 +85,53 @@ namespace CustomerGuarantee
             }
             if (cus.Status == 4)
             {
-                htmlContents += "<div>Xin chào Anh/Chị" + " " + cus.CustomerName + "</div>";
+                htmlContents += "<div>Xin chào Anh/Chị" + " " + cus.NguoiLienHe + "</div>";
                 htmlContents += "<div>Đơn bảo hành với mã " + cus.CodeGenerate + " đã hoàn thành</div>";
                 htmlContents += "<div>Sau đây là thông tin trả hàng</div>";
                 htmlContents += "<table style=\"width:100%;margin:10px 0px\">";
+
 
                 htmlContents += "<tr>";
                 htmlContents += "<td style=\"border: 1px solid;padding:5px;background-color:#65FFFF;width:150px\">Thời gian trả</td>";
                 htmlContents += "<td style=\"border: 1px solid;padding:5px\">" + cus.UserNgayGui.Value.ToShortDateString() + "</td>";
                 htmlContents += "</tr>";
 
+                string Phuongthuctra = "";
+                if(cus.UserGuiType == 1)
+                {
+                    Phuongthuctra = "Chành xe";
+                }
+                if (cus.UserGuiType ==2)
+                {
+                    Phuongthuctra = "Nhân viên giao hàng";
+                }
+                if (cus.UserGuiType == 3)
+                {
+                    Phuongthuctra = "Quý khách vui lòng mang giấy giới thiệu và Căn cước công dân đến Nguyên Kim để nhận hàng";
+                }
                 htmlContents += "<tr>";
-                htmlContents += "<td style=\"border: 1px solid;padding:5px;background-color:#65FFFF;width:150px\">Tên nhà xe </td>";
-                htmlContents += "<td style=\"border: 1px solid;padding:5px\">" + cus.UserTenNhaXe + "</td>";
+                htmlContents += "<td style=\"border: 1px solid;padding:5px;background-color:#65FFFF;width:150px\">Phương thức trả</td>";
+                htmlContents += "<td style=\"border: 1px solid;padding:5px\">" + Phuongthuctra + "</td>";
                 htmlContents += "</tr>";
 
-                htmlContents += "<tr>";
-                htmlContents += "<td style=\"border: 1px solid;padding:5px;background-color:#65FFFF;width:150px\">Địa chỉ nhà xe </td>";
-                htmlContents += "<td style=\"border: 1px solid;padding:5px\">" + cus.UserAddress + "</td>";
-                htmlContents += "</tr>";
+                if (cus.UserGuiType == 1)
+                {
+                    htmlContents += "<tr>";
+                    htmlContents += "<td style=\"border: 1px solid;padding:5px;background-color:#65FFFF;width:150px\">Tên nhà xe </td>";
+                    htmlContents += "<td style=\"border: 1px solid;padding:5px\">" + cus.UserTenNhaXe + "</td>";
+                    htmlContents += "</tr>";
 
-                htmlContents += "<tr>";
-                htmlContents += "<td style=\"border: 1px solid;padding:5px;background-color:#65FFFF;width:150px\">Số điện thoại nhà xe </td>";
-                htmlContents += "<td style=\"border: 1px solid;padding:5px\">" + cus.USerSoDTNhaXe + "</td>";
-                htmlContents += "</tr>";
+                    htmlContents += "<tr>";
+                    htmlContents += "<td style=\"border: 1px solid;padding:5px;background-color:#65FFFF;width:150px\">Địa chỉ nhà xe </td>";
+                    htmlContents += "<td style=\"border: 1px solid;padding:5px\">" + cus.UserAddress + "</td>";
+                    htmlContents += "</tr>";
+
+                    htmlContents += "<tr>";
+                    htmlContents += "<td style=\"border: 1px solid;padding:5px;background-color:#65FFFF;width:150px\">Số điện thoại nhà xe </td>";
+                    htmlContents += "<td style=\"border: 1px solid;padding:5px\">" + cus.USerSoDTNhaXe + "</td>";
+                    htmlContents += "</tr>";
+                }
+               
 
                 htmlContents += "<tr>";
                 htmlContents += "<td style=\"border: 1px solid;padding:5px;background-color:#65FFFF;width:150px\">Nội dung xử lý </td>";
@@ -133,6 +156,17 @@ namespace CustomerGuarantee
             db.SaveChanges();
             return 1;
         }
+        [WebMethod]
+        public static int CapNhatGhiChuThucNhan(CustomerCaseInfor CustomerCaseInfor)
+        {
+            CustomerCaseEntities db = new CustomerCaseEntities();
+            CustomerCaseInfor cus = db.CustomerCaseInfors.Where(m => m.CustomerCaseID == CustomerCaseInfor.CustomerCaseID).FirstOrDefault();
+            cus.Step2 = DateTime.Now;
+            cus.Status = 1;
+            cus.ThucNhan = CustomerCaseInfor.ThucNhan;
+            db.SaveChanges();
+            return 1;
+        }
         public static bool sendEmail(string to, string title, string sContent)
         {
             try
@@ -154,7 +188,7 @@ namespace CustomerGuarantee
 
                 System.Net.Mail.MailMessage mail = new System.Net.Mail.MailMessage();
                 // mail.From = new MailAddress(AdminEmail, Request.Url.Host.ToString(), System.Text.Encoding.UTF8);
-                mail.From = new MailAddress(Config.GetConfigValue("AdminEmailTo"));
+                mail.From = new MailAddress(Config.GetConfigValue("AdminEmailTo"), "TT.BAOHANH@NGUYENKIMVN.VN");
                 mail.To.Add(to);
                 mail.Subject = title;
                 mail.Body = sContent;
@@ -195,6 +229,7 @@ namespace CustomerGuarantee
                     cus.Step3 = DateTime.Now;
                     cus.Status = 2;
                 }
+
                 db.SaveChanges();
             }
 
