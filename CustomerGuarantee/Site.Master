@@ -89,6 +89,7 @@
 
     <link href="https://vitinhnguyenkim.vn/app/modules/page/assets/css/page.css" rel="stylesheet" type="text/css" />
     <script src="https://vitinhnguyenkim.vn/app/modules/page/assets/js/page.js" language="javascript" type="text/javascript"></script>
+    <link href="Content/responsive.css" rel="stylesheet" />
     <div id="fb-root"></div>
 
     <!-- Google Tag Manager -->

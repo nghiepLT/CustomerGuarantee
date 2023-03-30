@@ -4,11 +4,12 @@
 
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+    <script src="js/jquery.min.js"></script>
     <div id="g_id_onload" data-client_id="1075276967005-esjhug2dih7v7cn8j2ugh9iarnvamuo0.apps.googleusercontent.com" data-context="signin" data-ux_mode="popup" data-login_uri="http://localhost:62201/" data-auto_prompt="false" data-callback="handleCredentialResponse">
     </div> 
     <link href="Content/Site.css" rel="stylesheet"  />
     <input id="randomCode" runat="server" style="display: none;" />
-    <input id="emailcus" runat="server" style="display: none;" />
+    <input id="emailcus" runat="server" style="display: none;" />   
     <div id="breadrumb" class="outer hidden-xs">
         <div class="wrapper">
             <div class="col-md-12">
@@ -79,7 +80,7 @@ Công Ty TNHH Vi Tính Nguyên Kim. ĐC: 245B Trần Quang Khải, Phường Tâ
 SĐT: 028 22 246 246 - line: 873
                     </div>
                     <!-- multistep form -->
-                    <form id="msform" runat="server">
+                    <form id="msform" >
                         <!-- progressbar -->
                         <ul id="progressbar">
                             <li class="active l1">Thông tin khách</li>

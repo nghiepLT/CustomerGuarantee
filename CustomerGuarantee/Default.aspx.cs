@@ -31,17 +31,17 @@ namespace CustomerGuarantee
         {
             if (!IsPostBack)
             {
+                var repass = Decrypt("o0QH4YvWVTnzHDm1mU4KvA==");
                 var random = RandomString(8);
-
                 this.randomCode.Value = "BHNK-" + random;
                 if (Request.Cookies["CustomerLogin"] != null)
-                { 
+                {
                     CustomerCaseEntities db = new CustomerCaseEntities();
                     tCustomerUser cus = db.tCustomerUsers.ToList().Where(m => m.CustomerUser == Request.Cookies["CustomerLogin"].Value).FirstOrDefault();
                     if (cus != null)
                     {
                         this.emailcus.Value = cus.CustomerEmail;
-                       // this.CustomerUserId.Value = cus.CustomerUserId.ToString();
+                        // this.CustomerUserId.Value = cus.CustomerUserId.ToString();
                         //
                         this.CustomerName.Value = cus.CustomerName;
                         this.NguoiLienHe.Value = cus.CustomerNLH;
